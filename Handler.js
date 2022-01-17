@@ -12,9 +12,9 @@ if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
 if(message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
-const EcoFile = require(`../commands/${command}.js`)
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const economia = args.shift().toLowerCase();
+const EcoFile = require(`..Economia/${economia}.js`)
 
   
 try {
