@@ -14,11 +14,14 @@ client.on("ready", () => {
 let dir = __dirname
 require("./Eventos/Ready.js")(client)
 require("./LoadCommands.js")(client)
-const DatabaseUtil = require("./DatabaseUtil.js");
+
+let dir = __dirname
 client.db = new DatabaseUtil({
   serverKey: "832judw.21ud.jiq1456f"
+});
 
-  const firebaseConfig = {
+
+const firebaseConfig = {
   apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
   authDomain: "royale-bot-7b344.firebaseapp.com",
   databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com",
@@ -27,11 +30,15 @@ client.db = new DatabaseUtil({
   messagingSenderId: "948007874893",
   appId: "1:948007874893:web:ac0626c78346936721c704",
   measurementId: "G-LT7353D3BV"
-};
+}
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-});
 
+const FireSimple = require("./DatabaseUtil.js");
+  client.db = new FireSimple({
+    apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
+    databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
+  });
 
 const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file =>
 file.endsWith(".js"));
