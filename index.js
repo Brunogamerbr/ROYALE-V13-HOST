@@ -54,7 +54,7 @@ console.log("Comandos carregados!")
 
 
 client.on("messageCreate", async (message) => {
-require("./Handler.js")(client, database)
+require("./Handler.js")(client,message,database)
 });
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
