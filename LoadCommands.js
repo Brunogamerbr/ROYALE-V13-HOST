@@ -1,9 +1,7 @@
 const Discord = require("discord.js")
 const fs = require("fs")
 const { join } = require("path")
-
 module.exports = async (client) => {
-  
 let dir = __dirname
 client.commands = new Discord.Collection();
   
@@ -12,8 +10,6 @@ const FireSimple = require("./DatabaseUtil.js");
     apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
     databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
   });
-
-console.log("Bot ligado, Carregando comandos...");
 
   const cmds = fs.readdirSync(join(__dirname, "./Economia")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
@@ -25,8 +21,5 @@ console.log("Bot ligado, Carregando comandos...");
       })
     }
   }
-
-console.log("Comandos carregados!")
-
-
+console.log("Economia carregada com sucesso!")
 }
