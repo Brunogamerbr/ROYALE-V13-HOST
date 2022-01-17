@@ -1,21 +1,15 @@
-const Discord = require("discord.js");
-const config = require("./config.json");
-const firebase = require("firebase");
-const { join } = require("path");
-const fs = require("fs");
+const Discord = require("discord.js")
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
 });
-client.tryes = new Discord.Collection();
-client.lastCmds = new Discord.Collection();
-client.aliases = new Discord.Collection();
+const firebase = require("firebase");
+const config = require(`./config.json`);
+const fs = require("fs");
+const { join } = require("path");
+const reqEvent = event => require(`./Events/${event}.js`);
 client.commands = new Discord.Collection();
-client.on("ready", () => {
+
 let dir = __dirname
-require("./Eventos/Ready.js")(client)
-require("./LoadCommands.js")(client)
-
-
 const DatabaseUtil = require("./DatabaseUtil.js");
 client.db = new DatabaseUtil({
   serverKey: "832judw.21ud.jiq1456f"
@@ -31,20 +25,23 @@ const firebaseConfig = {
   messagingSenderId: "948007874893",
   appId: "1:948007874893:web:ac0626c78346936721c704",
   measurementId: "G-LT7353D3BV"
-}
+};
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
+client.on("ready", () => {
 const FireSimple = require("./DatabaseUtil.js");
   client.db = new FireSimple({
     apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
     databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
   });
 
-const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file =>
-file.endsWith(".js"));
+
+
+console.log("Bot ligado, Carregando comandos...");
+  const cmds = fs.readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
-    let cmd = require(join(__dirname, "Economia", `${file}`));
+    let cmd = require(join(__dirname, "commands", `${file}`));
     client.commands.set(`${file}`.replace(".js", ""), cmd);
     if(cmd.conf && cmd.conf.aliases) {
       cmd.conf.aliases.forEach(alias => {
@@ -52,10 +49,12 @@ file.endsWith(".js"));
       })
     }
   }
-})
+console.log("Comandos carregados!")
+});
+
 
 client.on("messageCreate", async (message) => {
-require("./Handler.js")(client,message,database)
-})
+	
+});
 
-client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
+client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
