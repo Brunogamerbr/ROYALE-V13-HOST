@@ -22,11 +22,11 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
-require("./Events/Handler.js")(client, message, database, config)
+require("./Handler.js")(client, message, database, config)
 });
 
 client.on("ready", () => {
-require("./Events/Ready.js")(client)
+require("./Eventos/Ready.js")(client)
 });
 
 client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
