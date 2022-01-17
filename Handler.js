@@ -72,8 +72,9 @@ let block = await client.db.get(`Servidores_${message.guild.id}`)
 if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
 
 let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-message.delete()
+
 setTimeout(function() {
+  message.delete()
   canalblock.delete()
 }, 2000);
 return;
