@@ -74,7 +74,6 @@ if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || 
 let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
 
 setTimeout(function() {
-  message.delete()
   canalblock.delete()
 }, 3000);
 return;
