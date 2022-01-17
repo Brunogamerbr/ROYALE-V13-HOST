@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 require("discord.js").MessageEmbed = require("./Embeds");
 const config = require(`./config.json`);
 const client = new Discord.Client({
-  intents: ["ADMINISTRATOR"]
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
 });
 const firebase = require("firebase");
 const fs = require("fs");
