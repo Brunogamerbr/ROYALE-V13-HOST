@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const firebase = require("firebase")
 const fs = require("fs");
-const client = new Discord.Client({intents: config.intents})
+const client = new Discord.Client({
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
+});
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
