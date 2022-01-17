@@ -1,11 +1,9 @@
 const Discord = require("discord.js");
 module.exports = async (client, message, database, config) => {
 
-  
-	let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
+let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
 	
-  let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
-
+let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
 if(message.author.bot) return;
 if(message.channel.type == "dm") return;
@@ -24,14 +22,12 @@ let embed1 = new Discord.MessageEmbed()
 
 let channel = client.channels.cache.get("916823908613771264")
 
-
 /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
 /*if(!config.owners.includes(message.author.id)) {
     
 message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Para mais informações entre em meu Servidor de Suporte usando \`${prefix}invite\`**`)
 return;}*/
-
 
   let user1 = message.author
   
@@ -83,9 +79,9 @@ return;
  require("./ItensRPG.js")(client, message)
  require("./QuestRPG.js")(client, message, args, database)*/
 	
-
+try {
 comando.run(client, message, args, database, prefix);
-
+} catch (err) {console.log(err) return;}
 
 
 	
