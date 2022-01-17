@@ -11,7 +11,7 @@ if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
-  let comando = client.commands.get(cmd);
+  let economia = client.commands.get(cmd);
 if(!comando) return;
 	
 let embed1 = new Discord.MessageEmbed()
@@ -80,7 +80,7 @@ return;
  require("./QuestRPG.js")(client, message, args, database)*/
 	
 try {
-comando.run(client, message, args, database, prefix);
+economia.run(client, message, args, database, prefix);
 } catch (err) {console.log(err)}
 
 
