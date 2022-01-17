@@ -22,7 +22,7 @@ let dbPref = database.ref(`Servidores/${message.guild.id}`);
 let dbref = database.ref(`Vips/${message.guild.id}`);
 
 
-if (!message.member.hasPermission(['MANAGE_ROLES'])) { return message.inlineReply('<:erro:858615784771551252>| Você não pode usar esse comando!') }
+if (!message.member.hasPermission(['MANAGE_ROLES'])) { return message.reply('<:erro:858615784771551252>| Você não pode usar esse comando!') }
 
 
 
@@ -37,7 +37,7 @@ dbref.set({
 
 
 
-message.inlineReply(`**☑️| Cargo setado com sucesso! Use \`${dbP.val().prefix}addvip [@mencão]\` para adicionar o VIP Em algum membro!**`)
+message.reply(`**☑️| Cargo setado com sucesso! Use \`${dbP.val().prefix}addvip [@mencão]\` para adicionar o VIP Em algum membro!**`)
 
 
 
