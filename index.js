@@ -10,11 +10,6 @@ const reqEvent = event => require(`./Events/${event}.js`);
 client.commands = new Discord.Collection();
 
 let dir = __dirname
-const DatabaseUtil = require("./DatabaseUtil.js");
-client.db = new DatabaseUtil({
-  serverKey: "AAAAqRtZojw:APA91bEeiphp5V-D2qGs3-TnOm7SeZTnk_Kay_WE6iaEqcoMqu59DonTVSasJ5jUPrkvO76u2LOKq92U5RD45GL4ddrKrEp0sFBb4eB86T3_brugtHXKdvesXGLYuFZq9vPzmEukQX1x"
-});
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
@@ -38,7 +33,6 @@ const FireSimple = require("./DatabaseUtil.js");
 
 
 
-console.log("Bot ligado, Carregando comandos...");
   const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
     let cmd = require(join(__dirname, "Economia", `${file}`));
@@ -49,7 +43,7 @@ console.log("Bot ligado, Carregando comandos...");
       })
     }
   }
-console.log("Comandos carregados!")
+console.log("Economia carregada com sucesso!")
 });
 
 
