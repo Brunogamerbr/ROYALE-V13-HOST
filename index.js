@@ -15,7 +15,7 @@ let dir = __dirname
 require("./Eventos/Ready.js")(client)
 require("./LoadCommands.js")(client)
 
-let dir = __dirname
+
 client.db = new DatabaseUtil({
   serverKey: "832judw.21ud.jiq1456f"
 });
