@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
-module.exports = async(client, message, database, prefix) => {
+module.exports = async(client, message, database) => {
   
 	let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
@@ -24,11 +24,6 @@ if(!comando) return;
 
 let channel = client.channels.cache.get("916823908613771264")
 
-	/*if(!config.owners.includes(message.author.id)) 
-    
-message.reply(`**Nesse momento Eu estou sendo atualizado, Você não poderá usar meus comandos até a atualização acabar. Para mais informações entre em meu Servidor de Suporte usando \`.invite\`**`)
-return;
-}*/
 
   let user1 = message.author
   
