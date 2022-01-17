@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const firebase = require("firebase")
 const fs = require("fs");
-const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_PRESENCES", "MANAGE_SERVER", "MANAGE_ROLES", "MANAGE_CHANNELS", "BAN_MEMBERS", "KICK_MEMBERS", "CREATE_INSTANT_INVITE_", "MODERATE_MEMBERS", "SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "ADD_REACTIONS"]})
+const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_PRESENCES", "MANAGE_ROLES", "MANAGE_CHANNELS", "BAN_MEMBERS", "KICK_MEMBERS", "CREATE_INSTANT_INVITE_", "MODERATE_MEMBERS", "SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "ADD_REACTIONS"]})
 
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
