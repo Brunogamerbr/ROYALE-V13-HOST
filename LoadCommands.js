@@ -15,9 +15,9 @@ const FireSimple = require("./DatabaseUtil.js");
 
 console.log("Bot ligado, Carregando comandos...");
 
-  const cmds = fs.readdirSync(join(__dirname, "../Economia")).filter(file => file.endsWith(".js"));
+  const cmds = fs.readdirSync(join(__dirname, "./Economia")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
-    let cmd = require(join(__dirname, "../Economia", `${file}`));
+    let cmd = require(join(__dirname, "./Economia", `${file}`));
     client.commands.set(`${file}`.replace(".js", ""), cmd);
     if(cmd.conf && cmd.conf.aliases) {
       cmd.conf.aliases.forEach(alias => {
