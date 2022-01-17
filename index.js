@@ -54,7 +54,7 @@ file.endsWith(".js"));
   }
 })
 
-client.on("messageCreate", async message => {
+client.on("messageCreate", async (message) => {
 require("./Handler.js")(client,message,config,database)
 })
 
