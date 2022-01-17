@@ -13,7 +13,7 @@ if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
-  let comando = client.commands.get(cmd);
+  let comando = client.Economia.get(cmd);
 if(!comando) return;
 	
 let embed1 = new Discord.MessageEmbed()
