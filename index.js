@@ -55,7 +55,7 @@ file.endsWith(".js"));
 })
 
 client.on("messageCreate", async (message) => {
-require("./Handler.js")(client,message,config,database)
+require("./Handler.js")(client,message,database)
 })
 
 client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
