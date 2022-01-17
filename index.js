@@ -29,4 +29,4 @@ client.on("ready", () => {
 require("./Events/Ready.js")(client)
 });
 
-client.login(process.env.TOKEN);
+client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
