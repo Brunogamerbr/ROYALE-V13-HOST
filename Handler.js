@@ -1,6 +1,8 @@
 const Discord = require("discord.js")
+client.tryes = new Discord.Collection();
+client.lastCmds = new Discord.Collection();
+client.aliases = new Discord.Collection();
 module.exports = async(client, message, database, prefix) => {
-  
   
 	let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
