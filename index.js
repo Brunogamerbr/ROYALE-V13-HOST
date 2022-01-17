@@ -25,11 +25,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("ready", () => {
-const FireSimple = require("./DatabaseUtil.js");
-  client.db = new FireSimple({
-    apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
-    databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
-  });
+})
 
 
 
@@ -45,7 +41,6 @@ const FireSimple = require("./DatabaseUtil.js");
   }
 console.log("Economia carregada com sucesso!")
 });
-
 
 client.on("messageCreate", async (message) => {
 require("./Handler.js")(client,message,database)
