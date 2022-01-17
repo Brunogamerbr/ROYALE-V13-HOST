@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
-const firebase = require("firebase")
+const firebase = require("firebase");
+const { join } = require("path");
 const fs = require("fs");
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
