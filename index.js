@@ -12,7 +12,7 @@ client.commands = new Discord.Collection();
 let dir = __dirname
 const DatabaseUtil = require("./DatabaseUtil.js");
 client.db = new DatabaseUtil({
-  serverKey: "832judw.21ud.jiq1456f"
+  serverKey: "AAAAqRtZojw:APA91bEeiphp5V-D2qGs3-TnOm7SeZTnk_Kay_WE6iaEqcoMqu59DonTVSasJ5jUPrkvO76u2LOKq92U5RD45GL4ddrKrEp0sFBb4eB86T3_brugtHXKdvesXGLYuFZq9vPzmEukQX1x"
 });
 
 
