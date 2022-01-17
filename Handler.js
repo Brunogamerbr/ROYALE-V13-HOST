@@ -12,8 +12,9 @@ client.aliases = new Discord.Collection();
   if(!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
 
   let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  
   const dir = __dirname
-  const ecofile = fs.readdirSync(join(__dirname, "Economia")).filter(file => file.endsWith(".js"));
+  const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
     let cmd = require(join(__dirname, "Economia", `${file}`));
     client.commands.set(`${file}`.replace(".js", ""), cmd);
