@@ -13,13 +13,24 @@ const FireSimple = require("./DatabaseUtil.js");
 
   const cmds = fs.readdirSync(join(__dirname, "./Aventura")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
-    let cmd = require(join(__dirname, "./Aventura", `${file}`));
-    client.commands.set(`${file}`.replace(".js", ""), cmd);
-    if(cmd.conf && cmd.conf.aliases) {
-      cmd.conf.aliases.forEach(alias => {
-        client.commands.set(alias, cmd);
+    let ave = require(join(__dirname, "./Aventura", `${file}`));
+    client.commands.set(`${file}`.replace(".js", ""), ave);
+    if(ave.conf && ave.conf.aliases) {
+      ave.conf.aliases.forEach(alias => {
+        client.commands.set(alias, ave);
       })
     }
   }
-console.log("Aventura carregada com sucesso!")
+console.log("Aventura carregada com sucesso!");
+
+
+
+
+
+
+
+
+
+
+
 }
