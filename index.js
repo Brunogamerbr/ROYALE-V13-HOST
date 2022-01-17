@@ -22,8 +22,8 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
-require("./Handler.js")(client, message, database, config);
-
+require("./HandlerEconomia.js")(client, message, database, config);
+require("./HandlerAventura.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
