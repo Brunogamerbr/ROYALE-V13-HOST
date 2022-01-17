@@ -17,13 +17,13 @@ database.ref(`VersaoBuild`).once('value');
   let d2Bref = database.ref(`VersaoBuild`);
 
   if (dbs.val() == null) {
-  message.inlineReply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
+  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
 return;
     }
 
   
 if (db1V.val().versão !== db2B.val().build) {
-message.inlineReply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
     let user = message.author
@@ -60,13 +60,13 @@ let db = await database.ref(`Work/${user.id}`).once('value');
   
   if(db.val().work != 0 && timeout - (Date.now() - db.val().work) > 0) {
     let time = ms(timeout - (Date.now() - db.val().work));
-    message.inlineReply(`**<:erro:858615784771551252>| Você ja trabalhou recentemente. Você podera trabalhar novamente em: ${time.minutes}m ${time.seconds}s**`)
+    message.reply(`**<:erro:858615784771551252>| Você ja trabalhou recentemente. Você podera trabalhar novamente em: ${time.minutes}m ${time.seconds}s**`)
 
   } else {
 
 
     if (db2.val().emprego == null || db2.val().emprego == 0) {
-      return message.inlineReply(`**Para poder trabalhar você deve possuir um emprego \`${prefix}empregos\`.**`)
+      return message.reply(`**Para poder trabalhar você deve possuir um emprego \`${prefix}empregos\`.**`)
     }
 
     let tb = await database.ref(`Transacoes/${message.author.id}`).once("value")
@@ -88,7 +88,7 @@ let db = await database.ref(`Work/${user.id}`).once('value');
       .setFooter(`Programação realizada`)
       .setColor(`#0D02FA`)
       .setTimestamp()
-message.inlineReply(embed)
+message.reply({embeds: [embed]})
       db1ref.update({ dinheiro: db1.val().dinheiro + quantia })
       dbref.update({ work: Date.now() })  
    
@@ -110,7 +110,7 @@ message.inlineReply(embed)
      .setFooter(`Mineraçao realizada`)
 .setColor(`#0D02FA`)
       .setTimestamp()
-      message.inlineReply(embed2)
+      message.reply({embeds: [embed2]})
       
         dbXref.update({ xp: dbX.val().xp + 60 })
       db1ref.update({ dinheiro: db1.val().dinheiro + quantia })
