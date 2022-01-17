@@ -16,6 +16,7 @@ require("./Eventos/Ready.js")(client)
 require("./LoadCommands.js")(client)
 
 
+const DatabaseUtil = require("./DatabaseUtil.js");
 client.db = new DatabaseUtil({
   serverKey: "832judw.21ud.jiq1456f"
 });
