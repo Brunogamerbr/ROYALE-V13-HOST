@@ -28,7 +28,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 })
 
-client.on("messageCreate", async message => {
+client.on("messageCreate", async (message) => {
 require("./Handler.js")(client,config,message)
 })
 
