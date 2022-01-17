@@ -17,8 +17,8 @@ require("./LoadCommands.js")(client)
 const DatabaseUtil = require("./DatabaseUtil.js");
 client.db = new DatabaseUtil({
   serverKey: "832judw.21ud.jiq1456f"
-});
-const firebaseConfig = {
+
+  const firebaseConfig = {
   apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
   authDomain: "royale-bot-7b344.firebaseapp.com",
   databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com",
@@ -30,6 +30,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+});
+
 
 const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file =>
 file.endsWith(".js"));
