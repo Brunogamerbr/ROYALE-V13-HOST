@@ -29,7 +29,7 @@ require("./HandlerAventura.js")(client, message, database, config);
 client.on("ready", () => {
 require("./Eventos/Ready.js")(client)
 require("./LoadAventura.js")(client)
-require("./LoadCommands.js")(client)
+require("./LoadEconomia.js")(client)
 });
 
 client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
