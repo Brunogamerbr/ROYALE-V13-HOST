@@ -76,7 +76,7 @@ let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus co
 setTimeout(function() {
   message.delete()
   canalblock.delete()
-}, 2000);
+}, 3000);
 return;
 }
 	
