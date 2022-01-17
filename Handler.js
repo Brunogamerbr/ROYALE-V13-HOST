@@ -1,6 +1,8 @@
-const Discord = require("discord.js")
-const config = require("./config.json")
+const Discord = require("discord.js");
+const config = require("./config.json");
+const reqEvent = event => require(`./Events/${event}.js`);
 module.exports = async(client, message, database) => {
+
   
 let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
