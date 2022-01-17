@@ -2,8 +2,7 @@ const Discord = require("discord.js")
 const fs = require("fs")
 
 module.exports = async(client) => {
-
-fs.readdir('./Economia/', (err, files) => {
+/*fs.readdir('./Economia/', (err, files) => {
   if (err) console.error(err);
 	console.log(`Categoria Economia carregada com sucesso!`);
 	files.forEach(f => {
@@ -71,7 +70,7 @@ props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, `${f}`.replace('.js', ''));
     })
   })
-});
+});*/
 
 
 }
