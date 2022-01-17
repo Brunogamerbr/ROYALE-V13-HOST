@@ -81,7 +81,7 @@ return;
 	
 try {
 comando.run(client, message, args, database, prefix);
-} catch (err) {console.log(err) return;}
+} catch (err) {console.log(err)}
 
 
 	
