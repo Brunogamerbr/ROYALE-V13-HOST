@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 require("discord.js").MessageEmbed = require("./Embeds");
+const config = require(`./config.json`);
 const client = new Discord.Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
+  intents: config.intents
 });
 const firebase = require("firebase");
-const config = require(`./config.json`);
 const fs = require("fs");
 const { join } = require("path");
 
