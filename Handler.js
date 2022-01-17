@@ -5,8 +5,10 @@ client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.commands = new Discord.Collection();
   
-	let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value')
-  let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
+	let dbPref = await client.db.get(`Servidores/${message.guild.id}`)
+	
+	
+  let prefix = dbPref ? dbPref.prefix ? dbPref.prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
 	if(message.author.bot) return;
   if(message.channel.type == "dm") return;
