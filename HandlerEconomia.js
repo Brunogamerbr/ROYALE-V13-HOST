@@ -12,7 +12,7 @@ if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
   let economia = client.commands.get(cmd);
-if(!comando) return;
+if(!economia) return;
 	
 let embed1 = new Discord.MessageEmbed()
 .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${cmd}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
