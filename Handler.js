@@ -3,6 +3,7 @@ module.exports = async(client, message, database) => {
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
+client.commands = new Discord.Collection();
   
 	let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value')
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
@@ -11,32 +12,13 @@ client.aliases = new Discord.Collection();
   if(message.channel.type == "dm") return;
   if(!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
 
-  let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   
-  const dir = __dirname
-  const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => file.endsWith(".js"));
-  for(let file of cmds) {
-    let cmd = require(join(__dirname, "Economia", `${file}`));
-    client.commands.set(`${file}`.replace(".js", ""), cmd);
-    if(cmd.conf && cmd.conf.aliases) {
-      cmd.conf.aliases.forEach(alias => {
-        client.commands.set(alias, cmd);
-      })
-    }
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
+let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
   let comando = client.commands.get(cmd);
 if(!comando) return;
-	
+  
+  
    let embed1 = new Discord.MessageEmbed()
 .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
 .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${config.prefix}${cmd}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
