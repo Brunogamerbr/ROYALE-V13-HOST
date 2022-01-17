@@ -7,7 +7,7 @@ module.exports = async (client) => {
 let dir = __dirname
 client.commands = new Discord.Collection();
   
-const FireSimple = require("../DatabaseUtil.js");
+const FireSimple = require("./DatabaseUtil.js");
   client.db = new FireSimple({
     apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
     databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
