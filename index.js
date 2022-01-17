@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 const config = require("./config.json");
 const firebase = require("firebase")
 const fs = require("fs");
-const client = new Discord.Client({intents: [8]})
-
+const client = new Discord.Client({intents: config.intents})
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 client.on("ready", () => {
+let dir = __dirname
 require("./Eventos/Ready.js")(client)
 require("./LoadCommands.js")(client)
 const DatabaseUtil = require("./DatabaseUtil.js");
@@ -27,9 +27,21 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => console.log("Categoria Economia carregada com sucesso!")
+file.endsWith(".js"));
+  for(let file of cmds) {
+    let cmd = require(join(__dirname, "Economia", `${file}`));
+    client.commands.set(`${file}`.replace(".js", ""), cmd);
+    if(cmd.conf && cmd.conf.aliases) {
+      cmd.conf.aliases.forEach(alias => {
+        client.commands.set(alias, cmd);
+      })
+    }
+  }
 })
 
-client.on("messageCreate", async (message) => {
+client.on("messageCreate", async message => {
 require("./Handler.js")(client,config,message)
 })
 
