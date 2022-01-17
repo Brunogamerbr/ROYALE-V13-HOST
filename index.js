@@ -8,7 +8,7 @@ const client = new Discord.Client({
 client.tryes = new Discord.Collection();
 client.lastCmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
-
+client.commands = new Discord.Collection();
 client.on("ready", () => {
 let dir = __dirname
 require("./Eventos/Ready.js")(client)
