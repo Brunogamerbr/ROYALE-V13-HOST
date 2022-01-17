@@ -28,7 +28,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => console.log("Categoria Economia carregada com sucesso!")
+const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file =>
 file.endsWith(".js"));
   for(let file of cmds) {
     let cmd = require(join(__dirname, "Economia", `${file}`));
