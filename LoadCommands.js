@@ -1,76 +1,31 @@
-const Discord = require("discord.js")
 const fs = require("fs")
+const { join } = require("path")
 
-module.exports = async(client) => {
-/*fs.readdir('./Economia/', (err, files) => {
-  if (err) console.error(err);
-	console.log(`Categoria Economia carregada com sucesso!`);
-	files.forEach(f => {
-		let props = require(`./Economia/${f}`);
+module.exports = async (client) => {
+  
+let dir = __dirname
+client.commands = new Discord.Collection();
+  
+const FireSimple = require("../DatabaseUtil.js");
+  client.db = new FireSimple({
+    apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
+    databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
+  });
 
-    if (props.conf == null) return;
-    if (props.conf.aliases == null) return;
-props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, `${f}`.replace('.js', ''));
-    })
-  })
-});
+console.log("Bot ligado, Carregando comandos...");
 
-fs.readdir('./Aventura/', (err, files) => {
-  if (err) console.error(err);
-	console.log(`Categoria Aventura carregada com sucesso!`);
-	files.forEach(f => {
-		let props = require(`./Aventura/${f}`);
+  const cmds = fs.readdirSync(join(__dirname, "../Economia")).filter(file => file.endsWith(".js"));
+  for(let file of cmds) {
+    let cmd = require(join(__dirname, "../Economia", `${file}`));
+    client.commands.set(`${file}`.replace(".js", ""), cmd);
+    if(cmd.conf && cmd.conf.aliases) {
+      cmd.conf.aliases.forEach(alias => {
+        client.commands.set(alias, cmd);
+      })
+    }
+  }
 
-    if (props.conf == null) return;
-    if (props.conf.aliases == null) return;
-props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, `${f}`.replace('.js', ''));
-    })
-  })
-});
-
-fs.readdir('./Moderação/', (err, files) => {
-  if (err) console.error(err);
-	console.log(`Categoria Moderação carregada com sucesso!`);
-	files.forEach(f => {
-		let props = require(`./Moderação/${f}`);
-
-    if (props.conf == null) return;
-    if (props.conf.aliases == null) return;
-props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, `${f}`.replace('.js', ''));
-    })
-  })
-});
-
-fs.readdir('./Utilidades/', (err, files) => {
-  if (err) console.error(err);
-	console.log(`Categoria Utilidades carregada com sucesso!`);
-	files.forEach(f => {
-		let props = require(`./Utilidades/${f}`);
-
-    if (props.conf == null) return;
-    if (props.conf.aliases == null) return;
-props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, `${f}`.replace('.js', ''));
-    })
-  })
-});
-
-fs.readdir('./Developers/', (err, files) => {
-  if (err) console.error(err);
-	console.log(`Categoria Developers carregada com sucesso!`);
-	files.forEach(f => {
-		let props = require(`./Developers/${f}`);
-
-    if (props.conf == null) return;
-    if (props.conf.aliases == null) return;
-props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, `${f}`.replace('.js', ''));
-    })
-  })
-});*/
+console.log("Comandos carregados!")
 
 
 }
