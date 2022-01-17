@@ -1,4 +1,5 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+require("discord.js").MessageEmbed = require("./Embeds");
 const client = new Discord.Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
 });
@@ -6,44 +7,26 @@ const firebase = require("firebase");
 const config = require(`./config.json`);
 const fs = require("fs");
 const { join } = require("path");
-const reqEvent = event => require(`./Events/${event}.js`);
-client.commands = new Discord.Collection();
-
-let dir = __dirname
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAgv6EICjfRgQJPTvsEJPjTPwYl_Rq2d5U",
-  authDomain: "royale-bot-7b344.firebaseapp.com",
-  databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com",
-  projectId: "royale-bot-7b344",
-  storageBucket: "royale-bot-7b344.appspot.com",
-  messagingSenderId: "948007874893",
-  appId: "1:948007874893:web:ac0626c78346936721c704",
-  measurementId: "G-LT7353D3BV"
+  apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
+  authDomain: "royale-bot-economia.firebaseapp.com",
+  databaseURL: "https://royale-bot-economia-default-rtdb.firebaseio.com",
+  projectId: "royale-bot-economia",
+  storageBucket: "royale-bot-economia.appspot.com",
+  messagingSenderId: "726308332092",
+  appId: "1:726308332092:web:043a3ec9003e65917c9939",
+  measurementId: "G-7VC2E98BD9"
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-client.on("ready", () => {
-})
-
-
-
-  const cmds = fs.readdirSync(join(__dirname, "Economia")).filter(file => file.endsWith(".js"));
-  for(let file of cmds) {
-    let cmd = require(join(__dirname, "Economia", `${file}`));
-    client.commands.set(`${file}`.replace(".js", ""), cmd);
-    if(cmd.conf && cmd.conf.aliases) {
-      cmd.conf.aliases.forEach(alias => {
-        client.commands.set(alias, cmd);
-      })
-    }
-  }
-console.log("Economia carregada com sucesso!")
-});
-
 client.on("messageCreate", async (message) => {
-require("./Handler.js")(client,message,database)
+require("./Events/Handler.js")(client, message, database, config)
 });
 
-client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
+client.on("ready", () => {
+require("./Events/Ready.js")(client)
+});
+
+client.login(process.env.TOKEN);
