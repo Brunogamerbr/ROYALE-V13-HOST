@@ -71,7 +71,7 @@ setTimeout(function() {
 }, 3000);
 return;
 }
-canal.send({embeds: [embed1]})
+//canal.send({embeds: [embed1]})
  //require("./Xp.js")(client, message )
 
 	
