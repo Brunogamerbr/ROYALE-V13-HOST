@@ -62,13 +62,13 @@ return;
     banned = true;
     }
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
-channel.send({embeds: [embed1]})
+
   
 let block = await client.db.get(`Servidores_${message.guild.id}`)
 if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
 
 let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-
+channel.send({embeds: [embed1]})
 setTimeout(function() {
   canalblock.delete()
 }, 3000);
