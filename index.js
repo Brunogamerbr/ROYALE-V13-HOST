@@ -19,9 +19,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-process.on("unhandledRejection", async () => {
-client.channels.cache.get("931443923862302761").send(`Um Novo erro:\n\`\`\`js\n${e.stack}\n\`\`\``);
-})
 
 client.on("messageCreate", async (message) => {
 require("./Handlers/HandlerEconomia.js")(client, message, database, config);
