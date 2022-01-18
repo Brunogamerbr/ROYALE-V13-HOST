@@ -27,7 +27,7 @@ module.exports.run = async(client, message, args, database, prefix) => {
         `${name || `${customemoji.name}`}`
     )
     
-       message.reply(`☑️| Sucesso, o emoji ${link} foi adicionado ao servidor!`)
+       message.reply(`☑️| Sucesso, o emoji foi adicionado ao servidor!`)
        
     }else {
       let CheckEmoji = parse(emoji, { assetType: "png" });
