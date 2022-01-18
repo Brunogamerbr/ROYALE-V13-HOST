@@ -13,12 +13,11 @@ module.exports.run = async(client, message, args, database, prefix) => {
       return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de \`Gerenciar emojis\` nesse servidor!`)}
       
       
-    const emoji = args[0];
-    if (!emoji) return message.reply(`<:erro:858615784771551252>| Por favor, me envie a menção de algun emoji após o comando!`);
+      const emoji = args[0];
+      if (!emoji) return message.reply(`<:erro:858615784771551252>| Por favor, me envie a menção de algun emoji após o comando!`);
 
-    let customemoji = Discord.Util.parseEmoji(emoji);
-
-    if (customemoji.id) {
+      let customemoji = Discord.Util.parseEmoji(emoji);
+      if (customemoji.id) {
       const Link = `https://cdn.discordapp.com/emojis/${customemoji.id}.${
         customemoji.animated ? "gif" : "png"
       }`;
@@ -33,8 +32,8 @@ module.exports.run = async(client, message, args, database, prefix) => {
     }else {
       let CheckEmoji = parse(emoji, { assetType: "png" });
       if (!CheckEmoji[0])
-        return message.inlineReply(`<:erro:858615784771551252>| Por favor, envie um emoji valido!`);
-      message.inlineReply(
+        return message.reply(`<:erro:858615784771551252>| Por favor, envie um emoji valido!`);
+      message.reply(
         `Você pode usar o emoji normal sem adicionar no servidor!`
       );
     }
