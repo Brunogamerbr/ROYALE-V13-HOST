@@ -21,7 +21,7 @@ let embed1 = new Discord.MessageEmbed()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
 
 let channel = client.channels.cache.get("916823908613771264")
-channel.send({embeds: [embed1]})
+
 /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
 /*if(!config.owners.includes(message.author.id)) {
