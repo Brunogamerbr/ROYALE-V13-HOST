@@ -1,13 +1,13 @@
 const Discord = require("discord.js");
 module.exports = async (client, message, database, config) => {
 
-let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
+  let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
 	
-let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
+  let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
-if(message.author.bot) return;
-if(message.channel.type == "dm") return;
-if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
+  if(message.author.bot) return;
+  if(message.channel.type == "dm") return;
+  if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
@@ -46,7 +46,7 @@ database.ref(`VersaoBuild`).once('value');
 return;
     }
 
-if (db1.val().versão !== db2.val().build) {
+  if (db1.val().versão !== db2.val().build) {
 message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
@@ -61,10 +61,10 @@ return;
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
   
-let block = await client.db.get(`Servidores_${message.guild.id}`)
-if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
+  let block = await client.db.get(`Servidores_${message.guild.id}`)
+  if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
 
-let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
+  let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
 
 setTimeout(function() {
   canalblock.delete()
