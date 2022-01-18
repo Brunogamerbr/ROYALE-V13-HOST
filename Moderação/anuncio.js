@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args, database) => {
         .on('collect', c => {
            canal = message.mentions.channels.first()
             if (!canal) {
-                message.reply(`<:erro:858615784771551252>| Mencione um canal!`)
+               return message.reply(`<:erro:858615784771551252>| Mencione um canal!`)
       } else {
     message.reply(`🤔| Qual será o título do seu anúncio?`).then(msg3 => {
         let ck = message.channel.createMessageCollector(x => x.author.id == message.author.id, {max: 1})
