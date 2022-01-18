@@ -43,3 +43,4 @@ message.channel.send({embeds: [dm]})
 } catch(err){
   console.log(err)
 }
+}
