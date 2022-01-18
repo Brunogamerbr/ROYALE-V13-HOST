@@ -1,14 +1,20 @@
 const Discord = require("discord.js");
 const { parse } = require("twemoji-parser");
 const { MessageEmbed } = require("discord.js");
-const Color = `#0D02FA`;
-exports.run = async (client, message, args, database) => {
+const { Permissions } = require('discord.js');
+module.exports.run = async(client, message, args, database, prefix) => {
   
-  if (!message.member.hasPermission(`MANAGE_EMOJIS`)) {
-      return message.inlineReply(`<:erro:858615784771551252>| Você não pode utilizar este comando!`)}
-    
+      if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS)){
+      return message.reply(`<:erro:858615784771551252>| Você não tem permissão de \`Gerenciar emojis\`!`)}
+      
+      var doggo = message.guild.members.cache.get(client.user.id);
+      
+      if(!goggo.permissions.has(Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS)){
+      return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de \`Gerenciar emojis\` nesse servidor!`)}
+      
+      
     const emoji = args[0];
-    if (!emoji) return message.inlineReply(`<:erro:858615784771551252>| Por favor, me envie o emoji após o comando!`);
+    if (!emoji) return message.reply(`<:erro:858615784771551252>| Por favor, me envie a menção de algun emoji após o comando!`);
 
     let customemoji = Discord.Util.parseEmoji(emoji);
 
@@ -22,7 +28,7 @@ exports.run = async (client, message, args, database) => {
         `${name || `${customemoji.name}`}`
     )
     
-       message.channel.send(`☑️| Sucesso, o emoji ${link} foi adicionado ao servidor!`)
+       message.reply(`☑️| Sucesso, o emoji ${link} foi adicionado ao servidor!`)
        
     }else {
       let CheckEmoji = parse(emoji, { assetType: "png" });
