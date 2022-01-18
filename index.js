@@ -26,7 +26,6 @@ require("./Handlers/HandlerAventura.js")(client, message, database, config);
 require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
-require("./Eventos/Xp.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
