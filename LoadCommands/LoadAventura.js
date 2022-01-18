@@ -3,7 +3,8 @@ const fs = require("fs")
 const { join } = require("path")
 module.exports = async (client) => {
 let dir = __dirname
-client.commands = new Discord.Collection();
+
+client.aventura = new Discord.Collection();
   
 const FireSimple = require("../DatabaseUtil.js");
   client.db = new FireSimple({
@@ -14,10 +15,10 @@ const FireSimple = require("../DatabaseUtil.js");
   const cmds = fs.readdirSync(join(__dirname, "../Aventura")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
     let ave = require(join(__dirname, "../Aventura", `${file}`));
-    client.commands.set(`${file}`.replace(".js", ""), ave);
+    client.aventura.set(`${file}`.replace(".js", ""), ave);
     if(ave.conf && ave.conf.aliases) {
       ave.conf.aliases.forEach(alias => {
-        client.commands.set(alias, ave);
+        client.aventura.set(alias, ave);
       })
     }
   }
