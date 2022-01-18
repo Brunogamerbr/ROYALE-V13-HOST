@@ -3,10 +3,10 @@ const { inspect } = require('util')
 const config = require("../config.json");
 exports.run = async (client, message, args, database) => {
   
-  if(!config.owners.includes(message.author.id)) {
+  /*if(!config.owners.includes(message.author.id)) {
     message.reply('**❌| Esse comando é so pro dono do bot!**')
     return;
-  }
+  }*/
 
 
   let evaled;
