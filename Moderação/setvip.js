@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-
+const { Permissions } = require('discord.js');
 exports.run = async (client, message, args, database) => {
   
 let dbPref = database.ref(`Servidores/${message.guild.id}`);
@@ -9,7 +9,7 @@ let dbPref = database.ref(`Servidores/${message.guild.id}`);
   }
 
 let dbref = database.ref(`Vips/${message.guild.id}`);
-if(message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES)) {
+if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES)) {
  return message.reply('<:erro:858615784771551252>| Você não pode usar esse comando!')}
 
 let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
