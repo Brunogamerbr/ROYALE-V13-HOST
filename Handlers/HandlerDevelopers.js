@@ -11,7 +11,7 @@ module.exports = async (client, message, database, config) => {
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let dev = args.shift();
-  let comando = client.moderação.get(dev);
+  let comando = client.developers.get(dev);
   if(!comando) return;
 	
   let embed1 = new Discord.MessageEmbed()
