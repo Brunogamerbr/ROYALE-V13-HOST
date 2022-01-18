@@ -8,7 +8,7 @@ if(!doggo.permissions.has(Permissions.FLAGS.BAN_MEMBERS)){
  return message.reply(`<:erro:858615784771551252>| Eu não tenho a permissão \`Banir membros\` nesse servidor!`)
 }
 
-let usu = message.mentions.members.first() || message.guild.members.cache.get(args[0]); ||  message.mentions.users.first() 
+let usu = message.mentions.members.first() || message.guild.members.cache.get(args[0]); || message.mentions.users.first() 
 let reason = args.slice(1).join(" ");
 if (!reason) reason = "Não definido";
 
