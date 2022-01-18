@@ -1,13 +1,12 @@
 const Discord = require('discord.js')
 const { inspect } = require('util')
-const disbut = require("discord-buttons")
 const config = require("../config.json");
-exports.run = async (client, message, args, database) => {
+module.exports.run = async (client, message, args, database) => {
   
-  if(!config.owners.includes(message.author.id)) {
+  /*if(!config.owners.includes(message.author.id)) {
     message.reply('**❌| Esse comando é so pro dono do bot!**')
     return;
-  }
+  }*/
 
 
   let evaled;
