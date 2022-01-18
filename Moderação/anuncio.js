@@ -33,8 +33,7 @@ module.exports.run = async (client, message, args, database) => {
     .setTimestamp()
     .setTitle(title)
     .setDescription(desc)
-
-    await canal.send({embeds: [embed]})
+canal.send({embeds: [embed]})
 
               })
             })
