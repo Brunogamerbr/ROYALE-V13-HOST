@@ -12,15 +12,12 @@ if(dbN.level * 340 <= dbN.xp) {
 client.db.set(`Nivel/${message.author.id}`, {xp: 0}, {nivel: dbN.nivel + 1});
 }}
 
-
-let db = await client.db.get(`StartRPG/${message.author.id}`)
-let db1 = await client.db.get(`InventarioRPG/${message.author.id}`)
-if (db == null) return;
-if (db.hp == null) db.hp = 8;
-if (db.hp <0 || db.hp == 0){
-return message.reply(`${message.author} Você acabou perdendo todos os corações de **HP** você morreu... mas tente iníciar uma nova jornada!`)
-await client.db.remove(`StartRPG/${message.author.id}`)
-await client.db.remove(`InventarioRPG/${message.author.id}`)	
-await client.db.set(`StartRPG/${message.author.id}`)
-}
+const db = await client.db.get(`StartRPG_${message.author.id}`)
+    if(!db) return;
+    const hp = Number(db.hp)
+    if(hp <= 0) {
+    await client.db.delete(`StartRPG_${message.author.id}`)
+    await client.db.delete(`InventarioRPG_${message.author.id}`)
+   return message.reply(`${message.author} Você acabou perdendo todos os corações de **HP** você morreu... mas tente iníciar uma nova jornada!`).catch(e => console.log(e.message))
+    }
 }
