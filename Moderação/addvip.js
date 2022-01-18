@@ -16,14 +16,14 @@ module.exports.run = async (client, message, args, database, prefix) => {
     if(!role) return message.inlineReply(`Desculpe, mas o cargo de VIP não está definido ou está inválido! Para definir um cargo de VIP use \`${prefix}setvip\``);
 
     let vipmessage = new Discord.MessageEmbed()
-      .setTitle("**☑️ | Sucesso**")
-      .setDescription(`**Vip Adicionado Por: \`${message.author.username}\`\n${member} recebeu o ${role}**`)
+      .setTitle("☑️ | Vip adicionado")
+      .setDescription(`Vip Adicionado Por: \`${message.author.username}\`\n${member} recebeu o ${role}`)
       .setColor('#0D02FA')
       .setTimestamp();
 
     try {
       member.roles.add(role)
-      message.channel.send(vipmessage);
+      message.channel.send({embeds: [vipmessage]});
     } catch(err) {
       return message.channel.send(`${err}`);
     }
