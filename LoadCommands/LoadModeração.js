@@ -14,7 +14,7 @@ const FireSimple = require("../DatabaseUtil.js");
   const cmds = fs.readdirSync(join(__dirname, "../Moderação")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
     let mod = require(join(__dirname, "../Moderação", `${file}`));
-    client.mod.set(`${file}`.replace(".js", ""), mod);
+    client.moderação.set(`${file}`.replace(".js", ""), mod);
     if(mod.conf && mod.conf.aliases) {
       mod.conf.aliases.forEach(alias => {
         client.moderação.set(alias, mod);
