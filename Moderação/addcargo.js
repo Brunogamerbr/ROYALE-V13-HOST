@@ -1,12 +1,9 @@
 const Discord = require('discord.js');
-
-exports.run = async (client, message, args, database) => {
-
-  
-      
+const { Permissions } = require('discord.js');
+module.exports.run = async (client, message, args, database, prefix) => {
 
         let user = message.mentions.members.first() 
-        const perms = ["MANAGE_ROLES" || "ADMINSTRATOR"];
+        const perms = ["MANAGE_ROLES"];
         var doggo = message.guild.members.cache.get(client.user.id);
         const role = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
 
@@ -14,36 +11,32 @@ exports.run = async (client, message, args, database) => {
         if (!reason) reason = '`-`';
         if (reason.length > 1024) reason = reason.slice(0, 1021) + '...';
 
-        if(!message.member.hasPermission(perms)) 
-        return message.inlineReply(`**❌| Você não tem permissão tente pedir a um Admin por que você não tem permissão de ** **\`MANAGE_ROLES\`** ou **\`ADMINISTRATOR\`**`)
-        .then(msg => {
-            msg.delete({ timeout: 20000 })
-        });
-
+        if(!message.member.permissions.has.Permissions(perms)) 
+        return message.reply(`<:erro:858615784771551252>| Você não tem permissão  de \`Gerenciar cargos\` nesse servidor!`)
+   
         
-        if(!doggo.hasPermission(perms))
-        return message.inlineReply(`**❌| Eu não tenho permissão de dar cargo então me dê permissão de ** **\`MANAGE_ROLES\`** ou **\`ADMINSTRATOR\`** !`)
-
-        if (!user)
-        return message.inlineReply(`**❌| Por Favor diga a pessoa que você quer dar o cargo!!** **\`.addcargo [Usuário] [Menção do Cargo ou ID do Cargo]\`**`)
-
+        if(!doggo.permissions.has.Permissions(perms)){
+        return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de  \`Gerenciar cargos\` nesse Servidor!`);
+        }
+        
+        if (!user){
+        return message.reply(`<:erro:858615784771551252>| Mencione um membro para adicionar o cargo\nExemplo:\`${prefix}addcargo (@user) (id do cargo)\``);
+}
         if (!role)
-        return message.inlineReply(`**❌| Mencione um cargo ou um ID válido de um cargo!**`);
+        return message.reply(`<:erro:858615784771551252>| Mencione um cargo ou um ID válido de um cargo!`);
 
         else if (user.roles.cache.has(role.id))
-        return message.inlineReply(`**❌| O Usuário ja tem esse Cargo**`);
+        return message.reply(`<:erro:858615784771551252>| O usuário mencionado já possuí esse cargo!`);
 
         else {
             try {
 
                 await user.roles.add(role);
-
                 const embed = new Discord.MessageEmbed()
                 .setTitle('**Cargo Adicionado!!**')
                 .setColor('#0D02FA')
                 .setDescription(` ✅| ${role} foi dado com sucesso para <@${user.id}>
                `)
-                
                 .addField('Dado por:', `<@${message.member.id}>`, true)
                 .addField('Para:', `<@${user.id}>`, true)
                 .addField('Cargo:', `${role}`, true)
@@ -52,10 +45,10 @@ exports.run = async (client, message, args, database) => {
                 .setTimestamp()
                 .setColor(message.guild.me.displayHexColor);
 
-                await message.channel.send(embed);
+                await message.reply({embeds: [embed]});
       
             } catch (err) {
-            return message.inlineReply(`**❌| A posição do cargo é Superior ao Meu Cargo**`, err.message);
+            return message.reply(`<:erro:858615784771551252>| Meu cargo é inferior ao cargo do Membro mencionado!`, err.message);
             }
         }
     
