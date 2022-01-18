@@ -23,8 +23,8 @@ if(!usu.bannable) return message.inlineReply(`<:erro:858615784771551252>| ${mess
  .setDescription(`**<:correto:858615705398018078> ${usu.user} foi banido com sucesso
 Motivo: \`${reason}\`
 banido Por: ${message.author.tag}**`)
- .setColor("#0D02FA")
  .setThumbnail("https://i.imgur.com/P0PyiAj.png")
+ .setColor("#0D02FA")
  .setTimestamp()
  .setFooter(`Banimento realizado com sucesso`)
 
