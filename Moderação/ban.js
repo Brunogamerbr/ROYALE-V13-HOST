@@ -35,9 +35,9 @@ let embed = new Discord.MessageEmbed()
 .setThumbnail('https://i.imgur.com/P0PyiAj.png')
 .setFooter(`Banimento`)
 .setTimestamp()          
- await usu.ban({
+/* await usu.ban({
  reason: reason
- }) 
+ }) */
 message.channel.send({embeds: [dm]})
  
 } catch(err){
