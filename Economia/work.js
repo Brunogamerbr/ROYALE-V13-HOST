@@ -42,7 +42,7 @@ return;
    let quantia = Math.floor(Math.random() * 1000) + 400;
  
    if(db.val().work != 0 && timeout - (Date.now() - db.val().work) > 0) {
-    let time = ms(timeout - (Date.now() - db.val().work));
+   let time = ms(timeout - (Date.now() - db.val().work));
     message.reply(`**<:erro:858615784771551252>| Você ja trabalhou recentemente. Você podera trabalhar novamente em: ${time.minutes}m ${time.seconds}s**`)
   } else {
 
@@ -55,7 +55,6 @@ return;
     tbref.set({
       t: t1
     })
-
 
    if (db2.val().emprego == 1) {
       let embed = new Discord.MessageEmbed()      
