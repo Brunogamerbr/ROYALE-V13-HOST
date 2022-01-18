@@ -35,11 +35,11 @@ let embed = new Discord.MessageEmbed()
 .setThumbnail(`https://i.imgur.com/P0PyiAj.png`)
 .setFooter(`Banimento`)
 .setTimestamp()          
+message.channel.send({embeds: [dm]});
 try{
  await usu.ban({
  reason: reason
  }) 
-message.channel.send({embeds: [dm]});
 usu.send({embeds: [embed]}); 
 } catch (err) {
 return message.reply(`<:erro:858615784771551252>| Meu cargo é inferior ao cargo do Membro mencionado!`, err.message);
