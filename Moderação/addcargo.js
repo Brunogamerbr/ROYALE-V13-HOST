@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
         return message.reply(`<:erro:858615784771551252>| Você não tem permissão  de \`Gerenciar cargos\` nesse servidor!`)
    
         
-        if(!doggo.permissions.has(Permissions.FLAGS.perms)){
+        if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_ROLES)){
         return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de  \`Gerenciar cargos\` nesse Servidor!`);
         }
         
