@@ -11,7 +11,7 @@ module.exports = async (client, message, database, config) => {
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let ave = args.shift();
-  let comando = client.commands.get(ave);
+  let comando = client.aventura.get(ave);
   if(!comando) return;
 	
   
