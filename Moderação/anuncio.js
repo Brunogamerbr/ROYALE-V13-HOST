@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args, database) => {
     .setTitle(title)
     .setDescription(desc)
 
-    canal.send({embeds: [embed]})
+    await canal.send({embeds: [embed]})
 
               })
             })
