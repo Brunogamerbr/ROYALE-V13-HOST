@@ -27,13 +27,13 @@ module.exports.run = async (client, message, args, database) => {
 
     message.channel.send(`☑️| Anúncio enviado ao canal ${canal} com sucesso!`)
 
-    let embed = new Discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed()
     .setColor(`#0D02FA`)
     .setThumbnail()
     .setTimestamp()
     .setTitle(title)
     .setDescription(desc)
-canal.send({embeds: [embed]})
+
 
               })
             })
@@ -42,5 +42,5 @@ canal.send({embeds: [embed]})
       }
     })
   })
-
+canal.send({embeds: [embed]})
   }
