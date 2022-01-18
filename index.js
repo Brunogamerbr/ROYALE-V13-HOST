@@ -19,7 +19,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-
 client.on("messageCreate", async (message) => {
 require("./Handlers/HandlerEconomia.js")(client, message, database, config);
 require("./Handlers/HandlerAventura.js")(client, message, database, config);
