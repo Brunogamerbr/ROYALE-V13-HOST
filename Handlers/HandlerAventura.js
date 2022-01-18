@@ -73,9 +73,6 @@ setTimeout(function() {
 return;
 }
 
- /*require("./Xp.js")(client, message )
- require("./ItensRPG.js")(client, message)
- require("./QuestRPG.js")(client, message, args, database)*/
 	
 try {
 comando.run(client, message, args, database, prefix);
