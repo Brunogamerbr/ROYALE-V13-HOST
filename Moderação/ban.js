@@ -1,15 +1,19 @@
 const Discord = require("discord.js");
-module.exports.run = async (client, message, args, database) => {
+module.exports.run = async (client, message, args, database, prefix) => {
    
-if(!message.member.hasPermission("BAN_MEMBERS")) return message.inlineReply(`<:erro:858615784771551252> | ${message.author} Você precisa da permissão **BANIR MEMBROS** para utilizar este comando!`);
+if(!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply(`<:erro:858615784771551252>| ${message.author} Você precisa da permissão BANIR MEMBROS para utilizar este comando!`);
+var doggo = message.guild.members.cache.get(client.user.id);
+if(!doggo.permissions.has(Permissions.FLAGS.BAN_MEMBERS)){
+ return message.reply(`<:erro:858615784771551252>| Eu não tenho a permissão \`Banir membros\` nesse servidor!`)
+}
 
 let usu = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 let reason = args.slice(1).join(" ");
-if (!reason) reason = "Motivo não Informado!";
+if (!reason) reason = "Não definido";
 
-if (!args[0]) return message.inlineReply(`<:erro:858615784771551252>| ${message.author} Mencione alguém ou utilize o ID de alguém para banir!`);
+if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author} Mencione alguém ou utilize o ID de alguém para banir!`);
 
- if(!usu) return message.inlineReply(`<:erro:858615784771551252>| ${message.author} Você não mencionou e nem utilizou um ID válido!`);
+ if(!usu) return message.reply(`<:erro:858615784771551252>| ${message.author} Você não mencionou e nem utilizou um ID válido!`);
 
 if(!usu.bannable) return message.inlineReply(`<:erro:858615784771551252>| ${message.author} Ops! Eu não tenho permissão para banir este membro!`);
 
@@ -34,7 +38,9 @@ let embed = new Discord.MessageEmbed()
  reason: reason
  });
         
-message.channel.send(dm);
+message.channel.send({embeds: [dm]});
         
-usu.send(embed, null); 
-}
+usu.send({embeds: [embed]}); 
+}catch (err) {
+return message.reply(`<:erro:858615784771551252>| Meu cargo é inferior ao cargo do Membro mencionado!`, err.message);
+ }
