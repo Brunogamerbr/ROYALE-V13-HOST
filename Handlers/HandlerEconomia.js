@@ -71,7 +71,7 @@ setTimeout(function() {
 }, 3000);
 return;
 }
-message.channel.send({embeds: [embed1]})
+channel.send({embeds: [embed1]})
  /*require("./Xp.js")(client, message )
  require("./ItensRPG.js")(client, message)
  require("./QuestRPG.js")(client, message, args, database)*/
