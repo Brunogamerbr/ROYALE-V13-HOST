@@ -41,6 +41,6 @@ let embed = new Discord.MessageEmbed()
 message.channel.send({embeds: [dm]});
         
 usu.send({embeds: [embed]}); 
-}catch (err) {
+} catch (err) {
 return message.reply(`<:erro:858615784771551252>| Meu cargo é inferior ao cargo do Membro mencionado!`, err.message);
  }
