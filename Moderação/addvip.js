@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
     let db = await database.ref(`Vips/${message.guild.id}`).once('value');
     let role = db.val() != null ? message.guild.roles.cache.get(db.val().cargoId) : null;
 
-    if(!role) return message.inlineReply(`Desculpe, mas o cargo de VIP não está definido ou está inválido! Para definir um cargo de VIP use \`${prefix}setvip\``);
+    if(!role) return message.reply(`Desculpe, mas o cargo de VIP não está definido ou está inválido! Para definir um cargo de VIP use \`${prefix}setvip\``);
 
     let vipmessage = new Discord.MessageEmbed()
       .setTitle("☑️ | Vip adicionado")
