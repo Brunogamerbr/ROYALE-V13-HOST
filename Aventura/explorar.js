@@ -7,7 +7,6 @@ if (start == null) {
 return message.reply(`<:erro:858615784771551252>| Parecê que você ainda não criou seu avatar! crie ele utilizando o comando \`${prefix}create-avatar\``);
 }
 
-
 let db = await client.db.get(`InventarioRPG/${message.author.id}`);
 let dbu = await client.db.get(`InventarioRPG/${message.author.id}/buss`);
   
@@ -22,12 +21,9 @@ if (dbu == 5) {
 message.reply(`Sua bussola quebrou! Se você não possuir outra tente comprar uma na loja utilizando \`${prefix}shop\``)
 client.db.set(`InventarioRPG/${message.author.id}`, {buss: 0})
 client.db.set(`InventarioRPG/${message.author.id}`, {bussola: db.bussola - 1})
-  
 return;
 }
 
-
-  
 let timeout = 900000;
 let db1 = await client.db.get(`Economia/${message.author.id}`)
 let db3 = await client.db.get(`Nivel/${message.author.id}`)
@@ -42,10 +38,9 @@ await client.db.set(`InventarioRPG/${message.author.id}`, {buss: 0})
 await client.db.set(`InventarioRPG/${message.author.id}`, {bussola: 0})
 return;}
 
-
 let mapa = ['Montanha albina', 'Floresta assombrada', 'Ilha no deserto', 'Fazenda']
-let lugar = mapa[Math.floor(Math.random() * mapa.length)]
 
+let lugar = mapa[Math.floor(Math.random() * mapa.length)]
 let din = Math.floor(Math.random() * 800) + 200;
 let xp = Math.floor(Math.random() * 80) + 20;
 
