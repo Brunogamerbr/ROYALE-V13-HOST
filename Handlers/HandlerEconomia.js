@@ -12,15 +12,14 @@ if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift();
   let comando = client.economia.get(cmd);
-if(!comando) return;
+  if(!comando) return;
 	
-let embed1 = new Discord.MessageEmbed()
+  let embed1 = new Discord.MessageEmbed()
 .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${cmd}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
     .setColor(`#0D02FA`)
     .setTimestamp()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
-
-let channel = client.channels.cache.get("916823908613771264")
+  let channel = client.channels.cache.get("916823908613771264")
 
 /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
@@ -30,7 +29,6 @@ message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Par
 return;}*/
 
   let user1 = message.author
-  
   let dbs = await   
 database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
@@ -48,15 +46,14 @@ database.ref(`VersaoBuild`).once('value');
 return;
     }
 
-  
 if (db1.val().versão !== db2.val().build) {
 message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
-  let dbref = database.ref(`Banidos/${message.author.id}`);
-  let banned = false;
+   let dbref = database.ref(`Banidos/${message.author.id}`);
+   let banned = false;
 
   if (db.val() && db.val().banido) {
     banned = true;
@@ -82,7 +79,4 @@ return;
 try {
 comando.run(client, message, args, database, prefix);
 } catch (err) {console.log(err)}
-
-
-	
 }
