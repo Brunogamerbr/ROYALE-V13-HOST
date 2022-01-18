@@ -23,6 +23,7 @@ const database = firebase.database();
 client.on("messageCreate", async (message) => {
 require("./Handlers/HandlerEconomia.js")(client, message, database, config);
 require("./Handlers/HandlerAventura.js")(client, message, database, config);
+require("./Afk.js")(client,message,database)
 });
 
 client.on("ready", () => {
