@@ -59,7 +59,8 @@ return;
    if (db2.val().emprego == 1) {
       let embed = new Discord.MessageEmbed()      
       .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
-      .setDescription(`Você programou um: **${programmer[Math.floor(Math.random() * programmer.length)]}**. na venda você recebeu: **R$${quantia}** + **60** de **XP**`)     .setThumbnail(`https://i.imgur.com/IzCaEQc.png`)
+      .setDescription(`Você programou um: **${programmer[Math.floor(Math.random() * programmer.length)]}**. na venda você recebeu: **R$${quantia}** + **60** de **XP**`)
+      .setThumbnail(`https://i.imgur.com/IzCaEQc.png`)
       .setFooter(`Programação realizada`)
       .setColor(`#0D02FA`)
       .setTimestamp()
