@@ -1,40 +1,30 @@
 const Discord = require("discord.js");
 
 module.exports = async(client, message, database) => {
-  
-  let dbE = await database.ref(`Economia/${message.author.id}`).once('value');
-  let dbEref = database.ref(`Economia/${message.author.id}`);
-  
-  let dbN = await database.ref(`Nivel/${message.author.id}`).once('value');
-  let dbNref = database.ref(`Nivel/${message.author.id}`);
 
-  if(dbN.val() == null) {
-      dbNref.set({
-        xp: 0,
-        level: 1
-      })
+      /*====== XP ==========*/
+  let dbE = await client.db.get(`Economia/${message.author.id}`)
+  let dbN = await client.db.get(`Nivel/${message.author.id}`)
+  if(dbN == null) {
+client.db.set(`Nivel/${message.author.id}`, {xp: 0}, {nivel: 1}); 
   } else {
-    dbNref.update({
-      xp: dbN.val().xp + Math.floor(Math.random() * (15 - 3)) + 3
-    })
+      
+client.db.set(`Nivel/${message.author.id}`, {xp: dbN.xp + Math.floor(Math.random() * (15 - 3)) + 3}); 
+if(dbN.level * 340 <= dbN.xp) {
+           
+client.db.set(`Nivel/${message.author.id}`, {xp: 0}, {nivel: dbN.nivel + 1}); 
+}}
 
-    if(dbN.val().level * 340 <= dbN.val().xp) {
-      dbNref.update({
-        xp: 0,
-        level: dbN.val().level + 1
-      });
-      let embed4 = new Discord.MessageEmbed()
-        .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
-        .setDescription(`Parabéns ${message.author} Você avançou para o Nível **${dbN.val().level + 1}**. Como recompensa você ganhou **R$${120*dbN.val().level}**`)
-        .setFooter(`Nivel upado!`)
-        .setThumbnail(`https://i.imgur.com/Xueb5Sj.png`)
-        .setColor(`#0D02FA`)
-      .setTimestamp()
-      dbEref.update({dinheiro: dbE.val().dinheiro + (1200*dbN.val().level)})
-        
-      message.channel.send(embed4);
-    }
-  }
 
-  
+let db = await client.db.get(`StartRPG/${message.author.id}`)
+let db1 = await client.db.get(`InventarioRPG/${message.author.id}`)
+if (db == null) return;
+if (db.hp == null) db.hp = 8;
+if (db.hp <0 || db.hp == 0){
+return message.reply(`${message.author} Você acabou perdendo todos os corações de **HP** você morreu... mas tente iníciar uma nova jornada!`)
+	await client.db.remove(`StartRPG/${message.author.id}`)
+
+await client.db.remove(`InventarioRPG/${message.author.id}`)	
+	await client.db.set(`StartRPG/${message.author.id}`)
+}
 }
