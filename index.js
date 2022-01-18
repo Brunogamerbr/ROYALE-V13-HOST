@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 require("discord.js").MessageEmbed = require("./Embeds");
 const config = require(`./config.json`);
-const client = new Discord.Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES']
-});
+const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
@@ -22,14 +20,14 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
-require("./HandlerEconomia.js")(client, message, database, config);
-require("./HandlerAventura.js")(client, message, database, config);
+require("./Handlers/HandlerEconomia.js")(client, message, database, config);
+require("./Handlers/HandlerAventura.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
 require("./Eventos/Ready.js")(client)
-require("./LoadAventura.js")(client)
-require("./LoadEconomia.js")(client)
+require("./LoadCommands/LoadAventura.js")(client)
+require("./LoadCommands/LoadEconomia.js")(client)
 });
 
 client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
