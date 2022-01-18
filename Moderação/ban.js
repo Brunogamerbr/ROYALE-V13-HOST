@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { Permissions } = require('discord.js');
 module.exports.run = async (client, message, args, database, prefix) => {
-   
+ try{
 if(!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply(`<:erro:858615784771551252>| ${message.author} Você precisa da permissão BANIR MEMBROS para utilizar este comando!`);
 var doggo = message.guild.members.cache.get(client.user.id);
 if(!doggo.permissions.has(Permissions.FLAGS.BAN_MEMBERS)){
@@ -38,10 +38,8 @@ let embed = new Discord.MessageEmbed()
  await usu.ban({
  reason: reason
  }) 
- 
 message.channel.send({embeds: [dm]})
  
-try{
-usu.send({embeds: [embed]})
-} catch (err) {return;}
-} 
+} catch(err){
+  console.log(err)
+}
