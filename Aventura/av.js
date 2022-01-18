@@ -54,7 +54,7 @@ if (db.hp >8) db.hp = 8;
 let embed = new Discord.MessageEmbed()
 .setAuthor(user.tag, message.author.displayAvatarURL({dynamic: true}))
 .setDescription(`Vejá abaixo informações sobre o avatar de ${user}:\n\n**<:id:873563434824904754>| Nome: \`${db.nome}\`\n<:idade:918386919874895883>| Idade: \`${db.idade}\`\n<:genero:918386210177683456>| Genero: \`${db.genero}\`\n<:cl:918388663572910100>| Habilidade: \`${db.habilidade}\`\n<:hp:918485200483266600>| Vida: ${db.hp}\n<:nivel:918390757449154631> | Level: \`${level}\`\n<a:mine_xp:913889304449781843> | XP: \` ${xp}/${nextLvl} \`\n<:progresso:918386976741261382> | Progresso: ${progress_bar} > \`${parseInt((xp / nextLvl) * 100)}%\`**`)
-.setColor(`BLUE`)
+.setColor("BLUE")
 .setThumbnail(user.displayAvatarURL())
 .setFooter(`Mostrando avatar`)
 .setTimestamp();
