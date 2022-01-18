@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
  if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))return message.reply("<:erro:858615784771551252>| Voce Não tem permissão para Usar esse comando!");
    var unperm = message.guild.members.cache.get(client.user.id);
  
-  if(!unperm.permissions.has(Permissions.FLAGS.MANAGE_ROLES))return message.reply("<:erro:858615784771551252>| Eu estou sem permissão de `\`Gerenciar cargos\` nesse servidor!");
+  if(!unperm.permissions.has(Permissions.FLAGS.MANAGE_ROLES))return message.reply("<:erro:858615784771551252>| Eu estou sem permissão de \`Gerenciar cargos\` nesse servidor!");
 
  let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
  if (!member) return message.reply('<:erro:858615784771551252>| Para poder executar o comando, tem que mencionar um membro!');
