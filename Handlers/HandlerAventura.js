@@ -21,7 +21,7 @@ module.exports = async (client, message, database, config) => {
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
   
 
-/*let active = await client.db.get(`ModoDev`);
+  /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
 /*if(!config.owners.includes(message.author.id)) {
     
@@ -48,21 +48,20 @@ return;
     }
 
   
-if (db1.val().versão !== db2.val().build) {
+  if (db1.val().versão !== db2.val().build) {
 message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
-  let dbref = database.ref(`Banidos/${message.author.id}`);
-  let banned = false;
-
-  if (db.val() && db.val().banido) {
+   let dbref = database.ref(`Banidos/${message.author.id}`);
+   let banned = false;
+   if (db.val() && db.val().banido) {
     banned = true;
     }
+    
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
-  
 let block = await client.db.get(`Servidores_${message.guild.id}`)
 if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
 
@@ -80,8 +79,6 @@ return;
 	
 try {
 comando.run(client, message, args, database, prefix);
-} catch (err) {console.log(err)}
-
-
-	
+} catch (err) { if (err.code === 'MODULE_NOT_FOUND') return;
+console.log(err)}
 }
