@@ -72,8 +72,8 @@ setTimeout(function() {
 }, 3000);
 return;
 }
+require("../Eventos/ItensRPG.js")(client, message, database, prefix)
 
-	
 try {
 comando.run(client, message, args, database, prefix);
 } catch (err) { if (err.code === 'MODULE_NOT_FOUND') return;
