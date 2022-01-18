@@ -68,13 +68,13 @@ let block = await client.db.get(`Servidores_${message.guild.id}`)
 if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
 
 let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-channel.send({embeds: [embed1]})
+
 setTimeout(function() {
   canalblock.delete()
 }, 3000);
 return;
 }
-	
+	channel.send({embeds: [embed1]})
  /*require("./Xp.js")(client, message )
  require("./ItensRPG.js")(client, message)
  require("./QuestRPG.js")(client, message, args, database)*/
