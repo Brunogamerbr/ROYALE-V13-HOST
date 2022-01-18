@@ -9,7 +9,7 @@ module.exports.run = async(client, message, args, database, prefix) => {
       
       var doggo = message.guild.members.cache.get(client.user.id);
       
-      if(!goggo.permissions.has(Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS)){
+      if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS)){
       return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de \`Gerenciar emojis\` nesse servidor!`)}
       
       
