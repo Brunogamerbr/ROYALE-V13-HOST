@@ -21,11 +21,11 @@ module.exports = async (client, message, database, config) => {
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
   let channel = client.channels.cache.get("916823908613771264")
 
-/*let active = await client.db.get(`ModoDev`);
+  /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
 /*if(!config.owners.includes(message.author.id)) {
     
-message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Para mais informações entre em meu Servidor de Suporte usando \`${prefix}invite\`**`)
+  message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Para mais informações entre em meu Servidor de Suporte usando \`${prefix}invite\`**`)
 return;}*/
 
   let user1 = message.author
@@ -71,7 +71,7 @@ setTimeout(function() {
 }, 3000);
 return;
 }
-	
+message.channel.send({embeds [embed]})
  /*require("./Xp.js")(client, message )
  require("./ItensRPG.js")(client, message)
  require("./QuestRPG.js")(client, message, args, database)*/
