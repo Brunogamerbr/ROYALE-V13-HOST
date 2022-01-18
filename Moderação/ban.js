@@ -32,7 +32,7 @@ let embed = new Discord.MessageEmbed()
 .setTitle(`<:Legal:870733089083625502>| Banido!`)
 .setDescription(`**${usu}, você foi banido do servidor: \`${message.guild.name}\`\nBanido por: \`${message.author.tag}\`\nMotivo: \`${reason}\`**`)
 .setColor(`#0D02FA`)
-.setThumbnail(`https://i.imgur.com/P0PyiAj.png`)
+.setThumbnail('https://i.imgur.com/P0PyiAj.png')
 .setFooter(`Banimento`)
 .setTimestamp()          
  await usu.ban({
