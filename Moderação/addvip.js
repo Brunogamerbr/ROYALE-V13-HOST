@@ -1,19 +1,16 @@
 const Discord = require('discord.js');
-
-exports.run = async (client, message, args, database) => {
-
-
-
+const { Permissions } = require('discord.js');
+module.exports.run = async (client, message, args, database, prefix) => {
   
-    if (!message.member.hasPermission('ADMINISTRATOR')) return message.inlineReply("<:erro:858615784771551252>| Voce Não tem permissão para Usar esse comando!");
+ if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))return message.reply("<:erro:858615784771551252>| Voce Não tem permissão para Usar esse comando!");
 
-    let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-    if (!member) return message.inlineReply('<:erro:858615784771551252>| Para poder executar o comando, tem que mencionar um membro!');
+ let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+ if (!member) return message.reply('<:erro:858615784771551252>| Para poder executar o comando, tem que mencionar um membro!');
 
     let db = await database.ref(`Vips/${message.guild.id}`).once('value');
     let role = db.val() != null ? message.guild.roles.cache.get(db.val().cargoId) : null;
 
-    if(!role) return message.inlineReply(`Desculpe, mas o cargo de VIP não está definido ou está inválido! Para definir um cargo de VIP use \`.setvip\``);
+    if(!role) return message.inlineReply(`Desculpe, mas o cargo de VIP não está definido ou está inválido! Para definir um cargo de VIP use \`${prefix}setvip\``);
 
     let vipmessage = new Discord.MessageEmbed()
       .setTitle("**☑️ | Sucesso**")
@@ -27,4 +24,4 @@ exports.run = async (client, message, args, database) => {
     } catch(err) {
       return message.channel.send(`${err}`);
     }
-}; 
+};
