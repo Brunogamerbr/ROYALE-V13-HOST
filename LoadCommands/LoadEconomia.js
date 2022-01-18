@@ -16,7 +16,7 @@ const FireSimple = require("../DatabaseUtil.js");
     let eco = require(join(__dirname, "../Economia", `${file}`));
     client.economia.set(`${file}`.replace(".js", ""), eco);
     if(ave.conf && ave.conf.aliases) {
-      ave.conf.aliases.forEach(alias => {
+      eco.conf.aliases.forEach(alias => {
         client.economia.set(alias, eco);
       })
     }
