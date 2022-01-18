@@ -72,9 +72,8 @@ setTimeout(function() {
 return;
 }
 channel.send({embeds: [embed1]})
- /*require("./Xp.js")(client, message )
- require("./ItensRPG.js")(client, message)
- require("./QuestRPG.js")(client, message, args, database)*/
+ //require("./Xp.js")(client, message )
+
 	
 try {
 comando.run(client, message, args, database, prefix);
