@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const { Permissions } = require('discord.js');
+
 module.exports.run = async (client, message, args, database) => {
   if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('Você não tem permissão de \`Gerenciar servidor\` para usar esse comando!');
   
