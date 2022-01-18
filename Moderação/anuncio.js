@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const { Permissions } = require('discord.js');
 
 module.exports.run = async (client, message, args, database) => {
-  if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('Você não tem permissão de \`Gerenciar servidor\` para usar esse comando!');
+  if (!message.member.permissions.has(Permissions.MANAGE_SERVER)) return message.reply('Você não tem permissão de \`Gerenciar servidor\` para usar esse comando!');
   
   var doggo = message.guild.members.cache.get(client.user.id);
-  if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS)){
+  if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_SERVER)){
       return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de \`Gerenciar servidor\`!`)}
 
     message.reply(`Pronto! Agora mencione um canal do servidor..`).then(msg => {
