@@ -11,11 +11,11 @@ module.exports.run = async (client, message, args, database, prefix) => {
         if (!reason) reason = '`-`';
         if (reason.length > 1024) reason = reason.slice(0, 1021) + '...';
 
-        if(!message.member.permissions.has.Permissions(perms)) 
+      if(!message.member.permissions.has(Permissions.perms))
         return message.reply(`<:erro:858615784771551252>| Você não tem permissão  de \`Gerenciar cargos\` nesse servidor!`)
    
         
-        if(!doggo.permissions.has.Permissions(perms)){
+        if(!doggo.permissions.has(Permissions.perms)){
         return message.reply(`<:erro:858615784771551252>| Eu não tenho permissão de  \`Gerenciar cargos\` nesse Servidor!`);
         }
         
