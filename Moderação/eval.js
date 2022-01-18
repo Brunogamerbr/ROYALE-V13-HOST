@@ -24,7 +24,6 @@ module.exports.run = async (client, message, args, database) => {
     embed.setDescription(`**📥| Entrada:** \`\`\`js\n${args.join(' ')}\`\`\`\n**📤| Saída:** \`\`\`js\n${error}\`\`\``)
   }
     
-message.channel.send(embed)
-  
+message.channel.send({embeds: [embed]})
 }
  
