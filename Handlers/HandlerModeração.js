@@ -19,7 +19,8 @@ module.exports = async (client, message, database, config) => {
     .setColor(`#0D02FA`)
     .setTimestamp()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
-  let canal = client.channels.cache.get("916823908613771264")
+  let canal = client.channels.cache.get("916823908613771264");
+  canal.send({embeds: [embed1]})
 
   /*let active = await client.db.get(`ModoDev`);
 if (active.active != 0) {*/
@@ -71,7 +72,7 @@ setTimeout(function() {
 }, 3000);
 return;
 }
-//canal.send({embeds: [embed1]})
+
  //require("./Xp.js")(client, message )
 
 	
