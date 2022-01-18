@@ -8,9 +8,7 @@ module.exports.run = async (client, message, args, database) => {
     return;
   }*/
 
-
   let evaled;
-
   let embed = new Discord.MessageEmbed()
     .setColor(`#0D02FA`)
     .setThumbnail(`https://imgur.com/7dUYVcV.png`)
@@ -21,7 +19,8 @@ module.exports.run = async (client, message, args, database) => {
     evaled = await eval(args.join(' '));
     embed.setDescription(`**📥| Entrada:** \`\`\`js\n${args.join(' ')}\`\`\`\n**📤| Saída:** \`\`\`js\n${inspect(evaled)}\`\`\``);
   } catch (error) {
-    embed.setDescription(`**📥| Entrada:** \`\`\`js\n${args.join(' ')}\`\`\`\n**📤| Saída:** \`\`\`js\n${error}\`\`\``)
+   return embed.setDescription(`**📥| Entrada:** \`\`\`js\n${args.join(' ')}\`\`\`\n**📤| Saída:** \`\`\`js\n${error}\`\`\``)
+    
   }
     
 message.channel.send({embeds: [embed]})
