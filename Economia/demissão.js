@@ -39,10 +39,10 @@ module.exports.run = (client, message, args,database, prefix) => {
   if (dbE.val().emprego == 1) {
   let pro = await message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
    pro.react("👍")
-let filter = (reaction, user) => {
+let filter1 = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
 };
-let collector = pro.createReactionCollector({ filter, time: 15000 });
+let collector1 = pro.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
@@ -53,15 +53,10 @@ collector.on('collect', (reaction, user) => {
  if(dbE.val().emprego == 2) {
    let mine = await message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
    mine.react("👍")
-let filter = (reaction, user) => {
-	return reaction.emoji.name === '👍' && user.id === message.author.id;
-};
-let collector = mine.createReactionCollector({ filter, time: 15000 });
-collector.on('collect', (reaction, user) => {
+
 	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
 	 dbref.update{dinheiro: db.val().dinheiro - 3500})
-});
  }
 }
      
