@@ -41,7 +41,7 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
 let filter1 = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
-let collector1 = m.createReactionCollector({ filter, time: 15000 });
+let collector1 = m.createReactionCollector({ filter1, time: 15000 });
 collector.on('collect', (reaction, user) => {
           dbref.update({emprego: 1})
         message.channel.send('**☑️| Parabéns! Agora você trabalhará como um 💻 Programador**');
