@@ -59,7 +59,7 @@ return;
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
-})
+});
 }
 }
      
