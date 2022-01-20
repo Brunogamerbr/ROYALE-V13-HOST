@@ -37,7 +37,7 @@ module.exports.run = (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-  let pro = await message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
+  let pro = message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
    pro.react("👍")
 let filter1 = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
@@ -51,7 +51,7 @@ collector.on('collect', (reaction, user) => {
 }
 
  if(dbE.val().emprego == 2) {
-   let mine = await message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
+   let mine = message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
    mine.react("👍")
 
 	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
