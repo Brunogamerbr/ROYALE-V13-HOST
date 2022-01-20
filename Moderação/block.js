@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
-module.exports.run = async (client, message, args, database) => {
+module.exports.run = async (client, message, args, database, prefix) => {
 
-if (!message.member.hasPermission(['MANAGE_CHANNELS'])) { return message.inlineReply('<:erro:858615784771551252>| Você não tem permissão para usar esse comando!') }
+if (!message.member.permissions.has(Permission.FLAGS.MANAGE_CHANNELS)) { return message.inlineReply('<:erro:858615784771551252>| Você não tem permissão para usar esse comando!') }
 
 let canal = message.channel.id;
 
