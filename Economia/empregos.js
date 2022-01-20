@@ -36,24 +36,28 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
   
  const m = await message.channel.send({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
-  
-  /*const filter = (reaction, user) => {
+  const filter = (reaction, user) => {
 	return reaction.emoji.name === '💻' && user.id === message.author.id;
 };
 const collector = m.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
   dbref.update({emprego: 1})
   message.reply('☑️| Parabéns! Agora você trabalhará como um 💻 Programador!');
-})*/
-
-  let filtro = (reaction, user) => {
-	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
-};
-let coletor = m.createReactionCollector({ filtro, time: 15000 });
-coletor.on('collect', (reaction, user) => {
-        dbref.update({emprego: 2})
-       message.channel.send('**☑️| Parabéns! Agora você trabalhará como um ⛏️ Minerador**')
 })
+ 
+ const filtro = (reaction, user) => {
+	return reaction.emoji.name === '💻' && user.id === message.author.id;
+};
+const coletor = m.createReactionCollector({ filter: filtro, time: 15000 });
+coletor.on('collect', (reaction, user) => {
+  dbref.update({emprego: 2})
+  message.reply('☑️| Parabéns! Agora você trabalhará como um ⛏️ Minerador!');
+})
+ 
+ 
+ 
+ 
+ 
 }
 
 exports.conf = {
