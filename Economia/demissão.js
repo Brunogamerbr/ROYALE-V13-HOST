@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const { MessageActionRow, MessageButton, MessageEmbed, MessageColletor } = require('discord.js');
 
-module.exports.run = async function(client, message, args,database, prefix) {
+module.exports.run = async function((client, message, args,database, prefix) {
 
   let user1 = message.author
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
@@ -31,10 +31,7 @@ module.exports.run = async function(client, message, args,database, prefix) {
 
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
-  const button = new MessageButton()
-	.setLabel('demissao')
-	.setStyle('PRIMARY')
-	.setDisabled(true);
+  
   
   if (dbE.val().emprego == 1) {
   let pro = message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
@@ -42,18 +39,18 @@ module.exports.run = async function(client, message, args,database, prefix) {
 	
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
-	 dbref.update{dinheiro: db.val().dinheiro - 3500})
+	 dbref.update({dinheiro: db.val().dinheiro - 3500})
 }
 
- if(dbE.val().emprego == 2) {
+   if(dbE.val().emprego == 2) {
    let mine = message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
    mine.react("👍")
 
 	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
-	 dbref.update{dinheiro: db.val().dinheiro - 3500})
+	 dbref.update({dinheiro: db.val().dinheiro - 3500})
  }
-}
+})
      
 exports.conf = {
   aliases: ["demissao"]
