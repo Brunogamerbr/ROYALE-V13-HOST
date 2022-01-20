@@ -1,16 +1,11 @@
 const Discord = require('discord.js');
-
-
 module.exports.conf = {
   aliases: ["caraoucoroa", "coc", "flipcoin"]
 }
-
-
 module.exports.run = async function(client, message, args, database, prefix) {
 
   let user1 = message.author
- 
-  
+
   let dbS = await   
 database.ref(`Start/${user1.id}`).once('value');
   let dbSref = database.ref(`Start/${user1.id}`);
@@ -27,46 +22,33 @@ database.ref(`VersaoBuild`).once('value');
   message.inlineReply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
 return;
     }
-
   
-if (dbv.val().versão !== dbB.val().build) {
+   if (dbv.val().versão !== dbB.val().build) {
 message.inlineReply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
   }
 
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
   let user = message.mentions.members.first();
   if(!user) return message.channel.send(`:x: **| Você precisa mencionar um usuário para realizar a aposta!**`);
 
-let dbU = await   
+  let dbU = await   
 database.ref(`Start/${user.id}`).once('value');
   let dbUref = database.ref(`Start/${user.id}`);
 
 
-if (dbU.val() == null) {
+  if (dbU.val() == null) {
 message.inlineReply(`**<:erro:858615784771551252>| O usuário mencionado não está em minha Economia**`)
 return;
 }
-
-
-
   
   if(user == message.member) return message.channel.send("Você não pode apostar consigo mesmo!");
   
-  let rand = Math.random()
-  let coc = Boolean(rand > 0.5);
-  let aposta = args[1];
+   let rand = Math.random()
+   let coc = Boolean(rand > 0.5);
+   let aposta = args[1];
 
-  if(!aposta || parseInt(aposta) < 1 || !parseInt(aposta)) return message.channel.send(`:x: **| Aposta inválida! use \`.coinflip @user valor\` **`);
+   if(!aposta || parseInt(aposta) < 1 || !parseInt(aposta)) return message.channel.send(`:x: **| Aposta inválida! use \`.coinflip @user valor\` **`);
 
   aposta = parseInt(aposta);
 
@@ -106,8 +88,6 @@ return;
     
     if((db2.val().dinheiro < aposta) || (db.val().dinheiro < aposta)) return message.channel.send(`Jogo cancelado! Jogadores sem dinheiro suficiente!`)
 
-    // ${user} Perdeu ${aposta} e ${message.author} Ganhou ${aposta}
-
 
     let m1 = `${user} Ganhou uma quantia de R$${aposta} do usuário ${message.author}!`;
     let m2 = `${message.author} Ganhou uma quantia de R$${aposta} do usuário ${user}!`;
@@ -116,7 +96,6 @@ return;
 
     message.channel.send(`A moeda caiu \` ${caiu} \` ${winner}`)
 
-    
     if(coc == choice) {
       dbref.update({
         dinheiro: db.val().dinheiro - aposta
