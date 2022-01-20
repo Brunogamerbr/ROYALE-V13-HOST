@@ -72,7 +72,7 @@ setTimeout(function() {
 return;
 }
 channel.send({embeds: [embed1]})
- //require("./Xp.js")(client, message )
+require("../Xp.js")(client, message)
 
 	
 try {
