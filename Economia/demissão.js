@@ -53,7 +53,7 @@ module.exports.run = async(client, message, args,database, prefix) => {
     const filter1 = (reaction, user) => {
   	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 }
-   const collector1 = mine.createReactionCollector({ filter, time: 15000 });
+   const collector1 = mine.createReactionCollector({ filter1, time: 15000 });
    collector1.on('collect', (reaction, user) => {
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
