@@ -7,7 +7,7 @@ const fs = require("fs");
 const { join } = require("path");
 
 process.on('uncaughtException', (err) => {
-client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
+client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err.code}\n\`\`\``);
 })
 
 const firebaseConfig = {
