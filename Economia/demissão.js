@@ -1,5 +1,6 @@
 const Discord = require("discord.js")
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const { MessageButton, createButtonCollector } = require("discord-buttons");
 module.exports.run = async (client, message, args,database, prefix) => {
 
   let user1 = message.author
@@ -31,23 +32,15 @@ module.exports.run = async (client, message, args,database, prefix) => {
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
   
-  const button = new MessageButton()
-	.setCustomId('primary')
-	.setLabel('Primary')
-	.setStyle('PRIMARY')
-	.setDisabled(true);
+  let button = new MessageButton().setLabel("Pedir demissão").setStyle("blurple").setID("yes");
   
   if (dbE.val().emprego == 1) {
-    message.reply({content: `**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, components: [button]})
-    const filter = i => i.customId === 'primary' && i.user.id === message.author.id;
+    let m = message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, button)
+  
 
-const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
-
-collector.on('collect', async i => {
-	if (i.customId === 'primary') {
-		await message.reply({ content: 'heheboy', components: [] });
-	}
-});
+let c = m.createButtonCollector((button) => button.clicker.user.id === message.author.id, { time: 30000 }).on("collect", b => {
+m.edit(`xu`)
+})
   }
      
 }
