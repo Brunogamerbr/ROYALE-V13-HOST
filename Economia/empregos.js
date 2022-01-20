@@ -36,7 +36,7 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
     .setFooter("Reaja com o emoji referente ao Emprego desejado")
     .setColor(`0D02FA`)
   
-  const m = await message.reply({embeds: [embed})
+  const m = await message.reply({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
 let filter = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
