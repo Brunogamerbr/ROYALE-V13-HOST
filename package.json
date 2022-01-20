@@ -6,7 +6,6 @@
     "quick.db": "7.1.3",
     "twemoji-parser": "13.1.0",
     "pixapi": "1.1.8",
-    "discord-buttons": "^4.0.0",
     "jimp": "0.16.1"
   }
 }
