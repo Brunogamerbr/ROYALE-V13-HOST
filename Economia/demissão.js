@@ -38,7 +38,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-    message.reply({content: `**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, components[button]})
+    message.reply({content: `**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, components: [button]})
     const filter = i => i.customId === 'primary' && i.user.id === message.author.id;
 
 const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
