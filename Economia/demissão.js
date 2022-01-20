@@ -38,7 +38,7 @@ module.exports.run = async(client, message, args,database, prefix) => {
   pro.react('☑️');
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
-};
+}
 const collector = message.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
