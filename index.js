@@ -6,9 +6,9 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-/*process.on('uncaughtException', (err) => {
-client.channels.cache.get("931443923862302761").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js${err}\`\`\``);
-})*/
+process.on('uncaughtException', (err) => {
+client.channels.cache.get("892566308003131452").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js${err}\`\`\``);
+})
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
