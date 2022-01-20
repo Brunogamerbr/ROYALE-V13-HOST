@@ -38,10 +38,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-    let m = message.reply({content: '**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**', components: [button])})
-  
-
-  
+    let m = message.reply({content: '**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**', components: [button]})
      
 }
      
