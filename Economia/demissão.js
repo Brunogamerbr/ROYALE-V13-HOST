@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-  let pro = await message.reply(`Você realmente deseja largar a vida de ?rogramador? essa ação custará R$3500 de sua carteira!`)
+  let pro = await message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
    pro.react("👍")
 let filter = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
