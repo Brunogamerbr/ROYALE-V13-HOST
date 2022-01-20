@@ -17,7 +17,7 @@ if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author
 
  if(!usu) return message.reply(`<:erro:858615784771551252>| ${message.author} Você não mencionou e nem utilizou um ID válido!`);
 
-/*if(!usu.bannable) return message.reply(`<:erro:858615784771551252>| ${message.author} Ops! Eu não tenho permissão para banir este membro!`);*/
+if(!usu.bannable) return message.reply(`<:erro:858615784771551252>| ${message.author} Ops! Eu não tenho permissão para banir este membro!`);
 
  let embed = new Discord.MessageEmbed()
   .setColor("#0D02FA")
@@ -37,9 +37,9 @@ let embeddm = new Discord.MessageEmbed()
 .setThumbnail('https://i.imgur.com/P0PyiAj.png')
 .setFooter(`Banimento`)
 .setTimestamp()          
-/* await usu.ban({
+ await usu.ban({
  reason: reason
- }) */
+ }) 
 message.channel.send({embeds: [embed]})
 usu.send({embeds: [embeddm]})
 } catch(err){
