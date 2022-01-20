@@ -10,10 +10,10 @@ module.exports.run = async (client, message, args, database, prefix) => {
 
 
 
-        if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author} Menciona alguém ou utilize o ID de  alguém para expulsar!`);
-
-        if(!usu) return message.reply(`<:erro:858615784771551252> | ${message.author} Você não mencionou e nem utilizou um ID válido!`);
-
+        if (!args[0]){ return message.reply(`<:erro:858615784771551252>| ${message.author} Menciona alguém ou utilize o ID de  alguém para expulsar!`);
+}
+        if(!usu) {return message.reply(`<:erro:858615784771551252> | ${message.author} Você não mencionou e nem utilizou um ID válido!`);
+}
         /*if(!usu.kickable) return message.reply(`<:erro:858615784771551252> | ${message.author} Ops! Eu não tenho permissão para expulsar este membro!`);*/
 
         const embed = new Discord.MessageEmbed()
