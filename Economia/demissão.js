@@ -35,10 +35,10 @@ module.exports.run = async(client, message, args,database, prefix) => {
   if (dbE.val().emprego == 1) {
   let pro = await message.channel.send({content: `Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
   pro.react('☑️');
-  const filter = (reaction, user) => {
+  let filter = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 }
-  const collector = pro.createReactionCollector({ filter, time: 15000 });
+  let collector = pro.createReactionCollector({ filter, time: 15000 });
    collector.on('collect', (reaction, user) => {
    dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
@@ -51,11 +51,11 @@ module.exports.run = async(client, message, args,database, prefix) => {
    let mine = await message.channel.send({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
     mine.react('☑️');
 
- const filter1 = (reaction, user) => {
+ let filter1 = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
 };
 
-  const collector1 = mine.createReactionCollector({ filter1, time: 15000 });
+  let collector1 = mine.createReactionCollector({ filter1, time: 15000 });
 
    collector1.on('collect', (reaction, user) => {
 	 dbEref.update({emprego: 0})
