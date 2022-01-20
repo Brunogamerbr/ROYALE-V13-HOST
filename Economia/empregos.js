@@ -33,7 +33,7 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
     .setFooter("Reaja com o emoji referente ao Emprego desejado")
     .setColor(`0D02FA`)
   
-  if (reaction.emoji.name === '💻' && user.id === message.author.id;){
+  if (reaction.emoji.name === '💻' && user.id === message.author.id){
   const m = await message.channel.send({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
   let filter = (reaction, user) => {
