@@ -38,7 +38,7 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
      m.react('⛏️'); m.react("💻")
   
   const filter = (reaction, user) => {
-	return reaction.emoji.name === '☑️' && user.id === message.author.id;
+	return reaction.emoji.name === '💻' && user.id === message.author.id;
 };
 const collector = m.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
