@@ -32,11 +32,12 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
     .setThumbnail(`https://i.imgur.com/HkIASTr.png`)
     .setFooter("Reaja com o emoji referente ao Emprego desejado")
     .setColor(`0D02FA`)
-  
+    
+  let filter = (reaction, user) => {
   if (reaction.emoji.name === '💻' && user.id === message.author.id){
   const m = await message.channel.send({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
-  let filter = (reaction, user) => {
+  
   
 };
   let collector = m.createReactionCollector({ filter, time: 15000 });
