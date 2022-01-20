@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require('discord.js');
+const { Permissions } = require('discord.js');
+
 module.exports.run = async (client, message, args, database, prefix) => {
 
   if(!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) {return message.reply(`<:erro:858615784771551252> | ${message.author} Você precisa da permissão **EXPULSAR MEMBROS** para utilizar este comando!`)
