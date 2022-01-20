@@ -45,8 +45,8 @@ let filter = (reaction, user) => {
 let collector = pro.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
-	await client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
-	await client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
+   client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	 client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
 });
 }
 
@@ -59,8 +59,8 @@ let filter = (reaction, user) => {
 let collector = mine.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
-	await client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
-	await client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
+	 client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	 client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
 });
  }
 }
