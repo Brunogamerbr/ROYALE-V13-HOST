@@ -44,6 +44,7 @@ module.exports.run = async(client, message, args,database, prefix) => {
    dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
 });
+return;
 }
 
 
@@ -51,8 +52,8 @@ module.exports.run = async(client, message, args,database, prefix) => {
     let mine = await message.channel.send({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
     mine.react('☑️');
     const filter1 = (reaction, user) => {
-  	return reaction.emoji.name === '☑️' && user.id === message.author.id;
-}
+  	return reaction.emoji.name === '☑️' && user.id === message.author.id;}
+  	
    const collector1 = mine.createReactionCollector({ filter1, time: 15000 });
    collector1.on('collect', (reaction, user) => {
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
