@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 module.exports.conf = {
   aliases: ["caraoucoroa", "coc", "flipcoin"]
 }
@@ -19,18 +20,18 @@ database.ref(`VersaoBuild`).once('value');
   let dbBref = database.ref(`VersaoBuild`);
 
   if (dbS.val() == null) {
-  message.inlineReply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
+  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
 return;
     }
   
    if (dbv.val().versão !== dbB.val().build) {
-message.inlineReply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+message.reply(`Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\``)
 return;
   }
 
   
   let user = message.mentions.members.first();
-  if(!user) return message.channel.send(`:x: **| Você precisa mencionar um usuário para realizar a aposta!**`);
+  if(!user) return message.channel.send(`<:erro:858615784771551252>| Você precisa mencionar um usuário para realizar a aposta!`);
 
   let dbU = await   
 database.ref(`Start/${user.id}`).once('value');
@@ -48,7 +49,7 @@ return;
    let coc = Boolean(rand > 0.5);
    let aposta = args[1];
 
-   if(!aposta || parseInt(aposta) < 1 || !parseInt(aposta)) return message.channel.send(`:x: **| Aposta inválida! use \`.coinflip @user valor\` **`);
+   if(!aposta || parseInt(aposta) < 1 || !parseInt(aposta)) return message.channel.send(`<:erro:858615784771551252>| Aposta inválida! use \`${prefix}coinflip @user valor\`!`);
 
   aposta = parseInt(aposta);
 
@@ -57,9 +58,9 @@ return;
   let db2 = await database.ref(`Economia/${user.id}`).once('value');
   let db2ref = database.ref(`Economia/${user.id}`);
 
-  if(!db.val() || db.val().dinheiro < aposta) return message.channel.send(`:x: **| Você não tem dinheiro suficiente para apostar!**`);
+  if(!db.val() || db.val().dinheiro < aposta) return message.channel.send(`<:erro:858615784771551252>| Você não tem dinheiro suficiente para apostar!`);
 
-  if(!db2.val() || db2.val().dinheiro < aposta) return message.channel.send(`:x: **| ${user} Não tem dinheiro suficiente para apostar!**`);
+  if(!db2.val() || db2.val().dinheiro < aposta) return message.channel.send(`<:erro:858615784771551252>| ${user} Não tem dinheiro suficiente para apostar!`);
 
   let msg = await message.channel.send(`:x: **| ${user} Você está sendo desafiado para uma partida de \` CARA \` ou \` COROA \`**\n\n**Clique em > 🌑 < para escolher \` COROA \` _ou_**\n**Clique em > 🌕 < para escolher \` CARA \`**`);
 
@@ -82,7 +83,7 @@ return;
 
   async function run(choice) {
     msg.delete();
-    let m = await message.channel.send(`**A moeda é atirada para cima...**`);
+    let m = await message.channel.send(`A moeda é atirada para cima...`);
 
     await timeout(3000); 
     
