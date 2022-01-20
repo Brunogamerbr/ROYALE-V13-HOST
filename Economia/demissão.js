@@ -37,8 +37,8 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-      message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`)
-   await message.react("👍")
+     const pro = await message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`)
+   await pro.react("👍")
      const filter = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
 };
