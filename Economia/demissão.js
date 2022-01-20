@@ -37,8 +37,15 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-     message.reply({content: '**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**', components: [button]})
-     
+     message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`})
+     msg.react("👍")
+     const filter = (reaction, user) => {
+	return reaction.emoji.name === '👍' && user.id === message.author.id;
+};
+const collector = message.createReactionCollector({ filter, time: 15000 });
+collector.on('collect', (reaction, user) => {
+	message.reply(`Funfou desgraça`)
+});
 }
 }
      
