@@ -34,7 +34,7 @@ module.exports.run = async function(client, message, args,database, prefix) {
   
   
   if (dbE.val().emprego == 1) {
-  const pro = message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`);
+  const pro = await message.reply({content: `Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`});
   pro.react('☑️');
 	const filter = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
@@ -51,8 +51,8 @@ module.exports.run = async function(client, message, args,database, prefix) {
 
    if(dbE.val().emprego == 2) {
    const filter1 = (reaction, user) => {
-   const mine = message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
-    mine.react('☑️')
+   const mine = await message.reply({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`});
+    mine.react('☑️');
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 };
   const collector1 = mine.createReactionCollector({ filter, time: 15000 });
