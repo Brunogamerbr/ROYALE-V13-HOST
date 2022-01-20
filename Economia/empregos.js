@@ -38,11 +38,11 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
   
   const m = await message.reply({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
-let filter1 = (reaction, user) => {
+let filter1 = (reaction1, user1) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
 let collector1 = m.createReactionCollector({ filter1, time: 15000 });
-collector1.on('collect', (reaction, user) => {
+collector1.on('collect', (reaction1, user1) => {
           dbref.update({emprego: 1})
         message.channel.send('**☑️| Parabéns! Agora você trabalhará como um 💻 Programador**');
 })
