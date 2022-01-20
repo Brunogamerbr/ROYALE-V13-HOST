@@ -30,49 +30,39 @@ module.exports.run = async (client, message, args,database, prefix) => {
 
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
- 
+  
+  const button = new MessageButton()
+	.setCustomId('primary')
+	.setLabel('Primary')
+	.setStyle('PRIMARY')
+	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-    message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`).then(msg => {
+    message.reply({content: `**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, components[button]})
+    const filter = i => i.customId === 'primary' && i.user.id === message.author.id;
 
-    msg.react('✅').then(() => msg.react('❌')) 
-    const filter = (reaction, user) => { 
-      return ['✅', '❌'].includes(reaction.emoji.name) && user.id === message.author.id;}
-     msg.awaitReactions(filter, {max: 1}) 
-    
-      .then(collected => { 
-   const reaction = collected.first();
-   if (reaction.emoji.name === '✅') { 
-   message.reply('**☑️| Você pediu demissão com sucesso!**'); 
+const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+
+collector.on('collect', async i => {
+	if (i.customId === 'primary') {
+		await message.reply({ content: 'heheboy', components: [] });
+	}
+});
+   
+     
+     
+     
+   /*message.reply('**☑️| Você pediu demissão com sucesso!**'); 
           dbEref.update({emprego: 0 }) 
           dbref.update({ dinheiro: db.val().dinheiro - 3500 })
         } else { 
          message.reply('**☑️| Cancelado com sucesso!**')
-         }
-      })
-    })
+         
+      
+        }*/
+  
+  
   }
-  if (dbE.val().emprego == 2) {
-    
-    message.reply(`**Você realmente deseja largar a Vida De Minerador? Saiba: Você terá que pagar R$3500**`).then(msg => {
-    msg.react('✅').then(() => msg.react('❌')) 
-    const filter = (reaction, user) => { 
-      return ['✅', '❌'].includes(reaction.emoji.name) && user.id === message.author.id; 
-    };
-    msg.awaitReactions(filter, {max: 1}) 
-      .then(collected => { 
-        const reaction = collected.first();
-        if (reaction.emoji.name === '✅') { 
-          message.channel.send('**☑️| Você pediu demissão com sucesso!**'); 
-          dbEref.update({emprego: 0 }) 
-          dbref.update({ dinheiro: db.val().dinheiro - 3500 })
-        } else { 
-         message.reply('**☑️| Cancelado com sucesso!**')
-         }
-      })
-    })
-  }
-}
 
 exports.conf = {
   aliases: ["demissao"]
