@@ -63,6 +63,7 @@ module.exports.run = async function(client, message, args,database, prefix) {
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
  })
 }
+}
      
 exports.conf = {
   aliases: ["demissao"]
