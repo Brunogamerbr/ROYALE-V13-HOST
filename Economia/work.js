@@ -44,11 +44,11 @@ return;
  
    if(db.val().work != 0 && timeout - (Date.now() - db.val().work) > 0) {
    let time = ms(timeout - (Date.now() - db.val().work));
-    message.reply(`**<:erro:858615784771551252>| Você ja trabalhou recentemente. Você podera trabalhar novamente em: ${time.minutes}m ${time.seconds}s**`)
+    message.reply(`**<:erro:858615784771551252>|** Você ja trabalhou recentemente. Você podera trabalhar novamente em: ${time.minutes}m ${time.seconds}*`)
   } else {
 
    if (db2.val().emprego == null || db2.val().emprego == 0) {
-    return message.reply(`**Para poder trabalhar você deve possuir um emprego \`${prefix}empregos\`.**`)}
+    return message.reply(`Para poder trabalhar você deve possuir um emprego \`${prefix}empregos\`!`)}
     let tb = await database.ref(`Transacoes/${message.author.id}`).once("value")
     let tbref = database.ref(`Transacoes/${message.author.id}`)
     let t1 = tb.val() ? tb.val().t : [];
