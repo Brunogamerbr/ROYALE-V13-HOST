@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const { MessageActionRow, MessageButton, MessageEmbed, MessageColletor } = require('discord.js');
 
-module.exports.run = async function((client, message, args,database, prefix) {
+module.exports.run = async function(client, message, args,database, prefix) {
 
   let user1 = message.author
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
@@ -50,7 +50,7 @@ module.exports.run = async function((client, message, args,database, prefix) {
 	 dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
  }
-})
+}
      
 exports.conf = {
   aliases: ["demissao"]
