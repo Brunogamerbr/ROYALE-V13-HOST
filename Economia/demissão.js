@@ -54,7 +54,7 @@ return;
   const filterr = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 }
-  const collectorr = pro.createReactionCollector({ filter, time: 15000 })
+  const collectorr = mine.createReactionCollector({ filter, time: 15000 })
   collectorr.on('collect', (reaction, user) => {  
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
