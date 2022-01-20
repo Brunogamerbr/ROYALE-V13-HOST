@@ -8,7 +8,7 @@ if(!args[0]) {
 return;
 }
 const say = args.join(' ')
-message.channel.send(argsresult)
+message.channel.send(say)
 }
   
 
