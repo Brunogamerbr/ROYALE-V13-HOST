@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { MessageActionRow, MessageButton, MessageEmbed, MessageColletor } = require('discord.js');
 
 module.exports.run = async (client, message, args,database, prefix) => {
 
