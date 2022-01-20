@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-require("discord.js").MessageEmbed = require("discord.js");
+const { MessageEmbed } = require('discord.js');
 const config = require(`./config.json`);
 const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
