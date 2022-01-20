@@ -73,7 +73,7 @@ setTimeout(function() {
 return;
 }
 try {
-require("../Eventos/ItensRPG.js")(client, message, database, prefix)
+require("../Eventos/ItensRPG.js")(client, message)
 require("../Xp.js")(client, message)
 comando.run(client, message, args, database, prefix);
 } catch (err) { if (err.code === 'MODULE_NOT_FOUND') return;
