@@ -41,6 +41,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
     let m = message.reply({content: '**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**', components: [button]})
      
 }
+}
      
    /*message.reply('**☑️| Você pediu demissão com sucesso!**'); 
           dbEref.update({emprego: 0 }) 
