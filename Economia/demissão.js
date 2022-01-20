@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
-const { MessageEmbed } = require('discord.js');
-const { MessageButton, createButtonCollector } = require("discord-buttons");
+const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+
 module.exports.run = async (client, message, args,database, prefix) => {
 
   let user1 = message.author
@@ -31,16 +31,16 @@ module.exports.run = async (client, message, args,database, prefix) => {
 
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
-  
-  let button = new MessageButton().setLabel("Pedir demissão").setStyle("blurple").setID("yes");
+  const button = new MessageButton()
+	.setCustomId('primary')
+	.setLabel('demissao')
+	.setStyle('PRIMARY')
+	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-    let m = message.reply(`**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**`, button)
+    let m = message.reply({content: '**Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500**', components: [button]))
   
 
-let c = m.createButtonCollector((button) => button.clicker.user.id === message.author.id, { time: 30000 }).on("collect", b => {
-m.edit(`xu`)
-})
   }
      
 }
