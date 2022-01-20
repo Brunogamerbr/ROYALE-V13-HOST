@@ -51,7 +51,7 @@ if(dbE.val().emprego == 2) {
     mine.react('☑️');
 
  const filter = (reaction, user) => {
-	return reaction.emoji.name === '👍' && user.id === message.author.id;
+	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 };
 
 const collector = mine.createReactionCollector({ filter, time: 15000 });
@@ -59,7 +59,7 @@ const collector = mine.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	 dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
-	 return message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
+	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 })
 }
    
