@@ -1,17 +1,17 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const { Permissions } = require('discord.js');
+module.exports.run = async (client, message, args, database) => {
 
+if(!message.member.permissions(Permissions.FLAGS.BAN_MEMBERS)) return message.reply(`<:erro:858615784771551252>| ${message.author} Você precisa da permissão **BANIR MEMBROS** para utilizar este comando!`);
 
+var doggo = message.guild.members.cache.get(client.user.id);
 
-exports.run = async (client, message, args, database) => {
+if(!doggo.permissions.has(Permissions.FLAGS.BAN_MEMBERS)){
+ return message.reply(`<:erro:858615784771551252>| Eu não tenho a permissão \`Banir membros\` nesse servidor!`)
+}
 
-  
-
- if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:x: | ${message.author} Você precisa da permissão **BANIR MEMBROS** para utilizar este comando!`);       
-        let usu = args[0];
-
-         if (!usu) return message.inlineReply(`**<:erro:858615784771551252> | ${message.author} Utilize o ID de alguém para desbanir!**`);
-
-        message.guild.members.unban(usu);
-
-        message.channel.send(`✅ | ${message.author}, o usuário <@${usu}> (\`${usu}\`) foi desbanido com sucesso!`)
-    }
+let usu = args[0];
+if (!usu) return message.reply(`**<:erro:858615784771551252> | ${message.author} Utilize o ID de alguém para desbanir!**`);
+message.guild.members.unban(usu);
+message.channel.send(`☑️| ${message.author}, o usuário foi desbanido com sucesso!`)
+ }
