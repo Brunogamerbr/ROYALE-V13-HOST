@@ -59,7 +59,9 @@ t1.push({type: "crime", action: 1, date: Date.now(), quantia: amount2});
       t: t1
     })
 dbref.update({ dinheiro: db.val().dinheiro - amount2 })
-dbref.update({crimetime: Date.now()})return;}
+dbref.update({crimetime: Date.now()})
+return;
+}
 
 t1.push({type: "crime", action: 0, date: Date.now(), quantia: amount});
     tbref.set({
