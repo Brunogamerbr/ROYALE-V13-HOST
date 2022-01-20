@@ -39,15 +39,10 @@ module.exports.run = async function(client, message, args,database, prefix) {
   if (dbE.val().emprego == 1) {
   let pro = message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
    pro.react("👍")
-let filter1 = (reaction, user) => {
-	return reaction.emoji.name === '👍' && user.id === message.author.id;
-};
-let collector1 = pro.createReactionCollector({ filter, time: 15000 });
-collector.on('collect', (reaction, user) => {
+	
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
 	 dbref.update{dinheiro: db.val().dinheiro - 3500})
-});
 }
 
  if(dbE.val().emprego == 2) {
