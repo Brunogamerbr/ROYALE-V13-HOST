@@ -32,7 +32,6 @@ module.exports.run = async (client, message, args,database, prefix) => {
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
   const button = new MessageButton()
-	.setCustomId('primary')
 	.setLabel('demissao')
 	.setStyle('PRIMARY')
 	.setDisabled(true);
