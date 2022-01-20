@@ -18,5 +18,5 @@ module.exports.run = async(client, message, args, database, prefix) => {
           prefix: prefix1.toLowerCase()
         })
       }
-message.reply(`☑️*|** Prefixo alterado com sucesso para \` ${args[0]} \`!`)
+message.reply(`☑️**|** Prefixo alterado com sucesso para \` ${args[0]} \`!`)
 }
