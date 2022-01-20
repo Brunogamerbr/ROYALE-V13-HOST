@@ -39,7 +39,7 @@ database.ref(`Start/${user.id}`).once('value');
 
 
   if (dbU.val() == null) {
-message.inlineReply(`**<:erro:858615784771551252>| O usuário mencionado não está em minha Economia**`)
+message.reply(`**<:erro:858615784771551252>| O usuário mencionado não está em minha Economia**`)
 return;
 }
   
