@@ -48,9 +48,9 @@ collector.on('collect', async i => {
 		await message.reply({ content: 'heheboy', components: [] });
 	}
 });
-   
+  }
      
-     
+}
      
    /*message.reply('**☑️| Você pediu demissão com sucesso!**'); 
           dbEref.update({emprego: 0 }) 
@@ -62,7 +62,7 @@ collector.on('collect', async i => {
         }*/
   
   
-  }
+  
 
 exports.conf = {
   aliases: ["demissao"]
