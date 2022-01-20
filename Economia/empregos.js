@@ -45,7 +45,7 @@ collector.on('collect', (reaction, user) => {
   dbref.update({emprego: 1})
   message.reply('☑️| Parabéns! Agora você trabalhará como um 💻 Programador!');
 })
-}
+
  /* let filter = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
