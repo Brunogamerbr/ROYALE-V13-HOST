@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
 
 
   let user = message.author
-  let db = await database.ref(`Economia/${user.id}`).once('value');
+  const db = await database.ref(`Economia/${user.id}`).once('value');
   let dbref = database.ref(`Economia/${user.id}`);
   let dbE = await database.ref(`Empregos/${user.id}`).once('value');
   let dbEref = database.ref(`Empregos/${user.id}`);
@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args,database, prefix) => {
 	.setDisabled(true);
   
   if (dbE.val().emprego == 1) {
-  let pro = await message.reply(`Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500`)
+  let pro = await message.reply(`Você realmente deseja largar a vida de ?rogramador? essa ação custará R$3500 de sua carteira!`)
    pro.react("👍")
 let filter = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
@@ -45,12 +45,13 @@ let filter = (reaction, user) => {
 let collector = pro.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
-	client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	await client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	await client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
 });
 }
 
  if(dbE.val().emprego == 2) {
-   let mine = await message.reply(`Você realmente deseja largar a vida de Programador? Saiba: Você pagará R$3500`)
+   let mine = await message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
    mine.react("👍")
 let filter = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
@@ -58,11 +59,10 @@ let filter = (reaction, user) => {
 let collector = mine.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
-	client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	await client.db.set(`Empregos/${message.author.id}`, {emprego: 0})
+	await client.db.set(`Ecomomia/${message.author.id}`, {dinheiro: db.val().dinheiro - 3500})
 });
  }
-  
-
 }
      
 exports.conf = {
