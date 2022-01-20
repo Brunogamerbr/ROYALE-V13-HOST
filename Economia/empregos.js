@@ -49,7 +49,7 @@ collector.on('collect', (reaction, user) => {
   let filtro = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
-let coletor = m.createReactionCollector({ filter, time: 15000 });
+let coletor = m.createReactionCollector({ filtro, time: 15000 });
 coletor.on('collect', (reaction, user) => {
         dbref.update({emprego: 2})
        message.channel.send('**☑️| Parabéns! Agora você trabalhará como um ⛏️ Minerador**')
