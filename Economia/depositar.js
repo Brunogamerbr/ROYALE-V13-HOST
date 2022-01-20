@@ -45,7 +45,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
        
   dbref.update({bank: db.val().bank + money})
   dbEref.update({dinheiro: dbE.val().dinheiro - money})
-  message.reply({embeds: [embed]});
+  message.reply({embeds: [embed9]});
 }
 exports.conf = {
   aliases: ["dep"]
