@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
-exports.run = async (client, message, args, database) => {
+module.exports.run = async (client, message, args, database, prefix) => {
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.inlineReply(`<:erro:858615784771551252> | ${message.author} Você precisa da permissão **EXPULSAR MEMBROS** para utilizar este comando!`)
+  if(!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS)) return message.reply(`<:erro:858615784771551252> | ${message.author} Você precisa da permissão **EXPULSAR MEMBROS** para utilizar este comando!`)
 
         const usu = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         let reason = args.slice(1).join(" ");
@@ -9,13 +9,13 @@ exports.run = async (client, message, args, database) => {
 
 
 
-        if (!args[0]) return message.inlineReply(`<:erro:858615784771551252>| ${message.author} Menciona alguém ou utilize o ID de  alguém para expulsar!`);
+        if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author} Menciona alguém ou utilize o ID de  alguém para expulsar!`);
 
-        if(!usu) return message.inlineReply(`<:erro:858615784771551252> | ${message.author} Você não mencionou e nem utilizou um ID válido!`);
+        if(!usu) return message.reply(`<:erro:858615784771551252> | ${message.author} Você não mencionou e nem utilizou um ID válido!`);
 
-        if(!usu.kickable) return message.inlineReply(`<:erro:858615784771551252> | ${message.author} Ops! Eu não tenho permissão para expulsar este membro!`);
+        /*if(!usu.kickable) return message.reply(`<:erro:858615784771551252> | ${message.author} Ops! Eu não tenho permissão para expulsar este membro!`);*/
 
-        const ferinha = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
         .setAuthor(usu.user.tag,usu.user.displayAvatarURL({dynamic: true}))
         .setThumbnail(usu.user.displayAvatarURL())
         .setDescription(`**<:blacklisted:873563669559144448>| Expulso: ${usu.user}
@@ -26,12 +26,12 @@ exports.run = async (client, message, args, database) => {
         .setFooter(usu.user.tag, usu.user.displayAvatarURL());
 
         
-        await usu.kick({
+        /*await usu.kick({
             reason: reason
-        });
+        });*/
         
         
-        message.channel.send(ferinha);
+        message.channel.send({embeds: [embed]});
 
     }
 
