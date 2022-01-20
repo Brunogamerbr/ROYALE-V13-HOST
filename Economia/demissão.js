@@ -35,21 +35,33 @@ module.exports.run = async function(client, message, args,database, prefix) {
   
   if (dbE.val().emprego == 1) {
   let pro = message.reply(`Você realmente deseja largar a vida de programador? essa ação custará R$3500 de sua carteira!`)
-   pro.react("👍")
-	
-	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
+   pro.react("☑️")
+	const filter = (reaction, user) => {
+	return reaction.emoji.name === '☑️' && user.id === message.author.id;
+};
+  const collector = message.createReactionCollector({ filter, time: 15000 });
+  collector.on('collect', (reaction, user) => {
+		message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
+	 return;
+});
 }
 
-   if(dbE.val().emprego == 2) {
-   let mine = message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
-   mine.react("👍")
 
-	message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
+   if(dbE.val().emprego == 2) {
+   const filter1 = (reaction, user) => {
+   let mine = message.reply(`Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`)
+   mine.react("☑️")
+	return reaction.emoji.name === '☑️' && user.id === message.author.id;
+};
+  const collector1 = mine.createReactionCollector({ filter, time: 15000 });
+  collector1.on('collect', (reaction, user) => {
+    
+	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
- }
+ })
 }
      
 exports.conf = {
