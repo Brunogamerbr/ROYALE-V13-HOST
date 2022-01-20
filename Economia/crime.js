@@ -4,35 +4,29 @@ const ms = require("parse-ms");
 exports.run = async (client, message, args, database, prefix) => {
 
   let user = message.author
-  let dbs = await   
-database.ref(`Start/${user.id}`).once('value');
+  
+  let dbs = await database.ref(`Start/${user.id}`).once('value');
   let dbsref = database.ref(`Start/${user.id}`);
-
-  let db1 = await   
-database.ref(`Versao/${user.id}`).once('value');
+  
+  let db1 = await database.ref(`Versao/${user.id}`).once('value');
   let db1ref = database.ref(`Versao/${user.id}`);
-
-  let db2 = await   
-database.ref(`VersaoBuild`).once('value');
+  
+  let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
-
+  
   let tb = await database.ref(`Transacoes/${message.author.id}`).once("value")
   let tbref = database.ref(`Transacoes/${message.author.id}`)
 
   let t1 = tb.val() ? tb.val().t : [];
-    
-
   if (dbs.val() == null) {
-  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
-return;
-}
+message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
+return;}
   
   if (db1.val().versão !== db2.val().build) {
 message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
 
-  
   let user1 = message.author
   let dbX = await database.ref(`Nivel/${user1.id}`).once('value');
   let dbXref = database.ref(`Nivel/${user1.id}`);
@@ -83,7 +77,6 @@ message.channel.send({embeds: [embed2]})
 
 dbXref.update({ xp: dbX.val().xp + 60 })
 dbref.update({dinheiro: db.val().dinheiro + amount, crimetime: Date.now()})
-
 }
 
 exports.conf = {
