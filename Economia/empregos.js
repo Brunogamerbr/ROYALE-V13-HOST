@@ -46,7 +46,7 @@ collector.on('collect', (reaction, user) => {
 })
  
  const filtro = (reaction, user) => {
-	return reaction.emoji.name === '💻' && user.id === message.author.id;
+	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
 const coletor = m.createReactionCollector({ filter: filtro, time: 15000 });
 coletor.on('collect', (reaction, user) => {
