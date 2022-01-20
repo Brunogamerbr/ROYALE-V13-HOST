@@ -73,7 +73,7 @@ setTimeout(function() {
 return;
 }
 
- //require("./Xp.js")(client, message )
+ require("../Xp.js")(client, message)
 
 	
 try {
