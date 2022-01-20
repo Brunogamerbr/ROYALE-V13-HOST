@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const { MessageActionRow, MessageButton, MessageEmbed, MessageColletor } = require('discord.js');
-
 module.exports.run = async(client, message, args,database, prefix) => {
 
   let user1 = message.author
@@ -27,7 +26,7 @@ module.exports.run = async(client, message, args,database, prefix) => {
 
 
   if(dbE.val().emprego == 0) {
-  return message.reply(`**Você não possui um emprego para demissão. Utilize \`${prefix}empregos\` Para obter um emprego!**`)}
+  return message.reply(`<:erro:858615784771551252>| Você não possui um emprego para demissão. Utilize \`${prefix}empregos\` Para obter um emprego!`)}
 
 
   if(db.val() == null || db.val().dinheiro < 3500) return message.reply('**Para pedir demissão você necessita de R$3500 na sua Carteira!**') 
@@ -39,8 +38,8 @@ module.exports.run = async(client, message, args,database, prefix) => {
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 }
-const collector = pro.createReactionCollector({ filter, time: 15000 });
-collector.on('collect', (reaction, user) => {
+  const collector = pro.createReactionCollector({ filter, time: 15000 });
+  collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
@@ -49,15 +48,17 @@ collector.on('collect', (reaction, user) => {
 
 
    if(dbE.val().emprego == 2) {
-    let mine = message.channel.send({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
+    let mine = await message.channel.send({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
     mine.react('☑️');
-     
-   
-    
+    const filter1 = (reaction, user) => {
+  	return reaction.emoji.name === '☑️' && user.id === message.author.id;
+}
+   const collector1 = mine.createReactionCollector({ filter, time: 15000 });
+   collector1.on('collect', (reaction, user) => {
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 	 dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
-
+})
 }
 }
      
