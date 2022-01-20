@@ -44,7 +44,7 @@ const filter = (reaction, user) => {
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
 };
 
-const collector = message.createReactionCollector({ filter, time: 15000 });
+const collector = pro.createReactionCollector({ filter, time: 15000 });
 
 collector.on('collect', (reaction, user) => {
 	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
