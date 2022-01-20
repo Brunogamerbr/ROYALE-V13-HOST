@@ -19,12 +19,13 @@ if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author
 /*if(!usu.bannable) return message.reply(`<:erro:858615784771551252>| ${message.author} Ops! Eu não tenho permissão para banir este membro!`);*/
 
  let embed = new Discord.MessageEmbed()
+  .setColor("#0D02FA")
  .setTitle(`**<:Legal:870733089083625502>|Banimento!**`)
  .setDescription(`**<:correto:858615705398018078> ${usu.user} foi banido com sucesso
 Motivo: \`${reason}\`
 banido Por: ${message.author.tag}**`)
- .setThumbnail("https://i.imgur.com/P0PyiAj.png")
- .setColor("#0D02FA")
+ .setThumbnail('https://i.imgur.com/P0PyiAj.png')
+
  .setTimestamp()
  .setFooter(`Banimento realizado com sucesso`);
 
