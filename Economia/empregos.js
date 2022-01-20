@@ -36,22 +36,22 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
     .setFooter("Reaja com o emoji referente ao Emprego desejado")
     .setColor(`0D02FA`)
   
-  const m = await message.reply({embeds: [embed]})
+  const m = await message.channel.send({embeds: [embed]})
      m.react('⛏️'); m.react("💻")
-let filter1 = (reaction1, user1) => {
+  const filter = (reaction, user) => {
+  return reaction.emoji.name === '💻' && user.id === message.author.id;
+};
+  const collector = m.createReactionCollector({ filter, time: 15000 });
+  collector.on('collect', (reaction, user) => {
+  dbref.update({emprego: 1})
+  message.reply('☑️| Parabéns! Agora você trabalhará como um 💻 Programador!');
+})
+
+  let filter1 = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
 let collector1 = m.createReactionCollector({ filter1, time: 15000 });
-collector1.on('collect', (reaction1, user1) => {
-          dbref.update({emprego: 1})
-        message.channel.send('**☑️| Parabéns! Agora você trabalhará como um 💻 Programador**');
-})
-
-let filter = (reaction, user) => {
-	return reaction.emoji.name === '💻' && user.id === message.author.id;
-};
-let collector = m.createReactionCollector({ filter, time: 15000 });
-collector.on('collect', (reaction, user) => {
+collector1.on('collect', (reaction, user) => {
         dbref.update({emprego: 2})
        message.channel.send('**☑️| Parabéns! Agora você trabalhará como um ⛏️ Minerador**')
 })
