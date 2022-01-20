@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { MessageEmbed } = require('discord.js');
 module.exports.run = async (client, message, args, database, prefix) => {
     
 let db = await client.db.get(`InventarioRPG_${message.author.id}`);
