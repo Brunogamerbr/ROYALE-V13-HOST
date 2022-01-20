@@ -18,7 +18,7 @@ if (!args[0]) return message.reply(`<:erro:858615784771551252>| ${message.author
 
 if(!usu.bannable) return message.inlineReply(`<:erro:858615784771551252>| ${message.author} Ops! Eu não tenho permissão para banir este membro!`);
 
- let dm = new Discord.MessageEmbed()
+ let embed = new Discord.MessageEmbed()
  .setTitle(`**<:Legal:870733089083625502>|Banimento!**`)
  .setDescription(`**<:correto:858615705398018078> ${usu.user} foi banido com sucesso
 Motivo: \`${reason}\`
@@ -26,9 +26,9 @@ banido Por: ${message.author.tag}**`)
  .setThumbnail("https://i.imgur.com/P0PyiAj.png")
  .setColor("#0D02FA")
  .setTimestamp()
- .setFooter(`Banimento realizado com sucesso`)
+ .setFooter(`Banimento realizado com sucesso`);
 
-let embed = new Discord.MessageEmbed()
+let embeddm = new Discord.MessageEmbed()
 .setTitle(`<:Legal:870733089083625502>| Banido!`)
 .setDescription(`**${usu}, você foi banido do servidor: \`${message.guild.name}\`\nBanido por: \`${message.author.tag}\`\nMotivo: \`${reason}\`**`)
 .setColor(`#0D02FA`)
@@ -38,8 +38,8 @@ let embed = new Discord.MessageEmbed()
 /* await usu.ban({
  reason: reason
  }) */
-message.channel.send({embeds: [dm]})
- 
+message.channel.send({embeds: [embed]})
+usu.send({embeds: [embeddm]})
 } catch(err){
   console.log(err)
 }
