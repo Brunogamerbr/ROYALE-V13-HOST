@@ -46,7 +46,7 @@ module.exports.run = async(client, message, args,database, prefix) => {
 });
 }
 
-/*if(dbE.val().emprego == 2) {
+if(dbE.val().emprego == 2) {
    let mine = await message.channel.send({content: `Você realmente deseja largar a vida de Minerador? essa ação custará R$3500 de sua carteira!`, fetchReply: true});
     mine.react('☑️');
 
@@ -61,7 +61,7 @@ collector.on('collect', (reaction, user) => {
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
 	 message.reply(`☑️| Você pediu demissão do emprego de minerador!`)
 })
-}*/
+}
    
 }
 exports.conf = {
