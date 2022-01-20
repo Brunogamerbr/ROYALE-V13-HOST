@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
-const ms = require('parse-ms'); // 
-exports.run = async (client, message, args, database, prefix) => {
+const ms = require('parse-ms');
+const { MessageEmbed } = require('discord.js');
+module.exports.run = async (client, message, args, database, prefix) => {
   let user1 = message.author
   
   let dbs = await   
