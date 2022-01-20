@@ -39,12 +39,12 @@ module.exports.run = async(client, message, args,database, prefix) => {
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '☑️' && user.id === message.author.id;
 }
-const collector = message.createReactionCollector({ filter, time: 15000 });
+const collector = pro.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
 	message.reply(`☑️| Você pediu demissão do emprego de programador!`)
    dbEref.update({emprego: 0})
 	 dbref.update({dinheiro: db.val().dinheiro - 3500})
-})
+});
 }
 
 
