@@ -113,7 +113,7 @@ if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time
 
 message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
 dbref.update({dinheiro: db.val().dinheiro - 500})
-dbLref.update({escolta: Date.now()})	
+dbLref.update({escolta_time: Date.now()})	
 m.delete()
 message.delete()
 }
