@@ -22,9 +22,14 @@ module.exports.run = async (client, message, args, database, prefix) => {
 return;
 }
 const button = new MessageButton()
+  .setCustomId("PRIMARY");
 	.setLabel('Yes')
 	.setStyle('PRIMARY')
 	.setEmoji('910846323463422003');
+
+const row = new MessageActionRow()
+.addComponents([button]);
+
 
    let dbL = await database.ref(`Loja/${user1.id}`).once("value")
    let dbLref = database.ref(`Loja/${user1.id}`)
