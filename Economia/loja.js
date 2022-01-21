@@ -71,15 +71,21 @@ msg.react("<:caixa:910843230273282058>");
 msg.react("<:roll:910846793749758012>");*/
 
 
-const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
-collector.on('collect', i => {
-	if (i.user.id === interaction.user.id) {
-if(db.val().dinheiro < 7000) return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`);
+const filter = i => i.customId === 'PRIMARY1' && i.user.id === message.author.id;
+
+const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+
+collector.on('collect', async i => {
+	if (i.customId === 'PRIMARY1') {
+if(db.val().dinheiro < 7000){
+return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`)}
 message.reply(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
-dbLref.update({porte: 1})
-} else {
-return;
-}
-})
+dbLref.update({porte: 1})		
+	}
+});
+	  
+
+
+
 }
