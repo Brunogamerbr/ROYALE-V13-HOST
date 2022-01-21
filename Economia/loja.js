@@ -84,6 +84,8 @@ dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})		
 }
 });
-collector.on('end', collected => return;
+collector.on('end', collected => {
+  return;
+})
 
 }
