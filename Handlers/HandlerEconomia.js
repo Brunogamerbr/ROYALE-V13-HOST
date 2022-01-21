@@ -42,7 +42,7 @@ return;}*/
 return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
   
   if(c == 'start'){
-  require("../Economia/start.js")(client, message)
+  require("../Economia/start.js")(client, message, args)
   return;
   }
   
