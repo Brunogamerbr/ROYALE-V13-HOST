@@ -14,7 +14,8 @@ module.exports.run = async (client, message, args, database, prefix) => {
   return;}
 
   if (db1V.val().versão !== db2B.val().build) {
-  message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)return;}
+  message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`) 
+  return;}
 
   let db = await database.ref(`Economia/${user1.id}`).once('value');
   let dbref = database.ref(`Economia/${user1.id}`);
