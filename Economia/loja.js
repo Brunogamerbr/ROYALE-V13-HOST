@@ -40,23 +40,20 @@ msg.react("<:escl:910849586858434600>");
 msg.react("<:pistola:910848201672773642>");
 msg.react("<:caixa:910843230273282058>");
 msg.react("<:roll:910846793749758012>");
-
-let c1 = await msg.createReactionCollector((reaction, u) => u.id === message.author.id, {time: 60000});
-
-c1.on("collect", async (m, u) => {
-  c1.stop();
-  switch(m.emoji.id) {
-    case `910846323463422003`:
-      if(db.val().dinheiro < 7000) return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`);
-
+const filter = (reaction, user) => {
+	return reaction.emoji.name === '<:porte:910846323463422003>' && user.id === message.author.id;
+};
+const collector = message.createReactionCollector({ filter, time: 15000 });
+collector.on('collect', (reaction, user) => {
+	
+if(db.val().dinheiro < 7000) return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`);
 message.reply(`Você comprou um porte de armas!`);
-
-      dbref.update({
-        dinheiro: db.val().dinheiro - 7000
-      })
-      dbLref.update({porte: 1})
-      
-    break;
+dbref.update({dinheiro: db.val().dinheiro - 7000})
+dbLref.update({porte: 1})
+})
+  
+  
+  
     case "910849586858434600":
       /*if(db.val().dinheiro < 500) return message.inlineReply(`:x: **|** Você não tem dinheiro suficiente para comprar uma **Escolta**`);
       message.inlineReply(`Você comprou 30 minutos de escolta!`);
