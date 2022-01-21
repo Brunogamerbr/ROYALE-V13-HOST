@@ -12,10 +12,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
   
-  let quantiag = Math.floor(Math.random() * 1500) + 700;
-  let roubo = ["n", "Preso", "n", "Preso", "Preso"]
-  let caiu = roubo[Math.floor(Math.random() * roubo.length)]
-
+  
 
   if (dbs.val() == null) {
   message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
@@ -157,6 +154,9 @@ const filter4 = i => i.customId === 'PRIMARY4' && i.user.id === message.author.i
 const collector4 = m.createMessageComponentCollector({ filter: filter4, time: 15000 });
 collector4.on('collect', async i => {
 if (i.customId === 'PRIMARY4') {
+  const quantiag = Math.floor(Math.random() * 1500) + 700;
+  const roubo = ["n", "Preso", "n", "Preso", "Preso"]
+  const caiu = roubo[Math.floor(Math.random() * roubo.length)]
 if(db.val().dinheiro < 300){
 setTimeout(function() {m.delete()
 message.delete()}, 100);
@@ -167,8 +167,7 @@ message.delete()}, 100);
 
 
 if (caiu == 'n'){
-
-
+let quantiag = Math.floor(Math.random() * 1500) + 700;
 let embedm = new Discord.MessageEmbed()
 .setTitle(`<:caixa:910843230273282058> MisteryBox`)
 .setDescription(`Você comprou uma **MisteryBox** e dentro dela havia: \n\n **R$${quantia}** e **70** de **XP**`)
@@ -180,7 +179,7 @@ message.channel.send({embeds: [embedm]});
 dbref.update({dinheiro: db.val().dinheiro - 300})
 dbref.update({dinheiro: db.val().dinheiro + quantiag})
 }else{
-  message.channel.send(`Não foi dessa vez, tente comprar outra e tenha uma boa sorte na próxima!`)
+message.channel.send(`Não foi dessa vez, tente comprar outra e tenha uma boa sorte na próxima!`)
 dbref.update({dinheiro: db.val().dinheiro - 300})
 }
 }
