@@ -78,6 +78,7 @@ const collector = m.createMessageComponentCollector({ filter, time: 15000 });
 collector.on('collect', async i => {
 	if (i.customId === 'PRIMARY1') {
 if(db.val().dinheiro < 7000){
+  setTimeout(function() {m.delete()}, 100);
 return m.edit({content:`<<:erro:858615784771551252>858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`})
   
 }
