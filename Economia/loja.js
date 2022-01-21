@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { MessageEmbed, MessageButton } = require('discord.js');
 module.exports.run = async (client, message, args, database, prefix) => {
 
   let user1 = message.author;
@@ -38,17 +39,24 @@ msg.react("<:escl:910849586858434600>");
 msg.react("<:pistola:910848201672773642>");
 msg.react("<:caixa:910843230273282058>");
 msg.react("<:roll:910846793749758012>");
-const filter = (reaction, user) => {
-	return reaction.emoji.name === '910846323463422003' && user.id === message.author.id;
-};
-const collector = message.createReactionCollector({ filter, time: 15000 });
-collector.on('collect', (reaction, user) => {
-	
+
+const button = new MessageButton()
+	.setCustomId('primary')
+	.setLabel('Primary')
+	.setStyle('PRIMARY')
+	.setEmoji('910846323463422003');
+
+
+const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+collector.on('collect', i => {
+	if (i.user.id === interaction.user.id) {
 if(db.val().dinheiro < 7000) return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`);
 message.reply(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})
 })
-
-
+	} else {
+		return;
+	}
+});
 }
