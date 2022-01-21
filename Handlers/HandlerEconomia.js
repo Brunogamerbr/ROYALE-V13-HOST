@@ -89,8 +89,8 @@ return;
 }
 
   
-	if (dbs.val() == null) {
-  return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
+	 if (dbs.val() == null) {
+   return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
 	
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
