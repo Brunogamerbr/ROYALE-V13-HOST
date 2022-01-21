@@ -31,8 +31,22 @@ let button1 = new MessageButton();
         button2.setCustomId("PRIMARY2");
         button2.setEmoji('910849586858434600')
         button2.setStyle("PRIMARY");
-
-        const row = new MessageActionRow().addComponents([button1, button2]);
+      
+        let button3 = new MessageButton();
+        button3.setCustomId("PRIMARY3");
+        button3.setEmoji('910848201672773642')
+        button3.setStyle("PRIMARY");
+        
+        let button4 = new MessageButton();
+        button4.setCustomId("PRIMARY4");
+        button4.setEmoji('910843230273282058')
+        button4.setStyle("PRIMARY");
+       
+       let button5 = new MessageButton();
+        button3.setCustomId("PRIMARY5");
+        button3.setEmoji('910846793749758012')
+        button3.setStyle("PRIMARY");
+        const row = new MessageActionRow().addComponents([button1, button2, button3, button4, button5]);
 
      
 
