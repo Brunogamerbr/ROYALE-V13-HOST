@@ -130,10 +130,12 @@ const collector3 = m.createMessageComponentCollector({ filter: filter3, time: 15
 collector3.on('collect', async i => {
 if (i.customId === 'PRIMARY3') {
 if(db.val().dinheiro < 5000){
-setTimeout(function() { m.delete() message.delete() }, 100);
+setTimeout(function() {m.delete()
+message.delete()}, 100);
 return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar uma **Pistola**`})
 }
-setTimeout(function() { m.delete() message.delete() }, 100);
+setTimeout(function() {m.delete()
+message.delete()}, 100);
 }
 message.channel.send(`Você comprou uma **Pistola** no valor de **R$7000**!`);
 dbref.update({dinheiro: db.val().dinheiro - 5000})
