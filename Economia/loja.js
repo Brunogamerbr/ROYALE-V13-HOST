@@ -11,6 +11,8 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let db1ref = database.ref(`Versao/${user1.id}`);
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
+  let dbn = await database.ref(`Nivel/${user1.id}`).once('value');
+  let dbnref = database.ref(`Nivel/${user1.id}`);
   const quantiag = Math.floor(Math.random() * 1500) + 700;
   const roubo = ["n", "Preso", "n", "Preso", "Preso"]
   const caiu = roubo[Math.floor(Math.random() * roubo.length)]
@@ -175,6 +177,7 @@ let embedm = new Discord.MessageEmbed()
 message.channel.send({embeds: [embedm]});
 dbref.update({dinheiro: db.val().dinheiro - 300})
 dbref.update({dinheiro: db.val().dinheiro + quantiag})
+dbnref.update({xp: dbn.val().xp + 70})
 }else{
 message.channel.send(`Não foi dessa vez, tente comprar outra e tenha uma boa sorte na próxima!`)
 dbref.update({dinheiro: db.val().dinheiro - 300})
