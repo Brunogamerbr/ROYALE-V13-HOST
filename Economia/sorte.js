@@ -1,6 +1,6 @@
 const pixapi = require("pixapi");
 const Discord = require("discord.js");
-module.exports.run = async(client, message, args, database, prefix) => {
+module.exports.run = (client, message, args, database, prefix) => {
   
 }
   let user1 = message.author
