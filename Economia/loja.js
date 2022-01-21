@@ -72,9 +72,7 @@ msg.react("<:roll:910846793749758012>");*/
 
 
 const filter = i => i.customId === 'PRIMARY1' && i.user.id === message.author.id;
-
 const collector = m.createMessageComponentCollector({ filter, time: 15000 });
-
 collector.on('collect', async i => {
 	if (i.customId === 'PRIMARY1') {
 if(db.val().dinheiro < 7000){
@@ -92,5 +90,34 @@ message.delete()
 collector.on('end', collected => {
   return;
 })
+
+
+
+
+
+const filter2 = i => i.customId === 'PRIMARY2' && i.user.id === message.author.id;
+const collector2 = m.createMessageComponentCollector({ filter: filter2, time: 15000 });
+collector2.on('collect', async i => {
+	if (i.customId === 'PRIMARY2') {
+if(db.val().dinheiro < 500){
+  setTimeout(function() {m.delete()
+  message.delete()}, 100);
+return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar uma **Escolta**`})
+}
+message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
+dbref.update({dinheiro: db.val().dinheiro - 500})
+dbLref.update({escolta: 1})	
+m.delete()
+message.delete()
+}
+});
+collector2.on('end', collected => {
+  return;
+})
+
+
+
+
+
 
 }
