@@ -39,7 +39,7 @@ msg.react("<:pistola:910848201672773642>");
 msg.react("<:caixa:910843230273282058>");
 msg.react("<:roll:910846793749758012>");
 const filter = (reaction, user) => {
-	return reaction.emoji.name === '<:porte:910846323463422003>' && user.id === message.author.id;
+	return reaction.emoji.name === '910846323463422003' && user.id === message.author.id;
 };
 const collector = message.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
