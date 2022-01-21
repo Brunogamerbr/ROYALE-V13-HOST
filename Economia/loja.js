@@ -114,7 +114,7 @@ if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time
    }
 setTimeout(function() {m.delete()
 message.delete()}, 100);
-}
+
 message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
 dbref.update({dinheiro: db.val().dinheiro - 500})
 dbLref.update({escolta_time: Date.now()})	
@@ -136,7 +136,7 @@ return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.
 }
 setTimeout(function() {m.delete()
 message.delete()}, 100);
-}
+
 message.channel.send(`Você comprou uma **Pistola** no valor de **R$7000**!`);
 dbref.update({dinheiro: db.val().dinheiro - 5000})
 dbLref.update({pistola: 1})
