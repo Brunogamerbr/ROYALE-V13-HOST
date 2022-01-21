@@ -54,9 +54,8 @@ if(db.val().dinheiro < 7000) return message.reply(`<:erro:858615784771551252>**|
 message.reply(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})
+} else {
+return;
+}
 })
-	} else {
-		return;
-	}
-});
 }
