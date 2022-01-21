@@ -167,7 +167,7 @@ message.delete()}, 100);
 if (caiu == 'n'){
 let embedm = new Discord.MessageEmbed()
 .setTitle(`<:caixa:910843230273282058> MisteryBox`)
-.setDescription(`Você comprou uma **MisteryBox** e dentro dela havia: \n\n **R$${quantia}** e **70** de **XP**`)
+.setDescription(`Você comprou uma **MisteryBox** e dentro dela havia: \n\n **R$${quantiag}** e **70** de **XP**`)
 .setColor('BLUE')
 .setThumbnail(`https://i.imgur.com/cVlJAYG.png`)
 .setFooter(`Caixa aberta por ${message.author.tag}`)
