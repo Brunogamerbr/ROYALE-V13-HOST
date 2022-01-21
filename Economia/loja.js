@@ -101,7 +101,7 @@ const collector2 = m.createMessageComponentCollector({ filter: filter2, time: 15
 collector2.on('collect', async i => {
 if (i.customId === 'PRIMARY2') {
 if(db.val().dinheiro < 500){
-setTimeout(function() {m.delete() message.delete()}, 100);
+setTimeout(function() { m.delete() message.delete() }, 100);
 return message.channel.send(`<:erro:858615784771551252>| Você não possui dinheiro suficiente em sua carteira!`)
 }
    
