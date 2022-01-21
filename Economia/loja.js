@@ -21,7 +21,11 @@ module.exports.run = async (client, message, args, database, prefix) => {
   message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
-
+const button = new MessageButton()
+	.setCustomId('primary')
+	.setLabel('Primary')
+	.setStyle('PRIMARY')
+	.setEmoji('910846323463422003');
 
    let dbL = await database.ref(`Loja/${user1.id}`).once("value")
    let dbLref = database.ref(`Loja/${user1.id}`)
@@ -32,19 +36,13 @@ return;
 .setDescription(`**${message.author} Seja bem vindo a minha loja! abaixo estará uma pequena lista de itens a venda.\n\n<:porte:910846323463422003>  Porte de Armas\nPreço: R$7000\n\n<:escl:910849586858434600> Escolta\nPreço: R$500\n\n<:pistola:910848201672773642> Pistola\nPreço: R$5000\n\n<:caixa:910843230273282058> MisteryBox\nPreço: R$300\n\n<:roll:910846793749758012> Roll\nPreço: R$500**`)
 .setThumbnail(`https://cdn.glitch.com/b98b4389-f89f-445c-b6db-65281520d07b%2Ficons8-online-store-64.png?v=1591924550503`)
 .setColor(`#0D02FA`)
-let msg = await message.reply({embeds: [embed]}) 
+let msg = await message.reply({embeds: [embed], components: [button]}) 
 
-msg.react(`<:porte:910846323463422003>`);
+/*msg.react(`<:porte:910846323463422003>`);
 msg.react("<:escl:910849586858434600>");
 msg.react("<:pistola:910848201672773642>");
 msg.react("<:caixa:910843230273282058>");
-msg.react("<:roll:910846793749758012>");
-
-const button = new MessageButton()
-	.setCustomId('primary')
-	.setLabel('Primary')
-	.setStyle('PRIMARY')
-	.setEmoji('910846323463422003');
+msg.react("<:roll:910846793749758012>");*/
 
 
 const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
