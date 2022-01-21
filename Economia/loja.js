@@ -82,10 +82,8 @@ return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro su
 message.reply(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})		
-	}
+}
 });
-	  
-
-
+collector.on('end', collected => return;
 
 }
