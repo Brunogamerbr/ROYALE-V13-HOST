@@ -11,6 +11,11 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let db1ref = database.ref(`Versao/${user1.id}`);
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
+  
+  let quantiag = Math.floor(Math.random() * 1500) + 700;
+  let roubo = ["n", "Preso", "n", "Preso", "Preso"]
+  let caiu = roubo[Math.floor(Math.random() * roubo.length)]
+
 
   if (dbs.val() == null) {
   message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
@@ -56,7 +61,6 @@ return;
 
    let dbL = await database.ref(`Loja/${user1.id}`).once("value")
    let dbLref = database.ref(`Loja/${user1.id}`)
-   let caiu = Math.floor(Math.random() * (500 - 100)) + 100;
    let embed = new Discord.MessageEmbed()
 
 .setTitle(`**Loja de itens e Ferramentas**`)
@@ -163,9 +167,7 @@ message.delete()}, 100);
 
 
 if (caiu == 'n'){
-let quantiag = Math.floor(Math.random() * 1500) + 700;
-let roubo = ["n", "Preso", "n", "Preso", "Preso"]
-let caiu = roubo[Math.floor(Math.random() * roubo.length)]
+
 
 let embedm = new Discord.MessageEmbed()
 .setTitle(`<:caixa:910843230273282058> MisteryBox`);
