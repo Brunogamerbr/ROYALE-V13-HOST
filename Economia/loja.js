@@ -24,12 +24,12 @@ return;
 }
 let button1 = new MessageButton();
         button1.setCustomId("PRIMARY");
-        button1.setLabel("Yes");
+        button1.setLabel("<:porte:910846323463422003>");
         button1.setStyle("PRIMARY");
 
         let button2 = new MessageButton();
         button2.setCustomId("PRIMARY2");
-        button2.setLabel("No");
+        button2.setLabel("<:escl:910849586858434600>");
         button2.setStyle("PRIMARY");
 
         const row = new MessageActionRow().addComponents([button1, button2]);
