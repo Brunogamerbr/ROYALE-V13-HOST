@@ -79,9 +79,9 @@ collector.on('collect', async i => {
 	if (i.customId === 'PRIMARY1') {
 if(db.val().dinheiro < 7000){
   setTimeout(function() {m.delete()}, 100);
-return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar um **Porte de Armas`})
+return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar um **Porte de Armas**`})
 }
-m.edit(`Você comprou um porte de armas!`);
+message.channel.send(`Você comprou um **Porte de armas** no valor de **R$7000**!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})	
 m.delete()
