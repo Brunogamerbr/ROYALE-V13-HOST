@@ -28,7 +28,7 @@ return;
 }
 
 if (cara == message.author) {
-return message.inlineReply(`<:erro:858615784771551252>| Você não pode se roubar!`);
+return message.reply(`<:erro:858615784771551252>| Você não pode se roubar!`);
 }
 
 let db3 = await database.ref(`Start/${cara.id}`).once('value');  
