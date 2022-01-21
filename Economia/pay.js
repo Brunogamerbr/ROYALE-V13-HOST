@@ -72,7 +72,7 @@ return;
 
     tbref.set({t: t1})
     tbref2.set({t: t2})
-    message.reply(`☑️| Transações realizada com sucesso, ${user} recebeu R$${parseInt(args[1]}!`)
+    message.reply(`☑️| Transações realizada com sucesso, ${user} recebeu R$${parseInt(args[1])}!`)
 })
 }
 
