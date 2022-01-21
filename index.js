@@ -5,7 +5,7 @@ const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
-require("./RifaOn.js")(client)
+require("./RifaOn.js")
 process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
 })
