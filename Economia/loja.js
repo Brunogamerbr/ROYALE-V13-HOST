@@ -107,18 +107,17 @@ if(db.val().dinheiro < 500){
 }
    
 if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time) > 0) {
+  setTimeout(function() {m.delete()
+  message.delete()}, 100);
    let time = ms(timeout - (Date.now() - dbL.val().escolta_time));
   return message.channel.send(`<:erro:858615784771551252>| Você ainda tem **${time.minutes}m ${time.seconds}** de **Escolta**, aguarde esse tempo acabar para comprar outra!`)
-setTimeout(function() {m.delete()
-  message.delete()}, 100);
    }
-
-message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
-dbref.update({dinheiro: db.val().dinheiro - 500})
-dbLref.update({escolta_time: Date.now()})	
 setTimeout(function() {m.delete()
   message.delete()}, 100);
 }
+message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
+dbref.update({dinheiro: db.val().dinheiro - 500})
+dbLref.update({escolta_time: Date.now()})	
 });
 collector2.on('end', collected => {
   return;
