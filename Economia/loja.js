@@ -118,7 +118,8 @@ message.delete()}, 100);
 message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
 dbref.update({dinheiro: db.val().dinheiro - 500})
 dbLref.update({escolta_time: Date.now()})	
-});
+}
+})
 collector2.on('end', collected => {
   return;
 })
