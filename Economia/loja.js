@@ -78,8 +78,8 @@ const collector = m.createMessageComponentCollector({ filter, time: 15000 });
 collector.on('collect', async i => {
 	if (i.customId === 'PRIMARY1') {
 if(db.val().dinheiro < 7000){
-return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`)}
-message.reply(`Você comprou um porte de armas!`);
+return m.edit(`<<:erro:858615784771551252>858615784771551252>**|** Você não tem dinheiro suficiente para comprar um **Porte de Armas`)}
+m.edit(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})		
 }
