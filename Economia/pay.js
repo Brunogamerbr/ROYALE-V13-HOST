@@ -4,24 +4,22 @@ const pixapi = require("pixapi");
 const jimp = require("jimp");
 const { MessageAttachment } = require('discord.js');
 
-exports.run = async (client, message, args, database, prefix ) => {
+module.exports.run = async (client, message, args, database, prefix ) => {
 
   let user = client.users.cache.find(u => u.tag === args[0]) || message.mentions.users.first() || client.users.cache.get(args[0]); 
 
- if(!user) {
+  if(!user) {
   return message.reply("<:erro:858615784771551252>| Você precisa informar o usuário que deseja enviar o pagamento!");
  }
-if (user.id == message.author.id) {
- return message.reply(`<:erro:858615784771551252>| Você não pode enviar dinheiro para a sua conta!`)
-}
+  if(user.id == message.author.id) {
+ return message.reply(`<:erro:858615784771551252>| Você não pode enviar dinheiro para a sua conta!`)}
 
-let dbu = await   
-database.ref(`Start/${user.id}`).once('value');
+  let dbu = await database.ref(`Start/${user.id}`).once('value');
   let dburef = database.ref(`Start/${user.id}`);
   
   if (dbu.val() == null) {
- message.reply(`<:erro:858615784771551252>| O usuário(a) ${user} Não está em meu banco de dados`)
-return;
+  message.reply(`<:erro:858615784771551252>| O usuário(a) ${user} Não está em meu banco de dados`)
+  return;
   }
   let money = parseInt(args[1]);
 
@@ -29,11 +27,8 @@ return;
 
   let db = await database.ref(`Economia/${message.author.id}`).once('value');
   let dbref = database.ref(`Economia/${message.author.id}`);
-
   let db2 = await database.ref(`Economia/${user.id}`).once('value');
   let db2ref = database.ref(`Economia/${user.id}`);
-
-
   let tb = await database.ref(`Transacoes/${message.author.id}`).once("value")
   let tbref = database.ref(`Transacoes/${message.author.id}`)
   let tb2 = await database.ref(`Transacoes/${user.id}`).once("value")
@@ -41,8 +36,6 @@ return;
 
   if(!db2.val()) return message.reply(`:x: **| Esse usuário(a) não está em minha Economia!**`);
   if(!db.val() || db.val().dinheiro < money) return message.inlineReply(":x: **| Você não possui dinheiro suficiente para isso!**");
-
-  
 
   let msg = await message.channel.send(`${message.author} Para você poder enviar dinheiro para ${user} os dois devem clicar em ☑️`);
   await msg.react("☑️");
