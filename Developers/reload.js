@@ -4,11 +4,11 @@ exports.run = async (client, message, args) => {
   
 
   if(!config.owners.includes(message.author.id)) {
-  message.inlineReply('Apenas os desenvolvedores do Bot podem usar!')
+  message.reply('Apenas os desenvolvedores do Bot podem usar!')
 return;
 }
 
-  if(!args || args.length < 1) return message.inlineReply(`**Recarregar qual arquivo?**`);
+  if(!args || args.length < 1) return message.reply(`**Recarregar qual arquivo?**`);
   reload(args[0].toLowerCase());
 
  function reload(command) {
