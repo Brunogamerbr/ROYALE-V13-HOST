@@ -2,7 +2,7 @@ const pixapi = require("pixapi");
 const Discord = require("discord.js");
 module.exports.run = async(client, message, args, database, prefix) => {
   
-}
+
   let user1 = message.author
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
