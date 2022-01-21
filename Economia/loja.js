@@ -115,7 +115,7 @@ if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time
   setTimeout(function() {m.delete()
   message.delete()}, 100);
    let time = ms(timeout - (Date.now() - dbL.val().escolta_time));
-  return message.channel.send(`<:erro:858615784771551252>| Você ainda tem **${time.minutes}m ${time.seconds}** de **Escolta**, aguarde esse tempo acabar para comprar outra!`)
+  return message.channel.send(`<:erro:858615784771551252>| Você ainda tem **${time.minutes}m ${time.seconds}s** de **Escolta**, aguarde esse tempo acabar para comprar outra!`)
    }
 setTimeout(function() {m.delete()
 message.delete()}, 100);
