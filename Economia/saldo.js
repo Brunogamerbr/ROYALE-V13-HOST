@@ -25,7 +25,6 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
   if (dbu.val() == null) {
  return message.reply(`**O usuário(a) ${user} não está em meu banco de dados**`)}
   
-
   let db = await database.ref(`Economia/${user.id}`).once('value');
   let dbref = database.ref(`Economia/${user.id}`);
   let dbc = await database.ref(`Banco/${user.id}`).once('value');
