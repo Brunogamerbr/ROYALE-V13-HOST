@@ -80,11 +80,12 @@ setTimeout(() => {
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
   msg.edit(`☑️| Sucesso, agora minha Economia estará disponível para você!`)
-}, 15000)
+}, 1500)
 } 
 else {
 return;
 }
+return;
 }
 
   
