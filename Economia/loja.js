@@ -22,7 +22,6 @@ module.exports.run = async (client, message, args, database, prefix) => {
 return;
 }
 const button = new MessageButton()
-	.setCustomId('primary')
 	.setLabel('Primary')
 	.setStyle('PRIMARY')
 	.setEmoji('910846323463422003');
