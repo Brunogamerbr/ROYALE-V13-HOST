@@ -1,8 +1,9 @@
 const Discord = require("discord.js")
 const { MessageEmbed, MessageButton } = require('discord.js');
 const { MessageActionRow } = require("discord.js");
+const ms = require("parse-ms");
 module.exports.run = async (client, message, args, database, prefix) => {
-
+  let timeount = (3600000)
   let user1 = message.author;
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
@@ -102,11 +103,16 @@ collector2.on('collect', async i => {
 if(db.val().dinheiro < 500){
   setTimeout(function() {m.delete()
   message.delete()}, 100);
+  
+   if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time) > 0) {
+   let time = ms(timeout - (Date.now() - dbL.val().escolta_time));
+  return message.channel.send(`<:erro:858615784771551252>| Você ainda tem **${time.minutes}m ${time.seconds}** de **Escolta**, aguarde esse tempo acabar para comprar outra!`)
+   }
 return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar uma **Escolta**`})
 }
 message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
 dbref.update({dinheiro: db.val().dinheiro - 500})
-dbLref.update({escolta: 1})	
+dbLref.update({escolta: Date.now()})	
 m.delete()
 message.delete()
 }
