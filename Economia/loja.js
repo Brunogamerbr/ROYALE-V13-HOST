@@ -3,7 +3,7 @@ const { MessageEmbed, MessageButton } = require('discord.js');
 const { MessageActionRow } = require("discord.js");
 const ms = require("parse-ms");
 module.exports.run = async (client, message, args, database, prefix) => {
-  let timeount = (3600000)
+  const timeount = (3600000)
   let user1 = message.author;
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
