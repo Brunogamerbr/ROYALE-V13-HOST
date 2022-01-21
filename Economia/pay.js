@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const config = require("../config.json");
 const pixapi = require("pixapi");
 const jimp = require("jimp");
+const { MessageAttachment } = require('discord.js');
 
 exports.run = async (client, message, args, database, prefix ) => {
 
@@ -98,11 +99,12 @@ async function sendImg(user1, user2, valor, message) {
     img.print(Sans, 130, 135, pixapi.formatDate("DD/MM/YYYY ás HH:mm:ss", Date.now() - (1.08e+7)))
     img.print(Sans, 40, 205, "R$ "+valor)
     img.write('paymentCheck.png')
+    const file = new MessageAttachment('../paymentCheck.png');
     let embed = new Discord.MessageEmbed()
        .setDescription("Pagamento realizado com sucesso!")
        .setColor("#0D02FA")
-      .attachFiles(['./paymentCheck.png']).setImage('attachment://paymentCheck.png')
-     message.channel.send(embed)
+      .setImage('attachment://paymentCheck.png')
+     message.channel.send({embeds: [embed], files: [file]})
   });
 }
 
