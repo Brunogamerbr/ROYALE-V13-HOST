@@ -1,40 +1,25 @@
 const ms = require('parse-ms')
-
-exports.run = async (client, message, args, database, prefix) => {
- 
-	
-	
+const Discord = require("discord.js")
+module.exports.run = async (client, message, args, database, prefix) => {
  
   let user1 = message.author
-  
-  let dbs = await   
-database.ref(`Start/${user1.id}`).once('value');
+  let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
-  
-  let db1V = await   
-database.ref(`Versao/${user1.id}`).once('value');
+  let db1V = await database.ref(`Versao/${user1.id}`).once('value');
   let db1Vref = database.ref(`Versao/${user1.id}`);
-
-  let db2B = await   
-database.ref(`VersaoBuild`).once('value');
+  let db2B = await database.ref(`VersaoBuild`).once('value');
   let d2Bref = database.ref(`VersaoBuild`);
 
   if (dbs.val() == null) {
-  message.inlineReply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
-return;
-    }
+  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
+  return;
+}
 
   
 if (db1V.val().versão !== db2B.val().build) {
-message.inlineReply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
-
-	
-	
-	
-	
-	
 	
 	let ref = await database.ref(`Rifa`)
   let db = await ref.once('value')
@@ -48,13 +33,11 @@ return;
       tickets: 0,
       ticketsTotal: 0
     })
-
   }
-
   if(!['buy', 'comprar'].includes(args[0])) {
     let time = parseInt(db.val().tempo - Date.now())
  
-message.inlineReply(`
+message.reply(`
 Participantes: **${db.val().participantes}**
 Tickets comprados: **${db.val().tickets}**
 Prêmio: **R$${db.val().quantiaTotal}**
@@ -78,7 +61,7 @@ Compre um ticket com \`.rifa buy\``)
     let usuarios = dbUsers.val() ? dbUsers.val().users : []
     let ticketsCompradosPorUser = dbMaxTickets.val() ? dbMaxTickets.val().total : 0
 
-    if((buyTickets * 300) > dbMoney.val().dinheiro) return message.inlineReply(`Você não tem **R$${(buyTickets * 300).toLocaleString('en')}** na sua Carteira para comprar **${buyTickets}** tickets!`)
+    if((buyTickets * 300) > dbMoney.val().dinheiro) return message.reply(`Você não tem **R$${(buyTickets * 300).toLocaleString('en')}** na sua Carteira para comprar **${buyTickets}** tickets!`)
     if(parseInt((ticketsCompradosPorUser + buyTickets)) > 5000) return message.reply(`Você só pode comprar 5,000 tickets por partida.`)
 
     let arrayTickets = []
@@ -115,12 +98,9 @@ Compre um ticket com \`.rifa buy\``)
       quantiaTotal: parseInt(db.val().quantiaTotal + (buyTickets * 300)),
       tickets: parseInt(db.val().tickets + buyTickets),
     })
-
-    message.inlineReply(`Você comprou **${buyTickets}** tickets por **R$${(buyTickets * 300)}** agora espere até o resultado da rifa sair!`)
-
+    message.reply(`Você comprou **${buyTickets}** tickets por **R$${(buyTickets * 300)}** agora espere até o resultado da rifa sair!`)
     let tb = await database.ref(`Transacoes/${message.author.id}`).once("value")
     let tbref = database.ref(`Transacoes/${message.author.id}`)
-
     let t1 = tb.val() ? tb.val().t : [];
       
     t1.push({type: "rifa", action: 1, date: Date.now(), quantia: (buyTickets * 300), num: buyTickets});
