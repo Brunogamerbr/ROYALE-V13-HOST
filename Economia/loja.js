@@ -191,8 +191,8 @@ collector4.on('end', collected => {
 
 
 
-const filter = i => i.customId === 'PRIMARY5' && i.user.id === message.author.id;
-const collector5 = m.createMessageComponentCollector({ filter, time: 15000 });
+const filter5 = i => i.customId === 'PRIMARY5' && i.user.id === message.author.id;
+const collector5 = m.createMessageComponentCollector({ filter: filter5, time: 15000 });
 collector5.on('collect', async i => {
 if (i.customId === 'PRIMARY5') {
 if(db.val().dinheiro < 500){
