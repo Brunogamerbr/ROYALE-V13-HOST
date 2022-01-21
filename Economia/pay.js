@@ -8,10 +8,10 @@ exports.run = async (client, message, args, database, prefix ) => {
   let user = client.users.cache.find(u => u.tag === args[0]) || message.mentions.users.first() || client.users.cache.get(args[0]); 
 
  if(!user) {
-  return message.inlineReply(":x: **| Você precisa informar o usuário que deseja enviar o pagamento!**");
+  return message.reply("<:erro:858615784771551252>| Você precisa informar o usuário que deseja enviar o pagamento!");
  }
 if (user.id == message.author.id) {
- return message.inlineReply(`<:erro:858615784771551252>| Você não pode enviar dinheiro para a sua conta!`)
+ return message.reply(`<:erro:858615784771551252>| Você não pode enviar dinheiro para a sua conta!`)
 }
 
 let dbu = await   
@@ -19,12 +19,12 @@ database.ref(`Start/${user.id}`).once('value');
   let dburef = database.ref(`Start/${user.id}`);
   
   if (dbu.val() == null) {
- message.inlineReply(`**O usuário(a) ${user} Não está em meu banco de dados**`)
+ message.reply(`<:erro:858615784771551252>| O usuário(a) ${user} Não está em meu banco de dados`)
 return;
   }
   let money = parseInt(args[1]);
 
-  if(!args[1] || !money || money <= 0) return message.inlineReply(":x: **| Por favor, Informe uma quantia de dinheiro válida!**");
+  if(!args[1] || !money || money <= 0) return message.reply("<:erro:858615784771551252>| Por favor, Informe uma quantia de dinheiro válida!");
 
   let db = await database.ref(`Economia/${message.author.id}`).once('value');
   let dbref = database.ref(`Economia/${message.author.id}`);
@@ -38,7 +38,7 @@ return;
   let tb2 = await database.ref(`Transacoes/${user.id}`).once("value")
   let tbref2 = database.ref(`Transacoes/${user.id}`)
 
-  if(!db2.val()) return message.inlineReply(`:x: **| Esse usuário(a) não está em minha Economia!**`);
+  if(!db2.val()) return message.reply(`:x: **| Esse usuário(a) não está em minha Economia!**`);
   if(!db.val() || db.val().dinheiro < money) return message.inlineReply(":x: **| Você não possui dinheiro suficiente para isso!**");
 
   
