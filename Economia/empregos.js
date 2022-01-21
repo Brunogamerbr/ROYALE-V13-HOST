@@ -12,7 +12,6 @@ module.exports.run = async (client, message, args, database, prefix) => {
   if (dbs.val() == null) {
 return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
 
-
   if (db1.val().versão !== db2.val().build) {
   return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
   
@@ -22,7 +21,7 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
   
   if (db.val().emprego == 1) return message.reply(`Você ja possui um empredo de: \`💻 Programador\`, Você deve pedir demissão para visitar a Agência!`)
   
-  if (db.val().emprego == 2) return message.reply(`**Você ja possui um empredo de: \`⛏️ Minerador\`, Você deve pedir demissão Para visitar a Agência!`)
+  if (db.val().emprego == 2) return message.reply(`Você ja possui um empredo de: \`⛏️ Minerador\`, Você deve pedir demissão Para visitar a Agência!`)
 
   let embed = new Discord.MessageEmbed() 
     .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
@@ -39,27 +38,21 @@ return message.reply(`**Antes de começar a usar minha Economia você deve usar 
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '💻' && user.id === message.author.id;
 };
-const collector = m.createReactionCollector({ filter, time: 15000 });
+  const collector = m.createReactionCollector({ filter, time: 15000 });
 collector.on('collect', (reaction, user) => {
   dbref.update({emprego: 1})
   message.reply('☑️| Parabéns! Agora você trabalhará como um 💻 Programador!');
 })
  
- const filtro = (reaction, user) => {
+  const filtro = (reaction, user) => {
 	return reaction.emoji.name === '⛏️' && user.id === message.author.id;
 };
-const coletor = m.createReactionCollector({ filter: filtro, time: 15000 });
-coletor.on('collect', (reaction, user) => {
+  const coletor = m.createReactionCollector({ filter: filtro, time: 15000 });
+  coletor.on('collect', (reaction, user) => {
   dbref.update({emprego: 2})
   message.reply('☑️| Parabéns! Agora você trabalhará como um ⛏️ Minerador!');
 })
- 
- 
- 
- 
- 
 }
-
 exports.conf = {
   aliases: ['empregos']
 }
