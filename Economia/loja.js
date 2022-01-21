@@ -22,8 +22,8 @@ module.exports.run = async (client, message, args, database, prefix) => {
   message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
-let button1 = new MessageButton();
-        button1.setCustomId("PRIMARY");
+       let button1 = new MessageButton();
+        button1.setCustomId("PRIMARY1");
         button1.setEmoji('910846323463422003')
         button1.setStyle("PRIMARY");
 
@@ -42,10 +42,10 @@ let button1 = new MessageButton();
         button4.setEmoji('910843230273282058')
         button4.setStyle("PRIMARY");
        
-       let button5 = new MessageButton();
-        button3.setCustomId("PRIMARY5");
-        button3.setEmoji('910846793749758012')
-        button3.setStyle("PRIMARY");
+        let button5 = new MessageButton();
+        button5.setCustomId("PRIMARY5");
+        button5.setEmoji('910846793749758012')
+        button5.setStyle("PRIMARY");
         const row = new MessageActionRow().addComponents([button1, button2, button3, button4, button5]);
 
      
