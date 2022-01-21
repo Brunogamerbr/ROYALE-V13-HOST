@@ -35,7 +35,7 @@ return;
 
   if(db.val() && db.val().delay - (Date.now() - timeout) > 0) {
     let ms = pixapi.formatTimer(db.val().delay - (Date.now() - timeout))
-    return message.inlineReply(`**<:erro:858615784771551252>| Você ja testou sua Sorte! Aguarde ${ms.hours}h ${ms.minutes}m ${ms.seconds}s para tentar novamente**`)
+    return message.reply(`**<:erro:858615784771551252>| Você ja testou sua Sorte! Aguarde ${ms.hours}h ${ms.minutes}m ${ms.seconds}s para tentar novamente**`)
   }
 
   let percent = Math.random() < 0.5; // 50% de chance de vir verdadeiro ou falso;
