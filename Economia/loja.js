@@ -11,7 +11,9 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let db1ref = database.ref(`Versao/${user1.id}`);
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
-  
+  const quantiag = Math.floor(Math.random() * 1500) + 700;
+  const roubo = ["n", "Preso", "n", "Preso", "Preso"]
+  const caiu = roubo[Math.floor(Math.random() * roubo.length)]
   
 
   if (dbs.val() == null) {
@@ -154,9 +156,6 @@ const filter4 = i => i.customId === 'PRIMARY4' && i.user.id === message.author.i
 const collector4 = m.createMessageComponentCollector({ filter: filter4, time: 15000 });
 collector4.on('collect', async i => {
 if (i.customId === 'PRIMARY4') {
-  const quantiag = Math.floor(Math.random() * 1500) + 700;
-  const roubo = ["n", "Preso", "n", "Preso", "Preso"]
-  const caiu = roubo[Math.floor(Math.random() * roubo.length)]
 if(db.val().dinheiro < 300){
 setTimeout(function() {m.delete()
 message.delete()}, 100);
@@ -165,9 +164,7 @@ return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.
 setTimeout(function() {m.delete()
 message.delete()}, 100);
 
-
 if (caiu == 'n'){
-let quantiag = Math.floor(Math.random() * 1500) + 700;
 let embedm = new Discord.MessageEmbed()
 .setTitle(`<:caixa:910843230273282058> MisteryBox`)
 .setDescription(`Você comprou uma **MisteryBox** e dentro dela havia: \n\n **R$${quantia}** e **70** de **XP**`)
