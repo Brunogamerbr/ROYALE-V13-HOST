@@ -13,13 +13,11 @@ module.exports.run = async (client, message, args, database, prefix) => {
   message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
   return;
     }
-
   let db = await database.ref(`Economia/${user1.id}`).once("value")
   let dbref = database.ref(`Economia/${user1.id}`)
 
-  
   if (db1.val().versão !== db2.val().build) {
-message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+  message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
 
@@ -51,63 +49,6 @@ message.reply(`Você comprou um porte de armas!`);
 dbref.update({dinheiro: db.val().dinheiro - 7000})
 dbLref.update({porte: 1})
 })
-  
-  
-  
-    case "910849586858434600":
-      /*if(db.val().dinheiro < 500) return message.inlineReply(`:x: **|** Você não tem dinheiro suficiente para comprar uma **Escolta**`);
-      message.inlineReply(`Você comprou 30 minutos de escolta!`);
-      
-      dbref.update({
-        dinheiro: db.val().dinheiro-500
-      })
-      dbLref.set({escolta: 1 })*/
-    message.reply(`Escolta em manutenção!`)
-      return;
-      break;
-    case "910848201672773642":
-    
-    
-      if(db.val().dinheiro < 5000) return message.reply(`<:erro:858615784771551252>**|** Você não tem dinheiro suficiente para comprar uma **Pistola**`);
-      message.reply(`Você comprou uma pistola!`);
 
-      dbref.update({
-        dinheiro: db.val().dinheiro-5000
-      })
-      dbLref.update({pistola: 1})
-    break;
-    case "910843230273282058":
-      /*if(db.val().dinheiro < 300) {
-        message.inlineReply(`:x: **|** Você não tem dinheiro suficiente para comprar uma **MisteryBox**`);
-        return;         
-      } else {
-        let emb = new Discord.MessageEmbed()
-          .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
-          .setDescription(`Você comprou uma **MisteryBox** e abriu.. Dentro dela havia: **R$${caiu}** + **60** de **XP**`)
-          .setFooter(`Mistery Box aberta`)
-          .setColor("#0D02FA")
-          .setTimestamp();
-      
-
-        dbref.update({
-          dinheiro: (db.val().dinheiro - 300) + caiu
-        })
-        
-
-        message.inlineReply(emb)
-      }*/
-      message.reply(`MisteryBox em manutenção!`)
-    break;
-  case "910846793749758012":
-      if (db.val().dinheiro <500) {
-message.reply(`**<:erro:858615784771551252>|** Você não tem dinheiro na carteira suficiente para comprar um Roll!`)
-return;       
-}
-      message.reply(`Você comprou **1** Roll no valor de **R$500**!`)
-      dbref.update({dinheiro: db.val().dinheiro - 500})
-      dbLref.update({roll: (dbL.val().roll || 0) + 1})
-      break;
-  }
-})
 
 }
