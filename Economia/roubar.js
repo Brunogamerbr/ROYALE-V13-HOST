@@ -3,10 +3,9 @@ const ms = require("parse-ms");
 
 module.exports.run = async (client, message, args, database, prefix) => {
 let user = message.author;
-let cara = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 let db4 = await database.ref(`Start/${user.id}`).once('value');
 let db4ref = await database.ref(`Start/${user.id}`);
-
+let cara = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
 if (db4.val() == null) {
 message.reply(`**Antes de começar a usar minha Economia. você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`);
@@ -15,8 +14,6 @@ message.reply(`**Antes de começar a usar minha Economia. você deve usar \`${pr
 
 let db5 = await database.ref(`Versao/${user.id}`).once('value');  
 let db6 = await database.ref(`VersaoBuild`).once('value');
-let db1L = await database.ref(`Loja/${cara.id}`).once('value')
-let db2L = await database.ref(`Loja/${cara.id}`)
 
 if (db5.val().versão !== db6.val().build){
 message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`.invite\`**`)
@@ -36,6 +33,8 @@ if (db3.val() == null) {
 message.reply(`<:erro:858615784771551252>| Esse usuário não está em minha Economia!`)
   return;
 }
+let db1L = await database.ref(`Loja/${cara.id}`).once('value')
+let db2L = await database.ref(`Loja/${cara.id}`)
 if (db1L.val().escolta_time) {
 return message.reply(`<:erro:858615784771551252>| Esse usuário está com uma **escolta** ativa, você não poderá roubar ele!`)
 }
