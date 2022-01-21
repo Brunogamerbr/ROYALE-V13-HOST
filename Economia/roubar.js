@@ -3,7 +3,7 @@ const ms = require("parse-ms");
 
 module.exports.run = async (client, message, args, database, prefix) => {
 let user = message.author;
-let cara = message.mentions.users.first();
+let cara = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 let db4 = await database.ref(`Start/${user.id}`).once('value');
 let db4ref = await database.ref(`Start/${user.id}`);
 
