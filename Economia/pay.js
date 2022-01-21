@@ -70,56 +70,13 @@ return;
     t1.push({type: "pay", action: 1, date: Date.now(), quantia: money, to: user.id});
     t2.push({type: "pay", action: 0, date: Date.now(), quantia: money, by: message.author.id});
 
-    tbref.set({
-      t: t1
-    })
-    tbref2.set({
-      t: t2
-    })
-    
-    sendImg(message.member, user, money, message);
-    }
-    }
-  });
-  
+    tbref.set({t: t1})
+    tbref2.set({t: t2})
+    message.reply(`☑️| Transações realizada com sucesso, ${user} recebeu R$${parseInt(args[1]}!`)
+})
 }
 
 
-
-async function sendImg(user1, user2, valor, message) {
-  let url = "https://i.imgur.com/H74YC2B.png";
-  
-  let Sans = await jimp.loadFont(jimp.FONT_SANS_16_BLACK)
-  let Sans2 = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
-
-  jimp.read(url).then(img => {
-    img.print(Sans, 32, 94, user1.user.tag+"")
-    img.print(Sans, 230, 94, user2.tag+"")
-    img.print(Sans2, 420, 115, "R$ "+abbr(valor))
-    img.print(Sans, 130, 135, pixapi.formatDate("DD/MM/YYYY ás HH:mm:ss", Date.now() - (1.08e+7)))
-    img.print(Sans, 40, 205, "R$ "+valor)
-    img.write('paymentCheck.png')
-    const file = new MessageAttachment('../paymentCheck.png');
-    let embed = new Discord.MessageEmbed()
-       .setDescription("Pagamento realizado com sucesso!")
-       .setColor("#0D02FA")
-      .setImage('attachment://paymentCheck.png')
-     message.channel.send({embeds: [embed], files: [file]})
-  });
-}
-
-function abbr(number = 0, confs = { precision: null, suffs: null}) {
-    if (!number) {
-        throw new TypeError('Erro! Você não colocou o número a ser convertido');
-    }
-    const suffsFromZeros = confs.suffs || { 0:'', 3:'k', 6:'kk', 9:'b', 12:'t', 15: 'q' }
-    const { length } = number.toString()
-    const lengthThird = length%3
-    const divDigits = length-(lengthThird || lengthThird+3)
-    const calc = ''+(number/(10**divDigits)).toFixed(confs.precision || 2)
-  
-    return number < 1000 ? ''+number : (calc.indexOf('.') === calc.length-3 ? calc.replace(/\.00/, '') : calc)+suffsFromZeros[divDigits]
-}
 module.exports.config = {
   aliases: ["pagar"]
 }
