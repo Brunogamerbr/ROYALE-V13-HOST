@@ -1,12 +1,9 @@
 const Discord = require("discord.js");
 const pixapi = require("pixapi")
-
 module.exports.conf = {
   aliases: ["transações", "transaçoes", "transacões"]
 }
-
 module.exports.run = async function(client, message, args, database) {
-
   function getUser(id) {
     let usr = client.users.cache.get(id);
     return usr ? usr.tag : id;
@@ -17,8 +14,8 @@ module.exports.run = async function(client, message, args, database) {
 
 
   let db = await database.ref(`Transacoes/${user.id}`).once("value");
-  if(!db.val() && user != message.author) return message.inlineReply(":x: **| Esse usuário ainda fez nenhum tipo de transação!**");
-  if(!db.val()) return message.inlineReply(":x: **| Você não fez nenhuma transação ainda!**");
+  if(!db.val() && user != message.author) return message.reply(":x: **| Esse usuário ainda fez nenhum tipo de transação!**");
+  if(!db.val()) return message.reply(":x: **| Você não fez nenhuma transação ainda!**");
   
 
   let trans = [];
@@ -80,7 +77,7 @@ module.exports.run = async function(client, message, args, database) {
     .setColor("#0D02FA")
     .setTitle(user == message.author ? "Suas ultimas transações" : `Ultimas transações de ${user.tag}`);
   
-  message.inlineReply(embed);
+  message.reply({embeds: [embed]});
 }
 
 function cacheAbb(number = 0, confs = { precision: null, suffs: null}) {
