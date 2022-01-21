@@ -23,7 +23,8 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let dblref = database.ref(`Loja/${user1.id}`);
   
   if (!dbl.val() || !dbl.val().roll) {
-    message.reply(`**<:erro:858615784771551252>|** Você não possuí nenhum **Ticket roll** disponível! Para poder rolar o dado compre um **Ticket roll** na loja. \`.loja\``)return;}
+    message.reply(`**<:erro:858615784771551252>|** Você não possuí nenhum **Ticket roll** disponível! Para poder rolar o dado compre um **Ticket roll** na loja. \`.loja\``) 
+    return;}
 
   if (!parseInt(args[0]) || parseInt(args[0]) < 1 || parseInt(args[0]) > 10) {
   message.reply(`**<:erro:858615784771551252>| Digite um número de 1 a 10 após o comando!**`);return;} 
