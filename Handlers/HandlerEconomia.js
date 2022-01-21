@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 module.exports = async (client, message, database, config) => {
 
   let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
-	
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
   if(message.author.bot) return;
@@ -39,10 +38,10 @@ return;}*/
   let d2ref = database.ref(`VersaoBuild`);
   
   if (db1.val().versão !== db2.val().build) {
-return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
+  return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
   
   if(c == 'start'){
-  require("../Economia/start.js")(client, message, args)
+  ("../Economia/start.js").run(client, message, args)
   return;
   }
   
