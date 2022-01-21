@@ -15,14 +15,13 @@ module.exports.run = async(client, message, args, database, prefix) => {
 
   if (dbs.val() == null) {
    message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
-return;
+  return;
 }
 
-if (db1V.val().versão !== db2B.val().build) {
-message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+  if (db1V.val().versão !== db2B.val().build) {
+   message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
-
 
 
   let db = await database.ref(`Sorte/${message.author.id}`).once('value');
