@@ -51,7 +51,6 @@ return;
 
   c1.on("collect", async (reaction, u) => {
     let arr = msg.reactions.cache.get('☑️').users.cache.map(x => x.id)
-
     if(arr.includes(message.author.id) && arr.includes(user.id)) {
     let grana = await client.db.get(`Economia_${message.author.id}_dinheiro`);
     if(parseInt(grana) >= money) {
@@ -73,6 +72,8 @@ return;
     tbref.set({t: t1})
     tbref2.set({t: t2})
     message.reply(`☑️| Transações realizada com sucesso, ${user} recebeu R$${parseInt(args[1])}!`)
+}
+}
 })
 }
 
