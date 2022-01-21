@@ -23,7 +23,7 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
   let dburef = database.ref(`Start/${user.id}`);
   
   if (dbu.val() == null) {
- return message.reply(`**O usuário(a) ${user} Não está em meu banco de dados**`)}
+ return message.reply(`**O usuário(a) ${user} não está em meu banco de dados**`)}
   
 
   let db = await database.ref(`Economia/${user.id}`).once('value');
@@ -31,7 +31,9 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
   let dbc = await database.ref(`Banco/${user.id}`).once('value');
   let dbcref = database.ref(`Banco/${user.id}`);
 
-
+  if(db.val().dinheiro == null) db.val().dinheiro = 0;
+  if(dbc.val().bank == null) db.val().bank = 0;
+  
   let embed = new Discord.MessageEmbed()
     .setColor("#0D02FA")
     .setTitle("<:royalecoin:882701325438156801>**|** Balanço Monetário")
