@@ -189,4 +189,28 @@ collector4.on('end', collected => {
 })
 
 
+
+
+const filter = i => i.customId === 'PRIMARY5' && i.user.id === message.author.id;
+const collector5 = m.createMessageComponentCollector({ filter, time: 15000 });
+collector5.on('collect', async i => {
+if (i.customId === 'PRIMARY5') {
+if(db.val().dinheiro < 500){
+setTimeout(function() {m.delete()
+message.delete()}, 100);
+return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar um **Roll**`})
+}
+message.channel.send(`Você comprou um **Roll** no valor de **R$500**!`);
+dbref.update({dinheiro: db.val().dinheiro - 500})
+dbLref.update({roll: 1})	
+m.delete()
+message.delete()
+}
+});
+collector5.on('end', collected => {
+  return;
+})
+
+
+
 }
