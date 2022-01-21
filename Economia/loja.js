@@ -101,7 +101,8 @@ const collector2 = m.createMessageComponentCollector({ filter: filter2, time: 15
 collector2.on('collect', async i => {
 if (i.customId === 'PRIMARY2') {
 if(db.val().dinheiro < 500){
-setTimeout(function() { m.delete() message.delete() }, 100);
+setTimeout(function() {m.delete()
+message.delete()}, 100);
 return message.channel.send(`<:erro:858615784771551252>| Você não possui dinheiro suficiente em sua carteira!`)
 }
    
@@ -111,7 +112,8 @@ if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time
    let time = ms(timeout - (Date.now() - dbL.val().escolta_time));
   return message.channel.send(`<:erro:858615784771551252>| Você ainda tem **${time.minutes}m ${time.seconds}** de **Escolta**, aguarde esse tempo acabar para comprar outra!`)
    }
-setTimeout(function() { m.delete() message.delete() }, 100);
+setTimeout(function() {m.delete()
+message.delete()}, 100);
 }
 message.channel.send(`Você comprou um **1 hora de Escolta** no valor de **R$500**!`);
 dbref.update({dinheiro: db.val().dinheiro - 500})
