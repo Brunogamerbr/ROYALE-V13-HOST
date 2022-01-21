@@ -166,7 +166,7 @@ return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.
 setTimeout(function() {m.delete()
 message.delete()}, 100);
 
-if (caiu == 'n'){
+if (caiu == 'Preso'){
 let embedm = new Discord.MessageEmbed()
 .setTitle(`<:caixa:910843230273282058> MisteryBox`)
 .setDescription(`Você comprou uma **MisteryBox** e dentro dela havia: \n\n **R$${quantiag}** e **70** de **XP**`)
