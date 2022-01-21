@@ -75,10 +75,10 @@ msg.react("<:roll:910846793749758012>");*/
 const filter = i => i.customId === 'PRIMARY1' && i.user.id === message.author.id;
 const collector = m.createMessageComponentCollector({ filter, time: 15000 });
 collector.on('collect', async i => {
-	if (i.customId === 'PRIMARY1') {
+if (i.customId === 'PRIMARY1') {
 if(db.val().dinheiro < 7000){
-  setTimeout(function() {m.delete()
-  message.delete()}, 100);
+setTimeout(function() {m.delete()
+message.delete()}, 100);
 return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar um **Porte de Armas**`})
 }
 message.channel.send(`Você comprou um **Porte de armas** no valor de **R$7000**!`);
@@ -99,11 +99,10 @@ collector.on('end', collected => {
 const filter2 = i => i.customId === 'PRIMARY2' && i.user.id === message.author.id;
 const collector2 = m.createMessageComponentCollector({ filter: filter2, time: 15000 });
 collector2.on('collect', async i => {
-	if (i.customId === 'PRIMARY2') {
+if (i.customId === 'PRIMARY2') {
 if(db.val().dinheiro < 500){
-  setTimeout(function() {m.delete()
-  message.delete()}, 100);
-  return message.channel.send(`<:erro:858615784771551252>| Você não possui dinheiro suficiente em sua carteira!`)
+setTimeout(function() {m.delete() message.delete()}, 100);
+return message.channel.send(`<:erro:858615784771551252>| Você não possui dinheiro suficiente em sua carteira!`)
 }
    
 if(dbL.val().escolta_time != 0 && timeout - (Date.now() - dbL.val().escolta_time) > 0) {
@@ -125,6 +124,26 @@ collector2.on('end', collected => {
 
 
 
+const filter3 = i => i.customId === 'PRIMARY3' && i.user.id === message.author.id;
+const collector = m.createMessageComponentCollector({ filter: filter3, time: 15000 });
+collector3.on('collect', async i => {
+if (i.customId === 'PRIMARY3') {
+if(db.val().dinheiro < 5000){
+setTimeout(function() {m.delete()
+message.delete()}, 100);
+return message.channel.send({content:`<:erro:858615784771551252>**|** ${message.author} Você não tem dinheiro suficiente para comprar uma **Pistola**`})
+}
+setTimeout(function() {m.delete()
+  message.delete()}, 100);
+}
+message.channel.send(`Você comprou uma **Pistola** no valor de **R$7000**!`);
+dbref.update({dinheiro: db.val().dinheiro - 5000})
+dbLref.update({pistola: 1})
+}
+});
+collector3.on('end', collected => {
+  return;
+})
 
 
 
