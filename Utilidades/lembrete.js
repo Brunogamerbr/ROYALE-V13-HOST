@@ -2,9 +2,13 @@ const Discord = require('discord.js');
 const ms = require("ms")
 module.exports.run = async (client, message, args, database) => {
   let time = args[0]
+  
   if(!time) return message.reply("**Para definir um lembrete Use o comando dessa Forma: \`.lembrete [tempo] [mensagem de lembrete]\`**")
+  
   let lembrete = args.slice(1).join(" ")
+  
   if(!lembrete) return message.reply(`**Por favor. Defina um texto lembrete**`)
+  
   const seliga = new Discord.MessageEmbed()
   .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
   .setTitle (`Lembrete agendado`)
