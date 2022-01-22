@@ -18,8 +18,10 @@ let embed = new Discord.MessageEmbed()
 .setTitle(`Reportagens de problemas!`)
 .setDescription(`Problema reportado pelo usuário: \`${message.author.tag}\`\nID: \`${user.id}\`\nPoblema reportado: \`${content}\``)
   .setColor(`#0D02FA`)
-canal.send((embeds: [embed]})
-message.delete()
+canal send({ embeds: [embed]})
+setTimeout(function() {
+ message.delete()
+}, 200);
 await message.reply(`☑️| Seu report foi enviado até a minha equipe! tentaremos resolver seu problema o mais rápido possível!`)
 }
 exports.conf = {
