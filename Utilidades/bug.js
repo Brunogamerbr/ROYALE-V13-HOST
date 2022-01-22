@@ -16,7 +16,7 @@ return message.reply(`<:erro:858615784771551252>| Escreva seu problema após o c
 let canal = client.channels.cache.get("934192477689241652");
 let embed = new Discord.MessageEmbed()  
 .setTitle(`Reportagens de problemas!`)
-.setDescription(`**Problema reportado pelo usuário:** **\`${message.author.tag}\`**\n**Id:** **\`${user.id}\`""\n\n**Poblema reportado:** **\`${content}\`**`)
+.setDescription(`**Problema reportado pelo usuário:** **\`${message.author.tag}\`**\n**Id:** **\`${user.id}\`**\n\n**Poblema reportado:** **\`${content}\`**`)
   .setColor(`#0D02FA`)
 canal.send({ embeds: [embed]})
 setTimeout(function() {
