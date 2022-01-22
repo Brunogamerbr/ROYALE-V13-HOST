@@ -5,15 +5,17 @@ module.exports = async (client, message, database, config) => {
   let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
 	
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
-
+  
   if(message.author.bot) return;
   if(message.channel.type == "dm") return;
   if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
-
+  
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let ave = args.shift();
   let comando = client.aventura.get(ave);
   if(!comando) return;
+	
+	
 	
 	let embed1 = new Discord.MessageEmbed()
  .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${ave}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
@@ -21,13 +23,17 @@ module.exports = async (client, message, database, config) => {
     .setTimestamp()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
   
-
-  /*let active = await client.db.get(`ModoDev`);
-if (active.active != 0) {*/
-/*if(!config.owners.includes(message.author.id)) {
-    
-message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Para mais informações entre em meu Servidor de Suporte usando \`${prefix}invite\`**`)
-return;}*/
+  if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
+  let block = await client.db.get(`Servidores_${message.guild.id}`)
+  if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
+  let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
+  setTimeout(function() {
+  canalblock.delete()
+}, 3000);
+return;
+}
+return;
+}
 
   let user1 = message.author
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
@@ -56,17 +62,6 @@ return;
     
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
-if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
-let block = await client.db.get(`Servidores_${message.guild.id}`)
-if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
-let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-setTimeout(function() {
-  canalblock.delete()
-}, 3000);
-return;
-}
-return;
-}
 try {
 require("../Eventos/ItensRPG.js")(client, message)
 require("../Xp.js")(client, message)
