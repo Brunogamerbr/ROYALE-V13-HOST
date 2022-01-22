@@ -5,7 +5,7 @@ const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
-require("./RifaOn.js");
+require("./RifaOn.js")(client)
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
