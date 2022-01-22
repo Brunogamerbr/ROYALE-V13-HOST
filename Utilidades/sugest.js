@@ -24,6 +24,7 @@ let embed = new Discord.MessageEmbed()
 let canal = message.guild.channels.cache.get(`${db.val().canal}`)
 message.reply(`Sua sugestão foi enviada para <#${db.val().canal}> com sucesso!`)
 let m = await canal.send({embeds: [embed]})
-await m.react("☑️")
+await m.react("☑️");
+await m.react("❌");
 }
         
