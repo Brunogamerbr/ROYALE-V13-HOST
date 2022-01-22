@@ -5,10 +5,7 @@ const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
-require("./RifaOn.js")
-/*process.on('uncaughtException', (err) => {
-client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-})*/
+require("./RifaOn.js");
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -33,12 +30,15 @@ require("./Afk.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
-require("./Eventos/Ready.js")(client)
-require("./LoadCommands/LoadAventura.js")(client)
-require("./LoadCommands/LoadModeração.js")(client)
-require("./LoadCommands/LoadEconomia.js")(client)
-require("./LoadCommands/LoadDevelopers.js")(client)
-require("./LoadCommands/LoadUtilidades.js")(client)
+require("./Eventos/Ready.js")(client);
+require("./LoadCommands/LoadAventura.js")(client);
+require("./LoadCommands/LoadModeração.js")(client);
+require("./LoadCommands/LoadEconomia.js")(client);
+require("./LoadCommands/LoadDevelopers.js")(client);
+require("./LoadCommands/LoadUtilidades.js")(client);
 });
 
+process.on('uncaughtException', (err) => {
+client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
+});
 client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
