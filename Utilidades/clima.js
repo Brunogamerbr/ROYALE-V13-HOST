@@ -1,15 +1,13 @@
 const Discord = require("discord.js");
 const weather = require('weather-js');
-
-
 module.exports.run = async function(client, message, args, database) {
-  if(!args.length) return message.inlineReply(":x: **| Por favor, insira uma localização válida!**");
+  if(!args.length) return message.reply("<:erro:858615784771551252>| Por favor, insira uma localização válida!");
 
 
   weather.find({ search: args.join(' '), degreeType: 'C' }, async(error, result) => {
-    if(error) return message.inlineReply(`:x: **| Um erro interno aconteceu. Tente novamente mais tarde!**`);
+    if(error) return message.reply(`<:erro:858615784771551252>| Um erro interno aconteceu. Tente novamente mais tarde!`);
     if(result == undefined || result.length == 0) {
-        return message.inlineReply(':x: **| Local não encontrado!**');
+        return message.reply(`<:erro:858615784771551252>| Local não encontrado!`);
     }
 
     var current = result[0].current;
@@ -23,7 +21,7 @@ module.exports.run = async function(client, message, args, database) {
       .addField(`Sensação Térmica`, `${current.feelslike}°C`, true)
       .addField(`Velocidade do vento`, `${current.winddisplay}`, true)
       .addField('Umidade do ar', `${current.humidity}%`, true)
-    message.inlineReply(embed)
+    message.reply({embeds: [embed]})
   })
 
 }
