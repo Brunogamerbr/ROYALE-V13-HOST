@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-module exports.run = async function(client, message, args, database) {
+module exports.run = async(client, message, args, database) => {
   if(!args.length) return message.reply(`<:erro:858615784771551252>**| Por favor, insira o nick de algum jogador de minecraft!`);
   let embed = new Discord.MessageEmbed()
     .setDescription(`Corpo de ${args[0]}`)
