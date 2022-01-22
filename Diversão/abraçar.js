@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args, database) => {
       .setColor("#0D02FA")
       .setDescription(`${message.author} Abraçou ${user}`)
       .setURL(body.url)
-    let msg = await message.channel.send({embeds: [embed]});
+    const msg = await message.channel.send({embeds: [embed]});
     
   });
   
