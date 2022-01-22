@@ -10,8 +10,8 @@ module.exports = async (client, message, database, config) => {
   if(!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
-  let mod = args.shift();
-  let comando = client.utilidades.get(mod);
+  let uti = args.shift();
+  let comando = client.utilidades.get(uti);
   if(!comando) return;
 	
   let embed1 = new Discord.MessageEmbed()
