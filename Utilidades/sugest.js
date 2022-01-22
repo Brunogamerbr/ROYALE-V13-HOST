@@ -15,7 +15,7 @@ if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)){
 message.reply(`Esse servidor não possuí um canal de sugestões configurado!`)
 return;
 }
-let embed = new Discord.Message.Embed()
+let embed = new Discord.MessageEmbed()
 .setTitle(`❕Nova sugestão`)
 .setDescription(`**Sugestão do membro:** ${message.author.tag}\nConteudo da sugestão: \`${args.join(" ")}\``)
 .setColor(`BLUE`)
