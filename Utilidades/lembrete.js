@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args, database) => {
   .addField("Daqui a", `\`${time}\``, true) 
   .setTimestamp(Date.now() + ms(time))
   .setFooter(`Lembrete será ocorrido `, client.user.displayAvatarURL())
-  message.reply({embeds: [selig]})
+  message.reply({embeds: [seliga]})
   setTimeout(() => {
   let cofoe = new Discord.MessageEmbed()
   .setTitle("Seu lembrete "  + message.author.username)
