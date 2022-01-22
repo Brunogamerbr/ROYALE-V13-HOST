@@ -6,9 +6,7 @@ if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) { return
 
 let user = message.author
 let servi = message.guild.id
-
 let canal = message.mentions.channels.first() 
-
 let db = await database.ref(`Canais/${message.guild.id}`).once('value');
 let dbref = database.ref(`Canais/${message.guild.id}`);
 
