@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args, database) => {
     const msg = await message.channel.send({embeds: [embed]});
   
     await msg.react("🔄");
-    let c1 = msg.createReactionCollector((r, u) => u.id === user.id, {time: 60000});
+    let c1 = msg.createReactionCollector((r, u) => r.message.authot.id === u.user.id, {time: 60000});
     c1.on("collect", (reaction, user) => {
       if(reaction.emoji.name === "🔄") {
    
