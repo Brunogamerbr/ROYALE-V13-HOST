@@ -22,12 +22,18 @@ module.exports = async (client, message, database, config) => {
   let canal = client.channels.cache.get("916823908613771264");
   canal.send({embeds: [embed1]})
 
-  /*let active = await client.db.get(`ModoDev`);
-if (active.active != 0) {*/
-/*if(!config.owners.includes(message.author.id)) {
-    
-  message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Para mais informações entre em meu Servidor de Suporte usando \`${prefix}invite\`**`)
-return;}*/
+if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
+  let block = await client.db.get(`Servidores_${message.guild.id}`)
+  if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
+  let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
+  setTimeout(function() {
+  message.delete()
+  canalblock.delete()
+}, 3000);
+return;
+}
+return;
+}
 
   let user1 = message.author
   let dbs = await   
@@ -61,21 +67,7 @@ return;
     }
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
-  
-  let block = await client.db.get(`Servidores_${message.guild.id}`)
-  if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
-
-  let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-
-setTimeout(function() {
-  canalblock.delete()
-}, 3000);
-return;
-}
-
  require("../Xp.js")(client, message)
-
-	
 try {
 comando.run(client, message, args, database, prefix);
 } catch (err) {console.log(err)}
