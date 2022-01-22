@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 const pixapi = require("pixapi");
-
-exports.run = async (client, message, args, database ) => {
+module.exports.run = async (client, message, args, database ) => {
   let user = message.author;
-
   let embed = new Discord.MessageEmbed()
     .setColor("#0D02FA")
     .setTimestamp()
@@ -55,7 +53,7 @@ exports.run = async (client, message, args, database ) => {
   
   embed.description = desc;
 
-  message.inlineReply(embed);
+  message.reply({embeds: [embed]});
 }
 
 module.exports.conf ={
