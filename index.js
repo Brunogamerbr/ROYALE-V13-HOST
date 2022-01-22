@@ -26,7 +26,6 @@ require("./Handlers/HandlerAventura.js")(client, message, database, config);
 require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
-require("./Handlers/HandlerDiversão.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
 });
 
@@ -37,7 +36,6 @@ require("./LoadCommands/LoadModeração.js")(client);
 require("./LoadCommands/LoadEconomia.js")(client);
 require("./LoadCommands/LoadDevelopers.js")(client);
 require("./LoadCommands/LoadUtilidades.js")(client);
-require("./LoadCommands/LoadDiversão.js")(client);
 });
 
 process.on('uncaughtException', (err) => {
