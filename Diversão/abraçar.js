@@ -27,9 +27,7 @@ collector.on('collect', (reaction, user) => {
             .setURL(body.url)
           message.channel.send({embeds: [embed]});
 })
-          
-
-  
+})
 }
 module.exports.conf = {
   aliases: ["hug", "abraçar", "abracar"]
