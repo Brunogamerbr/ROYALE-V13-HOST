@@ -6,10 +6,10 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-/*process.on('uncaughtException', (err) => {
-let channel = client.channels.cache.get("931443923862302761")
-channel.send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``)
-})*/
+process.on('uncaughtException', (err) => {
+client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
+})
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -45,6 +45,5 @@ setInterval(() => {
 }, 3000)
 
 });
-
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
