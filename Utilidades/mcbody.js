@@ -5,6 +5,6 @@ module exports.run = async function(client, message, args, database) {
     .setDescription(`Corpo de ${args[0]}`)
     .setImage(`https://mc-heads.net/body/${args[0]}`)
     .setColor("#0D02FA")
-  message.reply(embed)
+  message.reply({embeds: [embed]})
 }
 
