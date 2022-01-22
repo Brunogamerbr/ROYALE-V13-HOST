@@ -12,8 +12,6 @@ module.exports.run = async (client, message, args, database) => {
       .setDescription(`${message.author} Abraçou ${user}`)
       .setURL(body.url)
     const msg = await message.channel.send({embeds: [embed]});
-    
-  });
   
     await msg.react("🔄");
     let c1 = msg.createReactionCollector((r, u) => u.id === user.id, {time: 60000});
@@ -32,7 +30,9 @@ module.exports.run = async (client, message, args, database) => {
         });
       }
     })
+  });
   }
+  
 module.exports.conf = {
   aliases: ["hug", "abraçar", "abracar"]
 }
