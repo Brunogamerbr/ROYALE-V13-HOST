@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { Permissions } = require('discord.js');
 module.exports = async (client, message, database, config) => {
 
   let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
