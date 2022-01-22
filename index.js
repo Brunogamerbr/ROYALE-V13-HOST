@@ -26,7 +26,7 @@ const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
 require("./Handlers/HandlerEconomia.js")(client, message, database, config);
-require("./Handlers/HandlerAventura.js")(client, message, database, config);
+/*require("./Handlers/HandlerAventura.js")(client, message, database, config);*/
 require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
@@ -35,7 +35,7 @@ require("./Afk.js")(client, message, database, config);
 
 client.on("ready", () => {
 require("./Eventos/Ready.js")(client);
-require("./LoadCommands/LoadAventura.js")(client);
+//require("./LoadCommands/LoadAventura.js")(client);
 require("./LoadCommands/LoadModeração.js")(client);
 require("./LoadCommands/LoadEconomia.js")(client);
 require("./LoadCommands/LoadDevelopers.js")(client);
