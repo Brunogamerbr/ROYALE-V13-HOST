@@ -41,4 +41,4 @@ require("./LoadCommands/LoadUtilidades.js")(client);
 process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
 });
-client.login("OTIyNzE4ODk3NzgwNzExNDY1.YcFi8A.PGPPDCoVnPO1zw0KWDP9qRh_e9Y");
+client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
