@@ -8,7 +8,7 @@ const { join } = require("path");
 require("./RifaOn.js")(client)
 
 process.on('uncaughtException', (err) => {
-client.channels.cache.get("931443923862302761")
+let channel = client.channels.cache.get("931443923862302761")
 channel.send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``)
 })
 
