@@ -7,6 +7,10 @@ const fs = require("fs");
 const { join } = require("path");
 require("./RifaOn.js")(client)
 
+process.on('uncaughtException', (err) => {
+client.channels.cache.get("931443923862302761").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
+});
+
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
   authDomain: "royale-bot-economia.firebaseapp.com",
@@ -38,7 +42,5 @@ require("./LoadCommands/LoadDevelopers.js")(client);
 require("./LoadCommands/LoadUtilidades.js")(client);
 });
 
-process.on('uncaughtException', (err) => {
-client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-});
+
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
