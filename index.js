@@ -5,12 +5,11 @@ const client = new Discord.Client({intents: 32767});
 const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
-require("./RifaOn.js")(client)
 
-process.on('uncaughtException', (err) => {
+/*process.on('uncaughtException', (err) => {
 let channel = client.channels.cache.get("931443923862302761")
 channel.send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``)
-})
+})*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -41,6 +40,10 @@ require("./LoadCommands/LoadModeração.js")(client);
 require("./LoadCommands/LoadEconomia.js")(client);
 require("./LoadCommands/LoadDevelopers.js")(client);
 require("./LoadCommands/LoadUtilidades.js")(client);
+setInterval(() => {
+  require('./RifaOn.js')(client)
+}, 3000)
+
 });
 
 
