@@ -69,7 +69,7 @@ module.exports.run = async function(client, message, args, database, prefix) {
         .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))              
         .setDescription(desc)
 	     .setFooter(fot)
- 	    .setCoolor("#0D02FA")
+ 	    .setColor("#0D02FA")
 
         msg.edit({embeds: [newEmbed]})
 }
