@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
 .setColor(`#0D02FA`)
 .setThumbnail(`https://i.imgur.com/aXQu6aC.png`)
 .setTimestamp()
-message.reply({embeds: [embed])
+message.reply({embeds: [embed]})
 }
 exports.conf = {
   aliases: ["doar", "doação"]
