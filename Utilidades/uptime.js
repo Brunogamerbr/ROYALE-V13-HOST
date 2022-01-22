@@ -1,8 +1,5 @@
 const Discord = require("discord.js");
-
-exports.run = async (client, message, args, database) => {
-
-
+module.exports.run = async (client, message, args, database) => {
   
   let totalSeconds = client.uptime / 1000;
   let days = Math.floor(totalSeconds / 86400);
@@ -21,5 +18,5 @@ exports.run = async (client, message, args, database) => {
   .setFooter("Mostrando o meu tempo de atividade")
   .setTimestamp()
 
-  message.inlineReply(embed);
+  message.reply({embeds: [embed]});
 };
