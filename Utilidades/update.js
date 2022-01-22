@@ -11,7 +11,7 @@ module.exports.run = async(client, message, args, database, prefix) => {
   if (db0.val().versão == db.val().build) return;
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
 
-  const msg = await message.inlineReply(`${ayy} Fazendo dowload dos novos recursos..`)
+  const msg = await message.reply(`${ayy} Fazendo dowload dos novos recursos..`)
  setTimeout(() => {
 }, 3000)
 
