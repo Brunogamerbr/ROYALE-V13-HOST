@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 
 let embed = new Discord.MessageEmbed()
  .setTitle(`**<:file:873563451665055754>| lista de comandos**`)  
