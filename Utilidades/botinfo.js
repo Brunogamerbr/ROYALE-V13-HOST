@@ -15,7 +15,7 @@ Crédito aos que Ajudam em meu Desenvolvimento:\n\n**Dev:** **\`${client.users.c
 .setThumbnail(`https://i.imgur.com/UdWqIF9.png`)
 .setColor(`#0D02FA`)
 .setTimestamp()
-let msg = await message.inlineReply(embed);
+let msg = await message.reply({embeds: [embed]});
 }
 exports.conf = {
   aliases: ["infobot", "info"]
