@@ -1,10 +1,16 @@
 const Discord = require("discord.js")
+const { Permissions } = require('discord.js');
 module.exports.run = async (client, message, args, database, prefix) => {
-
+ 
+var doggo = message.guild.members.cache.get(client.user.id);
 let servi = message.guild.id
 let db = await database.ref(`Canais/${message.guild.id}`).once('value')
 let dbref = database.ref(`Canais/${message.guild.id}`);
-  
+
+if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)){
+  return message.reply(`Eu estou sem permissão de \`Gerenciar canais\``)
+}
+
  if(db.val() == null) {
 message.reply(`Esse servidor não possuí um canal de sugestões configurado!`)
 return;
