@@ -15,10 +15,10 @@ return message.reply(`<:erro:858615784771551252>| Escreva seu problema após o c
 
 let canal = client.channels.cache.get("916823927853051955");
 let embed = new Discord.MessageEmbed()  
-.setTitle(`**Um novo bug foi Reportado**`)
-.setDescription(`**Bug reportado por: \`${message.author.tag}\`\nID: \`${user.id}\`\nBUG: \`${content}\`**`)
+.setTitle(`Reportagens de problemas!`)
+.setDescription(`Problema reportado pelo usuário: \`${message.author.tag}\`\nID: \`${user.id}\`\nPoblema reportado: \`${content}\``)
   .setColor(`#0D02FA`)
-canal.send(embed)
+canal.send((embeds: [embed]})
 message.delete()
 await message.reply(`☑️| Seu report foi enviado até a minha equipe! tentaremos resolver seu problema o mais rápido possível!`)
 }
