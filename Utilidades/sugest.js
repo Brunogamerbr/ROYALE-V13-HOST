@@ -17,7 +17,7 @@ return;
 }
 let embed = new Discord.MessageEmbed()
 .setTitle(`❕Nova sugestão`)
-.setDescription(`**Sugestão do membro:** ${message.author.tag}\n**Conteudo da sugestão:** \`\`\`${args.join(" ")}\`\`\``)
+.setDescription(`**Sugestão do membro:** \`${message.author.tag}\`\n**Conteudo da sugestão:** \`\`\`${args.join(" ")}\`\`\``)
 .setColor(`BLUE`)
 .setThumbnail(`https://i.imgur.com/k7T4U2C.png`)
 .setFooter(`Faça sua sugestão usando ${prefix}sugest!`)
