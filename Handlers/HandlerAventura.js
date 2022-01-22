@@ -29,27 +29,20 @@ message.reply(`**Nesse momento minha versão **RPG** está sendo atualizada! Par
 return;}*/
 
   let user1 = message.author
-  
-  let dbs = await   
-database.ref(`Start/${user1.id}`).once('value');
+  let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
-
-  let db1 = await   
-database.ref(`Versao/${user1.id}`).once('value');
+  let db1 = await database.ref(`Versao/${user1.id}`).once('value');
   let db1ref = database.ref(`Versao/${user1.id}`);
-
-  let db2 = await   
-database.ref(`VersaoBuild`).once('value');
+  let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
 
   if (dbs.val() == null) {
-  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
-return;
-    }
+  message.reply(`Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia!`)
+  return;}
 
   
   if (db1.val().versão !== db2.val().build) {
-message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+  message.reply(`Tem uma nova Versão disponível para sua conta! Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\``)
 return;
 }
 	
@@ -62,14 +55,15 @@ return;
     
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
+if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
 let block = await client.db.get(`Servidores_${message.guild.id}`)
 if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
-
 let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-
 setTimeout(function() {
   canalblock.delete()
 }, 3000);
+return;
+}
 return;
 }
 try {
