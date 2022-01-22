@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { Permissions } = require('discord.js');
 module.exports.run = async (client, message, args, database) => {
 var doggo = message.guild.members.cache.get(client.user.id);
 
