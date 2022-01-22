@@ -33,7 +33,6 @@ module.exports.run = async (client, message, args, database) => {
       }
     })
   }
-}
 module.exports.conf = {
   aliases: ["hug", "abraçar", "abracar"]
 }
