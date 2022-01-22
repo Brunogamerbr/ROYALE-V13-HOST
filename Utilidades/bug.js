@@ -4,7 +4,9 @@ module.exports.run = async (client, message, args, database) => {
 var doggo = message.guild.members.cache.get(client.user.id);
 
 if(!doggo.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)){
-return message.reply(`<:erro:858615784771551252>| Está me faltando permissão de \`gerenciar mensagens\` nesse servidor!`)}
+message.reply(`<:erro:858615784771551252>| Está me faltando permissão de \`gerenciar mensagens\` nesse servidor!`)
+  return,;
+}
 
 let content = args.join(` `)
 let user = message.author
