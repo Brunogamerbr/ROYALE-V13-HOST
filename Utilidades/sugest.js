@@ -23,6 +23,7 @@ let embed = new Discord.MessageEmbed()
 .setFooter(`Faça sua sugestão usando ${prefix}sugest!`)
 let canal = message.guild.channels.cache.get(`${db.val().canal}`)
 message.reply(`Sua sugestão foi enviada para <#${db.val().canal}> com sucesso!`)
-canal.send({embeds: [embed]})
+let m = await canal.send({embeds: [embed]})
+m.react("☑️") m.react(`❌`)
 }
         
