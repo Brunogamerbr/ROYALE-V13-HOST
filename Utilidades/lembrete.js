@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const ms = require("ms")
 module.exports.run = async (client, message, args, database, prefix) => {
   let time = args[0]
-  if(!time) return message.reply("**Para definir um lembrete Use o comando dessa Forma: \`${prefix}lembrete [tempo] [mensagem de lembrete]\`**")
+  if(!time) return message.reply(`Para definir um lembrete Use o comando dessa Forma: \`${prefix}lembrete [tempo] [mensagem de lembrete]\``)
   let lembrete = args.slice(1).join(" ")
   if(!lembrete) return message.reply(`**Por favor. Defina um texto lembrete**`)
   
