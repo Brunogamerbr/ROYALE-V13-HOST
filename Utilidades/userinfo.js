@@ -1,6 +1,6 @@
 const { MessageEmbed, GuildMember } = require('discord.js');
 
-exports.run = async (client, message, args, database) => { 
+module.exports.run = async (client, message, args, database) => { 
 
 
 
@@ -40,5 +40,5 @@ exports.run = async (client, message, args, database) => {
             .addField(`⚙ | Cargos Do Usuario:`, `> ${baliza_user.roles.cache.map(role => role.toString()).join(" | ")}`)
             .setFooter(client.user.username, client.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp(new Date())
-    message.inlineReply(baliza_info_user)
+    message.reply({embeds: [baliza_info_user]})
 }
