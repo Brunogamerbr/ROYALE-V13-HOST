@@ -44,9 +44,6 @@ return;
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
   
-  if (db1.val().versão !== db2.val().build) {
-  return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
-  
   if(c == 'start'){
   let user = message.author
   let db = await database.ref(`Start/${user.id}`).once('value');
