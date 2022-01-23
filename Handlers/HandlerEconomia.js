@@ -41,7 +41,7 @@ return;
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
   
-  if(c == 'start'){
+  if(comando == 'start'){
   let user = message.author
   let db = await database.ref(`Start/${user.id}`).once('value');
   let dbref = database.ref(`Start/${user.id}`);
