@@ -33,7 +33,6 @@ if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
 }, 3000);
 return;
 }
-return;
 }
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
