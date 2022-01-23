@@ -30,6 +30,7 @@ require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
+require("../Eventos/ItensRPG.js")(client, message, database)
 });
 
 client.on("ready", () => {
