@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const { MessageButton, MessageActionRow, MessageEmbed } = require('discord.js');
 module.exports.run = async (client, message, args, database) => {
-  
+  let db = await client.db.get(`VersaoBuild`)
   let usuarios = client.users.cache.size
   let dono = client.users.cache.get(`782434262636822588`).tag
   let servidores = client.guilds.cache.size
@@ -29,8 +29,11 @@ const filter = i => i.customId === 'PRIMARY' && i.user.id === message.author.id;
 const collector = msg.createMessageComponentCollector({ filter, time: 15000 });
 collector.on('collect', async i => {
 if (i.customId === 'PRIMARY') {
-  msg.edit(`.`)
+  setTimeout(function() {
+    msg.delete()
+  }, 200);
 }
+message.channel.send(`<:noticia:931074620013031424>| Versão do bot: ${db.build}\n<:nodejs:873563240599257149>| Versão do NodeJs: ${process.env.NODE_VERSION}`)
 });
 collector.on('end', collected => {
   return;
