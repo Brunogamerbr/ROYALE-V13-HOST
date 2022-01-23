@@ -15,7 +15,7 @@ if (!args[0]) {
 return message.reply(`<:erro:858615784771551252>| Escreva seu problema após o comando!`)
 }
 
-let canal = client.channels.cache.get("934192477689241652");
+let canal = client.channels.cache.get("916823927853051955");
 let embed = new Discord.MessageEmbed()  
 .setTitle(`Reportagens de problemas!`)
 .setDescription(`**Problema reportado pelo usuário:** **\`${message.author.tag}\`**\n**Id:** **\`${user.id}\`**\n\n**Poblema reportado:** **\`${content}\`**`)
