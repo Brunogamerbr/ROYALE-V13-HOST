@@ -24,12 +24,12 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
-require("./Handlers/HandlerEconomia.js")(client, message, database, config);
-require("./Handlers/HandlerAventura.js")(client, message, database, config);
-require("./Handlers/HandlerModeração.js")(client, message, database, config);
-require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
-require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
-require("./Afk.js")(client, message, database, config);
+  require("./Handlers/HandlerEconomia.js")(client, message, database, config); console.log("Handler Economia Passou!");
+  require("./Handlers/HandlerAventura.js")(client, message, database, config); console.log("Handler Aventura Passou!");
+  require("./Handlers/HandlerModeração.js")(client, message, database, config); console.log("Handler Moderação Passou!"); 
+  require("./Handlers/HandlerDevelopers.js")(client, message, database, config); console.log("Handler Developers Passou!");
+  require("./Handlers/HandlerUtilidades.js")(client, message, database, config); console.log("Handler Utilidades Passou!");
+  require("./Afk.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
