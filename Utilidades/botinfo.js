@@ -23,13 +23,23 @@ let button = new MessageButton();
         button.setStyle("PRIMARY");
         const row = new MessageActionRow().addComponents([button])
 let msg = await message.reply({embeds: [embed], components: [row]})
+
+
+const filter = i => i.customId === 'PRIMARY' && i.user.id === message.author.id;
+const collector = msg.createMessageComponentCollector({ filter, time: 15000 });
+collector.on('collect', async i => {
+if (i.customId === 'PRIMARY') {
+  msg.edit(`.`)
 }
+});
+collector.on('end', collected => {
+  return;
+})
 
 
 
 
-
-
+}
 exports.conf = {
   aliases: ["infobot", "info"]
 }
