@@ -18,6 +18,7 @@ Crédito aos que Ajudam em meu Desenvolvimento:\n\n**Dev:** **\`${client.users.c
 
 let button = new MessageButton();
         button.setCustomId("PRIMARY");
+        button.setLabel('Setup')
         button.setEmoji('934930387736621117')
         button.setStyle("PRIMARY");
         const row = new MessageActionRow().addComponents([button])
