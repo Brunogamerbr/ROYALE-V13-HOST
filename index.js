@@ -6,10 +6,9 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-/*process.on('uncaughtException', (err) => {
+process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-})*/
-
+})
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -41,9 +40,8 @@ require("./LoadCommands/LoadEconomia.js")(client);
 require("./LoadCommands/LoadDevelopers.js")(client);
 require("./LoadCommands/LoadUtilidades.js")(client);
 setInterval(() => {
-  require('./RifaOn.js')(client)
+require('./RifaOn.js')(client)
 }, 3000)
-
 });
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
