@@ -103,7 +103,7 @@ let embed = new Discord.MessageEmbed()
 .setFooter(`Roubo mal sucedido`)
 .setColor(`#0D02FA`)
 .setTimestamp()
-message.inlineReply({embeds: [embed]})                                  
+message.reply({embeds: [embed]})                                  
 
 dbref.update({dinheiro: db.val().dinheiro - amount, roubotime: + Date.now()});
 return;
@@ -126,7 +126,7 @@ let embed2 = new Discord.MessageEmbed()
 .setFooter(`Roubo bem sucedido`)
 .setTimestamp()
 .setColor(`#0D02FA`)
-message.channel.send({embeds: [embed2]})
+message.reply({embeds: [embed2]})
 
 db9ref.update({dinheiro: db9.val().dinheiro - amount })
 dbref.update({dinheiro: db.val().dinheiro + amount, roubotime: Date.now()})
