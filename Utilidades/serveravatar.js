@@ -6,3 +6,6 @@ let embed = new Discord.MessageEmbed()
 .setColor(`#0D02FA`)
 message.reply({embeds: [embed]})
 }
+module.exports.conf = {
+aliases: ["servericon"]
+}
