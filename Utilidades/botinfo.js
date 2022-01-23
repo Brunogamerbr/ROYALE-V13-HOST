@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { MessageButton, MessageActionRow } = require('discord.js');
+const { MessageButton, MessageActionRow, MessageEmbed } = require('discord.js');
 module.exports.run = async (client, message, args, database) => {
   
   let usuarios = client.users.cache.size
@@ -7,12 +7,6 @@ module.exports.run = async (client, message, args, database) => {
   let servidores = client.guilds.cache.size
   let economia = await database.ref(`Economia`).once('value');
   let embed = new Discord.MessageEmbed()
-  let button = new MessageButton();
-        button.setCustomId("PRIMARY");
-        button.setEmoji('934930387736621117')
-        button.setStyle("PRIMARY");
-        const row = new MessageActionRow().addComponents([button])
-
   .setTitle(`**Informações Sobre o Bot**`)
   .setDescription(`Olá ${message.author} aqui você vê algumas informações sobre mim, Espero ter ajudado.\n\n🏡| Servidores: **${servidores}**\n👤| Usuarios: **${usuarios}**\n<:firebase1:897353859259842580>| Firebase: **${economia.numChildren()}**\n\nEu fui desenvolvido em: <:nodejs:873563240599257149> **[Discord.js](https://discord.js.org/#/)**\nEu estou Hospedado na: <:discloud:931394628161261658> **[Discloud](https://discloudbot.com)**\nFui criado pelo Usuário: **\`${dono}\`**.\nDia: **\`8 de maio de 2021, as 12:00\`**
 
@@ -21,6 +15,12 @@ Crédito aos que Ajudam em meu Desenvolvimento:\n\n**Dev:** **\`${client.users.c
 .setThumbnail(`https://i.imgur.com/UdWqIF9.png`)
 .setColor(`#0D02FA`)
 .setTimestamp()
+
+let button = new MessageButton();
+        button.setCustomId("PRIMARY");
+        button.setEmoji('934930387736621117')
+        button.setStyle("PRIMARY");
+        const row = new MessageActionRow().addComponents([button])
 let msg = await message.reply({embeds: [embed], components: [row]})
 }
 
