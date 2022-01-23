@@ -3,6 +3,7 @@ const { Permissions } = require('discord.js');
 module.exports = async (client, message, database, config) => {
 
   let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
+	
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
   if(message.author.bot) return;
