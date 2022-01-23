@@ -36,7 +36,7 @@ message.reply(`<:erro:858615784771551252>| Esse usuário não está em minha Eco
 let db1L = await database.ref(`Loja/${cara.id}`).once('value');
 let db2L = await database.ref(`Loja/${cara.id}`);
 
-if (db1L.val().escolta_time) {
+if(db1L.val().escolta_time != null) {
 return message.reply(`<:erro:858615784771551252>| Esse usuário está com uma **escolta** ativa, você não poderá roubar ele!`)
 }
   
