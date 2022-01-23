@@ -33,7 +33,7 @@ if (i.customId === 'PRIMARY') {
     msg.delete()
   }, 200);
 }
-message.channel.send(`**<:noticia:931074620013031424>| Versão do bot**: ${db.build}\n**<:nodejs:873563240599257149>| Versão do NodeJs: **${process.env.NODE_VERSION}\n**<:js:897358846459256843>| Versão do Discord.js:** 13.6.0\n**<:memoryram:934940031502680075>| Memória RAM alocada: 512MB**\n**<:memoryram:934940031502680075>| Memória RAM usada:** ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512MB`)
+message.channel.send(`**<:noticia:931074620013031424>| Versão do bot**: \`${db.build}\`\n**<:nodejs:873563240599257149>| Versão do NodeJs: **\`${process.env.NODE_VERSION}\`\n**<:js:897358846459256843>| Versão do Discord.js:** \`13.6.0\`\n**<:memoryram:934940031502680075>| Memória RAM alocada: \`512MB\`**\n**<:memoryram:934940031502680075>| Memória RAM usada:** \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}/512MB\``)
 });
 collector.on('end', collected => {
   return;
