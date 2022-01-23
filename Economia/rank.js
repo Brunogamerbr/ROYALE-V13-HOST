@@ -1,29 +1,23 @@
 const Discord = require("discord.js")
-exports.run = async (client, message, args, database, prefix) => {
+module.exports.run = async (client, message, args, database, prefix) => {
   
 	 
   let user1 = message.author
-  
-  let dbs = await   
-database.ref(`Start/${user1.id}`).once('value');
+  let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
-  
-  let db1V = await   
-database.ref(`Versao/${user1.id}`).once('value');
+  let db1V = await database.ref(`Versao/${user1.id}`).once('value');
   let db1Vref = database.ref(`Versao/${user1.id}`);
-
-  let db2B = await   
-database.ref(`VersaoBuild`).once('value');
+  let db2B = await database.ref(`VersaoBuild`).once('value');
   let d2Bref = database.ref(`VersaoBuild`);
 
   if (dbs.val() == null) {
-  message.inlineReply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
+  message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)
 return;
     }
 
   
 if (db1V.val().versão !== db2B.val().build) {
-message.inlineReply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
+message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)
 return;
 }
 	
@@ -85,7 +79,7 @@ return;
     }
   }
   await msg.delete();
-  message.inlineReply(embed);
+  message.reply({embeds: [embed]});
 
   rank = [];
 }
