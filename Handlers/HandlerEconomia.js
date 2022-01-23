@@ -3,7 +3,6 @@ const { Permissions } = require('discord.js');
 module.exports = async (client, message, database, config) => {
 
   let dbPref = await database.ref(`Servidores/${message.guild.id}`).once('value');
-	
   let prefix = dbPref.val() ? dbPref.val().prefix ? dbPref.val().prefix : config.prefix.toLowerCase() : config.prefix.toLowerCase();
 
   if(message.author.bot) return;
@@ -22,18 +21,7 @@ module.exports = async (client, message, database, config) => {
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
   let channel = client.channels.cache.get("916823908613771264")
 
-if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
-  let block = await client.db.get(`Servidores_${message.guild.id}`)
-  if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
-  let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
-  setTimeout(function() {
-  message.delete()
-  canalblock.delete()
-}, 3000);
-return;
-}
-return;
-}
+
   let user1 = message.author
   let dbs = await database.ref(`Start/${user1.id}`).once('value');
   let dbsref = database.ref(`Start/${user1.id}`);
@@ -93,7 +81,6 @@ return;
   
 	 if (dbs.val() == null) {
    return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
-	
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
    let dbref = database.ref(`Banidos/${message.author.id}`);
