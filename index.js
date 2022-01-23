@@ -6,9 +6,9 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-process.on('uncaughtException', (err) => {
+/*process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-})
+})*/
 
 
 const firebaseConfig = {
@@ -35,7 +35,7 @@ require("./Afk.js")(client, message, database, config);
 
 client.on("ready", () => {
 require("./Eventos/Ready.js")(client);
-//require("./LoadCommands/LoadAventura.js")(client);
+require("./LoadCommands/LoadAventura.js")(client);
 require("./LoadCommands/LoadModeração.js")(client);
 require("./LoadCommands/LoadEconomia.js")(client);
 require("./LoadCommands/LoadDevelopers.js")(client);
