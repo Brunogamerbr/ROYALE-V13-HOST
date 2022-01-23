@@ -31,7 +31,6 @@ module.exports = async (client, message, database, config) => {
 }, 3000);
 return;
 }
-return;
 }
 
   let user1 = message.author
