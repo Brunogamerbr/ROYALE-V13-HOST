@@ -15,8 +15,6 @@ module.exports = async (client, message, database, config) => {
   let comando = client.aventura.get(ave);
   if(!comando) return;
 	
-	
-	
 	let embed1 = new Discord.MessageEmbed()
  .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${ave}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
     .setColor(`#0D02FA`)
@@ -44,15 +42,6 @@ return;
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
 
-  if (dbs.val() == null) {
-  message.reply(`Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia!`)
-  return;}
-
-  
-  if (db1.val().versão !== db2.val().build) {
-  message.reply(`Tem uma nova Versão disponível para sua conta! Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\``)
-return;
-}
 	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
    let dbref = database.ref(`Banidos/${message.author.id}`);
