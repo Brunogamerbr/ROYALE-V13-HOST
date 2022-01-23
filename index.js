@@ -6,31 +6,9 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-
-const fetch = require("node-fetch")
-
-let log = console.log;
-
-console.log = (...args) => {
-  log(...args);
-  fetch("https://canary.discord.com/api/webhooks/934636531342278756/bhTQZcHernYb4noKGBZGfAWlCEtZteE-6PYSrscnC_x6XKgntIUqF9FvkPDKlqyHU8xB", {
-    method: "POST",
-    headers: {
-      'Accept': 'application/json, text/plain, /',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      content: "```js\n"+[].slice.call(args)+"\n```",
-      username: "RoyaleBot - Console",
-      avatar_url: "https://i.imgur.com/88WKicO.png"
-    })
-  })
-}
-
-
-process.on('uncaughtException', (err) => {
+/*process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-})
+})*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -46,12 +24,12 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
-  require("./Handlers/HandlerEconomia.js")(client, message, database, config);
-  require("./Handlers/HandlerAventura.js")(client, message, database, config);
-  require("./Handlers/HandlerModeração.js")(client, message, database, config);
-  require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
-  require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
-  require("./Afk.js")(client, message, database, config);
+require("./Handlers/HandlerEconomia.js")(client, message, database, config);
+require("./Handlers/HandlerAventura.js")(client, message, database, config);
+require("./Handlers/HandlerModeração.js")(client, message, database, config);
+require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
+require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
+require("./Afk.js")(client, message, database, config);
 });
 
 client.on("ready", () => {
