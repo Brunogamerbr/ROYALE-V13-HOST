@@ -17,6 +17,7 @@ module.exports = async (client, message, database, config) => {
 	if(!config.owners.includes(message.author.id)) return;
   
 try {
+require("../Xp.js")(client, message, database)
 comando.run(client, message, args, database, prefix);
 } catch (err) {console.log(err)}
 }
