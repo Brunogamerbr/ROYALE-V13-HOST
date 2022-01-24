@@ -6,9 +6,9 @@ const firebase = require("firebase");
 const fs = require("fs");
 const { join } = require("path");
 
-/*process.on('uncaughtException', (err) => {
+process.on('uncaughtException', (err) => {
 client.channels.cache.get("932962378574864404").send(`UM NOVO ERRO DETECTADO!\n\n\`\`\`js\n${err}\n\`\`\``);
-})*/
+})
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-r_dpHhXU-Y0etxfcy4XPSif2cKhgG3c",
@@ -45,7 +45,7 @@ require('./RifaOn.js')(client)
 setInterval(() => {
 let canal = client.channels.cache.get("935008847058337863")
 canal.setName(`『📡』ping: ${client.ws.ping}ms`)
-},10)
+},1000)
 });
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
