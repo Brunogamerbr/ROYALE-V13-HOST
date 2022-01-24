@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require('discord.js');
 exports.run = async (client, message, args, database, prefix) => {
-
+try{
 let start = await client.db.get(`StartRPG_${message.author.id}`);
 if (start == null) {
 return message.reply(`<:erro:858615784771551252>| Parece que você ainda não criou seu avatar, utilize \`${prefix}create-avatar\``)}	
@@ -57,4 +57,8 @@ let embed = new Discord.MessageEmbed()
 .setFooter(`Mostrando avatar`)
 .setTimestamp();
 message.reply({embeds: [embed]})
+}catch(err){
+  message.reply(`Ocorreu um erro interno, caso esse erro não venha a se resolver.. avise algum dos meus desenvolvedores em meu servidor de Suporte \`${prefix}invite\``)
 }
+}
+
