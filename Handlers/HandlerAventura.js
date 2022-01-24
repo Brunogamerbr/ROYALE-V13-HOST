@@ -52,7 +52,7 @@ return;
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
 
 try {
-require("../Xp.js")(client, message)
+require("../Xp.js")(client, message, database)
 require("../Eventos/ItensRPG.js")(client, message, database)
 comando.run(client, message, args, database, prefix);
 } catch (err) { if (err.code === 'MODULE_NOT_FOUND') return;
