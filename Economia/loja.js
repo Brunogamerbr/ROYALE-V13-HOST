@@ -53,12 +53,8 @@ return;
         button5.setCustomId("PRIMARY5");
         button5.setEmoji('910846793749758012')
         button5.setStyle("PRIMARY");
-        const row = new MessageActionRow().addComponents([button1, button2, button3, button4, button5]);
-
-     
-
+        const row = new MessageActionRow().addComponents([button1, button2, button3, button4, button5])
         
-
 
    let dbL = await database.ref(`Loja/${user1.id}`).once("value")
    let dbLref = database.ref(`Loja/${user1.id}`)
@@ -70,12 +66,6 @@ return;
 .setColor(`#0D02FA`)
 let m = await message.channel.send({ embeds: [embed], components: [row] });
     
-/*msg.react(`<:porte:910846323463422003>`);
-msg.react("<:escl:910849586858434600>");
-msg.react("<:pistola:910848201672773642>");
-msg.react("<:caixa:910843230273282058>");
-msg.react("<:roll:910846793749758012>");*/
-
 
 const filter = i => i.customId === 'PRIMARY1' && i.user.id === message.author.id;
 const collector = m.createMessageComponentCollector({ filter, time: 15000 });
@@ -96,8 +86,6 @@ message.delete()
 collector.on('end', collected => {
   return;
 })
-
-
 
 
 
@@ -190,7 +178,6 @@ collector4.on('end', collected => {
 
 
 
-
 const filter5 = i => i.customId === 'PRIMARY5' && i.user.id === message.author.id;
 const collector5 = m.createMessageComponentCollector({ filter: filter5, time: 15000 });
 collector5.on('collect', async i => {
@@ -210,7 +197,4 @@ message.delete()
 collector5.on('end', collected => {
   return;
 })
-
-
-
 }
