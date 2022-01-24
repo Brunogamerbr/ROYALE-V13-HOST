@@ -43,7 +43,7 @@ return;
     banned = true;
     }
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
- require("../Xp.js")(client, message)
+ require("../Xp.js")(client, message, database)
  require("../Eventos/ItensRPG.js")(client, message, database)
 try {
 comando.run(client, message, args, database, prefix);
