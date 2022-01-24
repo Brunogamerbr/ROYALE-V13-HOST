@@ -40,7 +40,7 @@ return;
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
   
-  if(message.content == '.start'){
+  if(comando == 'start'){
   let user = message.author
   let db = await database.ref(`Start/${user.id}`).once('value');
   let dbref = database.ref(`Start/${user.id}`);
@@ -58,6 +58,7 @@ return;
   let db6ref = database.ref(`Work/${user.id}`);
   let db5 = await database.ref(`Versao/${user.id}`).once('value');
   let db5ref = database.ref(`Versao/${user.id}`);
+  let dbNiv = database.ref(`Versao/${user.id}`);
 
 if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
@@ -76,6 +77,8 @@ setTimeout(() => {
   db5ref.set({versão: db1.val().build})
   dbref.set({start: 0})
   db6ref.set({work: 0})
+  dbNiv.set({xp: 0})
+  dbNiv.set({level: 0})
   client.db.set(`InventarioRPG/${message.author.id}`, {buss: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
