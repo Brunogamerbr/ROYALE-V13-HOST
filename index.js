@@ -30,8 +30,6 @@ require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
-let canal = client.channels.cache.get("935008847058337863")
-canal.setName(`『📡』ping: ${client.ws.ping}ms`)
 });
 
 client.on("ready", () => {
@@ -44,6 +42,10 @@ require("./LoadCommands/LoadUtilidades.js")(client);
 setInterval(() => {
 require('./RifaOn.js')(client)
 }, 3000)
+setInterval(() => {
+let canal = client.channels.cache.get("935008847058337863")
+canal.setName(`『📡』ping: ${client.ws.ping}ms`)
+},15000)
 });
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
