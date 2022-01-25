@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let dbn = await database.ref(`Nivel/${user1.id}`).once('value');
   let dbnref = database.ref(`Nivel/${user1.id}`);
   const quantiag = Math.floor(Math.random() * 1500) + 700;
-  const roubo = ["n", "Preso", "n", "Preso", "Preso", "Preso"]
+  const roubo = ["n", "Preso", "Preso", "Preso", "Preso", "Preso"]
   const caiu = roubo[Math.floor(Math.random() * roubo.length)]
   
 
