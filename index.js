@@ -30,6 +30,10 @@ require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
+if(message.content == `<@${client.user.id}>`){
+  let db = await client.db.get(`Servidores/${message.guild.id}`)
+  message.channel.send(`🔮| Olá ${message.author} veja meus comandos **${db.prefix}help**`)
+}
 });
 
 client.on("ready", () => {
