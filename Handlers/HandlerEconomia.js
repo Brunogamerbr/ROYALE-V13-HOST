@@ -74,7 +74,7 @@ setTimeout(() => {
   db2ref.set({dinheiro: 0})
   db3ref.set({bank: 0})
   db4ref.set({emprego: 0})
-  db5ref.set({versão: db1.val().build})
+  db1ref.set({versão: db1.val().build})
   dbref.set({start: 0})
   db6ref.set({work: 0})
   dbNiv.set({xp: 0})
