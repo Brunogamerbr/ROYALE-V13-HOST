@@ -1,4 +1,4 @@
- const Discord = require("discord.js");
+const Discord = require("discord.js");
 module.exports.run = async(client, message, args, database, prefix) => {
   let user = message.author;
   let dbS = await database.ref(`Sorte/${user.id}`).once("value");
@@ -12,15 +12,13 @@ module.exports.run = async(client, message, args, database, prefix) => {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
 
   const msg = await message.reply(`${ayy} Fazendo dowload dos novos recursos..`)
- setTimeout(() => {
-}, 3000)
+ 
 
 setTimeout(() => {
 msg.edit(`${ayy} Adicionando novos itens na sua conta aguarde..`);
 }, 3000)
+
  setTimeout(() => {
-
-
 db0ref.set({versão: db.val().build})
 msg.edit(`Você recebeu a atualização: **${db.val().build}**\n<a:verifild:931074474038657024> A maioria dos bugs foram resolvidos!\n\n<a:setaFRS:928016217602654208> Categoria "Diversão" foi removida por não ser muito usada!\n<a:z_fixar:927995349254156338> Novos design em alguns comandos!!`)
 }, 3000)
