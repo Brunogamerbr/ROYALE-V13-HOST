@@ -63,7 +63,7 @@ return;
 if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
   const msg = await message.reply(`${ayy} Trazendo suas informações aguarde..`)
-setTimeout(() => {
+
   msg.edit(`${ayy} Adicionando usuario na Economia..`)
 }, 1000)
   setTimeout(() => {
@@ -83,7 +83,7 @@ setTimeout(() => {
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
   msg.edit(`☑️| Sucesso, agora minha Economia estará disponível para você!`)
-}, 1500)
+
 } 
 else {
 return;
