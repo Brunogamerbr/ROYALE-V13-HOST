@@ -65,7 +65,7 @@ if(db.val() == null) {
   const msg = await message.reply(`${ayy} Trazendo suas informações aguarde..`)
 
   msg.edit(`${ayy} Adicionando usuario na Economia..`)
-}, 1000)
+
   setTimeout(() => {
   dbLref.set({escolta: 0})
   dbLref.set({porte: 0})
@@ -74,7 +74,7 @@ if(db.val() == null) {
   db2ref.set({dinheiro: 0})
   db3ref.set({bank: 0})
   db4ref.set({emprego: 0})
-  db1ref.set({versão: db1.val().build})
+  db1ref.set({versão: db1.val().versão})
   dbref.set({start: 0})
   db6ref.set({work: 0})
   dbNiv.set({xp: 0})
@@ -84,7 +84,8 @@ if(db.val() == null) {
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
   msg.edit(`☑️| Sucesso, agora minha Economia estará disponível para você!`)
 
-} 
+}, 500) 
+}
 else {
 return;
 }

@@ -27,7 +27,7 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
   } else {
 
   let embed = new Discord.MessageEmbed()
-    .setDescription(`${user} Colete o seu bônus diário clicando **[aqui](https://royale-bot.tk)**!`)
+    .setDescription(`${user} Colete o seu bônus diário clicando **[aqui](https://royale-bot.tk/daily)**!`)
     .setColor(`#0D02FA`)
     .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
     .setTimestamp()

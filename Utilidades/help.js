@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 let embed = new Discord.MessageEmbed()
  .setTitle(`<:file:873563451665055754>| lista de comandos`)  
  .setDescription(`Veja abaixo uma lista detalhada com todos os meus comandos disponíveis:\n\n**<a:seta:882102474264154215>| ECONOMIA
-\`daily rank work time crime roll rinha rifa coinflip roubar sorte loja empregos depositar sacar pay saldo demissão transacoes\`**\n\n**<a:seta:882102474264154215>| UTILIDADES
+\`daily rank work time crime roll rinha binomo rifa coinflip roubar sorte loja empregos depositar sacar pay saldo demissão transacoes\`**\n\n**<a:seta:882102474264154215>| UTILIDADES
 \`donate sugest banner bug invite userinfo servericon afk ping avatar uptime clima mcbody mcinfo mchead\`**\n\n**<a:seta:882102474264154215>| MODERAÇÃO
 \`ban unban kick block setprefix sorteio setsugest addemoji addvip addcargo say clear\`**\n\n**<a:seta:882102474264154215>| AVENTURA:
 \`create-avatar open battle explorar chop eat buy shop bag av use\`**\n\nGostou de mim? então me adicione em seu servidor clicando **[aqui](https://discord.com/api/oauth2/authorize?client_id=844227895819894794&permissions=287636319703&scope=bot)**`)
