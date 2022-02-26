@@ -22,17 +22,22 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 client.on("messageCreate", async (message) => {
+const db = await client.db.get(`Servidores/${message.guild.id}`)
 require("./Handlers/HandlerEconomia.js")(client, message, database, config);
 require("./Handlers/HandlerAventura.js")(client, message, database, config);
 require("./Handlers/HandlerModeração.js")(client, message, database, config);
 require("./Handlers/HandlerDevelopers.js")(client, message, database, config);
 require("./Handlers/HandlerUtilidades.js")(client, message, database, config);
 require("./Afk.js")(client, message, database, config);
-if(message.content == `<@${client.user.id}>`){
-  let db = await client.db.get(`Servidores/${message.guild.id}`)
+if(message.content == `<@${client.user.id}>`) {
   message.channel.send(`🔮| Olá ${message.author} veja meus comandos **${db.prefix}help**`)
 }
 });
+
+client.on("guildCreate", async (guild) => {
+  client.db.set(`Servidores/${guild.id}`, {prefix: config.prefix})
+})
+
 
 client.on("ready", () => {
 require("./Eventos/Ready.js")(client);
