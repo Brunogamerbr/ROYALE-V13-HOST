@@ -64,7 +64,7 @@ collector.on('end', collected => {
 
     collector1.on('collect', async i => {
     if (i.customId === 'primary1') {
-    message.delete()
+    msg.delete()
     message.reply(`Cancelado com sucesso!`)
 	}
 });
