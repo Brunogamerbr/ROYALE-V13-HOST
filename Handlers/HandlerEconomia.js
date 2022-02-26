@@ -67,6 +67,8 @@ if(db.val() == null) {
   msg.edit(`${ayy} Adicionando usuario na Economia..`)
 
   setTimeout(() => {
+  db5ref.set({versão: db1.val().build})
+  
   dbLref.set({escolta: 0})
   dbLref.set({porte: 0})
   dbLref.set({roll: 0})
@@ -74,7 +76,6 @@ if(db.val() == null) {
   db2ref.set({dinheiro: 0})
   db3ref.set({bank: 0})
   db4ref.set({emprego: 0})
-  db5ref.set({versão: db1.val().versão})
   dbref.set({start: 0})
   db6ref.set({work: 0})
   dbNiv.set({xp: 0})
