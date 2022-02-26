@@ -81,13 +81,7 @@ return;
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
   msg.edit(`☑️| Sucesso, agora minha Economia estará disponível para você!`)
-}, 500) 
-}
-else {
-return;
-}
-return;
-}
+  }, 500) } else { return; } return; }
   
   if (dbs.val() == null) {
    return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
