@@ -60,7 +60,6 @@ collector.on('end', collected => {
   return;
 })
     const filter1 = i => i.customId === 'primary1' && i.user.id === message.author.id;
-
     const collector1 = msg.createMessageComponentCollector({ filter: filter1, time: 90000 });
 
     collector1.on('collect', async i => {
@@ -69,12 +68,9 @@ collector.on('end', collected => {
     message.reply(`Cancelado com sucesso!`)
 	}
 });
-
 collector1.on('end', collected => {
   return;
 })
-
-
 } catch(err){
   console.log(err)
 }

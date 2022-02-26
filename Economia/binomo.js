@@ -59,13 +59,13 @@ collector.on('end', collected => {
 })
  
  
- const filter1 = i => i.customId === 'primary1' && i.user.id === message.author.id;
+  const filter1 = i => i.customId === 'primary1' && i.user.id === message.author.id;
   const collector1 = m.createMessageComponentCollector({ filter: filter1, time: 15000 });
 
   collector1.on('collect', async i => {
 	if (i.customId === 'primary1') {
 	 m.delete()
-if (caiu == "Baixo") {
+  if (caiu == "Baixo") {
   let ganhou = parseInt(aposta)+parseInt(1700);
   dbref.update({dinheiro: db.val().dinheiro + parseInt(ganhou)})
   return message.reply(`<:correto:858615705398018078>| Sua trade de sucesso rendeu um lucro de **R$${ganhou}**!`)
