@@ -89,8 +89,7 @@ return;
    let dbref = database.ref(`Banidos/${message.author.id}`);
    let banned = false;
 
-  if (db.val() && db.val().banido) {
-    banned = true; }
+  if (db.val() && db.val().banido) { banned = true; }
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
   channel.send({embeds: [embed1]})
   require("../Xp.js")(client, message, database)
