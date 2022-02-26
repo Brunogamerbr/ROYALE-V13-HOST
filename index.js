@@ -44,10 +44,6 @@ require("./LoadCommands/LoadUtilidades.js")(client);
 setInterval(() => {
 require('./RifaOn.js')(client)
 }, 3000)
-setInterval(() =>{
- let canal = client.channels.cache.get("935008847058337863")
-canal.setName(`『📡』ping: ${client.ws.ping}ms`)
-},300)
 });
 
 client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
