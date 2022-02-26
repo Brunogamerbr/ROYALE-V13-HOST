@@ -59,7 +59,7 @@ return;
   let db5ref = database.ref(`Versao/${user.id}`);
   let dbNiv = database.ref(`Versao/${user.id}`);
 
-if(db.val() == null) {
+  if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
   const msg = await message.reply(`${ayy} Trazendo suas informações aguarde..`)
   msg.edit(`${ayy} Adicionando usuario na Economia..`)
@@ -89,7 +89,7 @@ return;
 return;
 }
   
-	 if (dbs.val() == null) {
+  if (dbs.val() == null) {
    return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
    let dbref = database.ref(`Banidos/${message.author.id}`);
