@@ -11,6 +11,7 @@ const FireSimple = require("../DatabaseUtil.js");
     databaseURL: "https://royale-bot-7b344-default-rtdb.firebaseio.com"
   });
   
+  
   const cmds = fs.readdirSync(join(__dirname, "../Economia")).filter(file => file.endsWith(".js"));
   for(let file of cmds) {
     let eco = require(join(__dirname, "../Economia", `${file}`));
