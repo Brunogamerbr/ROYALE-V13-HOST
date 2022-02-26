@@ -45,7 +45,7 @@ return;
   let db = await database.ref(`Start/${user.id}`).once('value');
   let dbref = database.ref(`Start/${user.id}`);
   let db1 = await database.ref(`VersaoBuild`).once('value');
-  let db1ref = database.ref(`VersaoBuild`);
+  let db1ref = await database.ref(`VersaoBuild`);
   let db2 = await database.ref(`Economia/${user.id}`).once('value');
   let db2ref = database.ref(`Economia/${user.id}`);
   let db3 = await database.ref(`Banco/${user.id}`).once('value');
@@ -74,7 +74,7 @@ if(db.val() == null) {
   db2ref.set({dinheiro: 0})
   db3ref.set({bank: 0})
   db4ref.set({emprego: 0})
-  db1ref.set({versão: db1.val().versão})
+  db5ref.set({versão: db1.val().versão})
   dbref.set({start: 0})
   db6ref.set({work: 0})
   dbNiv.set({xp: 0})
