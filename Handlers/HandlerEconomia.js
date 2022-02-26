@@ -15,13 +15,13 @@ module.exports = async (client, message, database, config) => {
   if(!comando) return;
 	
   let embed1 = new Discord.MessageEmbed()
-.setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${eco}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
-    .setColor(`#0D02FA`)
-    .setTimestamp()
+  .setDescription(`**Novo Comando Utilizado Por:** \`${message.author.tag} | ${message.author.id}\`\n\n**Comando Utilizado:** \`${prefix}${eco}\`\n**Depois do Comando:** \`${args.length ? args.join(' ') : " "}\`\n\n**Servidor:** \`${message.guild.name} | ${message.guild.id}\`\n**Canal:** \`${message.channel.name} | ${message.channel.id}\`\n**ID da Mensagem:** \`${message.id}\`\n\n**Informações do servidor:**\n>  Usuários: \`${message.guild.members.cache.filter(u => !u.user.bot).size} Membros\` e \`${message.guild.members.cache.filter(u => u.user.bot).size} Bots\`\n>  Canais: \`${message.guild.channels.cache.size}\`\n>  Cargos: \`${message.guild.roles.cache.size}\``)
+  .setColor(`#0D02FA`)
+  .setTimestamp()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
   let channel = client.channels.cache.get("916823908613771264")
 
-if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
+  if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
   let block = await client.db.get(`Servidores_${message.guild.id}`)
   if (message.channel.id == block.canal1 || message.channel.id == block.canal2 || message.channel.id == block.canal3 || message.channel.id == block.canal4 || message.channel.id == block.canal5) {
   let canalblock = await message.channel.send(`<:erro:858615784771551252>| Meus comandos não estão disponíveis nesse chat!`)
@@ -39,7 +39,6 @@ return;
   let db1ref = database.ref(`Versao/${user1.id}`);
   let db2 = await database.ref(`VersaoBuild`).once('value');
   let d2ref = database.ref(`VersaoBuild`);
-  
   if(eco == 'start'){
   let user = message.author
   let db = await database.ref(`Start/${user.id}`).once('value');
@@ -63,12 +62,10 @@ return;
 if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
   const msg = await message.reply(`${ayy} Trazendo suas informações aguarde..`)
-
   msg.edit(`${ayy} Adicionando usuario na Economia..`)
 
   setTimeout(() => {
   db5ref.set({versão: db1.val().build})
-  
   dbLref.set({escolta: 0})
   dbLref.set({porte: 0})
   dbLref.set({roll: 0})
@@ -84,7 +81,6 @@ if(db.val() == null) {
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
   msg.edit(`☑️| Sucesso, agora minha Economia estará disponível para você!`)
-
 }, 500) 
 }
 else {
@@ -92,23 +88,20 @@ return;
 }
 return;
 }
-
   
 	 if (dbs.val() == null) {
    return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
-	
    let db = await database.ref(`Banidos/${message.author.id}`).once('value');
    let dbref = database.ref(`Banidos/${message.author.id}`);
    let banned = false;
 
   if (db.val() && db.val().banido) {
-    banned = true;
-    }
+    banned = true; }
   if(banned) return message.reply(`**<:erro:858615784771551252>| Você foi banido de usar meus comandos! Para mais informações entre em contato com meus desenvolvedores!**`)
-channel.send({embeds: [embed1]})
-require("../Xp.js")(client, message, database)
-require("../Eventos/ItensRPG.js")(client, message, database)
-try {
-comando.run(client, message, args, database, prefix);
-} catch (err) {console.log(err)}
-}
+  channel.send({embeds: [embed1]})
+  require("../Xp.js")(client, message, database)
+  require("../Eventos/ItensRPG.js")(client, message, database)
+  try {
+ comando.run(client, message, args, database, prefix);
+ } catch (err) {console.log(err)}
+ }
