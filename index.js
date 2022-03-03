@@ -22,7 +22,7 @@ const database = firebase.database();
 
 process.on('unhandledRejection', async err => {
 console.log(err)
-}
+})
 
 client.on("messageCreate", async (message) => {
 const db = await client.db.get(`Servidores/${message.guild.id}`)
