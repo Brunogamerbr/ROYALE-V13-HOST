@@ -59,7 +59,7 @@ return;
   let db5ref = database.ref(`Versao/${user.id}`);
   let dbNiv = database.ref(`Versao/${user.id}`);
   let dbn = await database.ref(`Nivel/${message.author.id}`).once('value')
-  let dbnref = database.ref(`Nivel/${message.author.id}`)
+  let dbnref = await database.ref(`Nivel/${message.author.id}`)
 
   if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
