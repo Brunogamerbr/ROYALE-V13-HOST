@@ -58,6 +58,8 @@ return;
   let db5 = await database.ref(`Versao/${user.id}`).once('value');
   let db5ref = database.ref(`Versao/${user.id}`);
   let dbNiv = database.ref(`Versao/${user.id}`);
+  let dbn = await database.ref(`Nivel/${message.author.id}`).once('value')
+  let dbnref = database.ref(`Nivel/${message.author.id}`)
 
   if(db.val() == null) {
   const ayy = client.emojis.cache.find(emoji => emoji.name === "load");
@@ -75,8 +77,8 @@ return;
   db4ref.set({emprego: 0})
   dbref.set({start: 0})
   db6ref.set({work: 0})
-  dbNiv.set({xp: 0})
-  dbNiv.set({level: 0})
+  dbn.set({xp: 0})
+  dbn.set({level: 0})
   client.db.set(`InventarioRPG/${message.author.id}`, {buss: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
