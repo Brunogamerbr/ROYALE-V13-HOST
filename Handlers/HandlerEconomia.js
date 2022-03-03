@@ -77,8 +77,8 @@ return;
   db4ref.set({emprego: 0})
   dbref.set({start: 0})
   db6ref.set({work: 0})
-  dbn.set({xp: 0})
-  dbn.set({level: 0})
+  dbnref.set({xp: 0})
+  dbnref.set({level: 0})
   client.db.set(`InventarioRPG/${message.author.id}`, {buss: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {kat: 0});
   client.db.set(`InventarioRPG/${message.author.id}`, {mach: 0});
