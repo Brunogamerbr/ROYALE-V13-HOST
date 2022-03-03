@@ -30,10 +30,10 @@ module.exports.run = async (client, message, args, database, prefix) => {
   return message.reply(`**<:erro:858615784771551252> | Você não tem dinheiro em sua carteira para fazer um deposito!**`)}
 
   if(!money || money < 0) {
-  return message.inlineReply(`<:erro:858615784771551252> **| Insira uma quantia válida para depositar!**`)}
+  return message.reply(`<:erro:858615784771551252> **| Insira uma quantia válida para depositar!**`)}
   
   if(dbE.val().dinheiro < 1 || money > dbE.val().dinheiro) {
-  return message.inlineReply(`**<:erro:858615784771551252> | Você não possui toda essa quantia em sua carteira!**`)}
+  return message.reply(`**<:erro:858615784771551252> | Você não possui toda essa quantia em sua carteira!**`)}
 
   let embed9 = new Discord.MessageEmbed()
    .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
