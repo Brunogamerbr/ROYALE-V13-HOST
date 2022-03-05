@@ -46,5 +46,4 @@ if (!block.canal6) {
 message.channel.send(`☑️| Meus comandos foram proibidos nesse canal, somente pessoas com permissão de \`Gerenciar canais\` terão acesso!`);
 return;
 }
-
 }
