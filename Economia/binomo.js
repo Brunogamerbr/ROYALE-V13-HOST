@@ -48,7 +48,7 @@ if (caiu == "Cima") {
   dbref.update({dinheiro: db.val().dinheiro + parseInt(ganhou)})
   return message.reply(`<:correto:858615705398018078>| Sua trade de sucesso rendeu um lucro de **R$${ganhou}**!`)
 } else{
-  let perdeu = parseInt(prc)
+  let perdeu = parseInt(prc)+1700;
   dbref.update({dinheiro: db.val().dinheiro-parseInt(prc)})
   return message.reply(`<:erro:858615784771551252>| Sua trade falhou, e você teve um prejuízo de **R$${parseInt(prc)}**!`)
 }
@@ -70,7 +70,7 @@ collector.on('end', collected => {
   dbref.update({dinheiro: db.val().dinheiro + parseInt(ganhou)})
   return message.reply(`<:correto:858615705398018078>| Sua trade de sucesso rendeu um lucro de **R$${ganhou}**!`)
 } else{
-  let perdeu = parseInt(prc)
+  let perdeu = parseInt(prc)+1700;
   dbref.update({dinheiro: db.val().dinheiro-parseInt(prc)})
   return message.reply(`<:erro:858615784771551252>| Sua trade falhou, e você teve um prejuízo de **R$${parseInt(prc)}**!`)
 }
