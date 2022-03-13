@@ -3,7 +3,7 @@ const { MessageEmbed, MessageButton } = require('discord.js');
 const { MessageActionRow } = require("discord.js");
 const ms = require("parse-ms");
 module.exports.run = async (client, message, args, database, prefix) => {
- let binomo = ["Baixo", "Baixo", "Cima", "Cima"]
+ let binomo = ["Baixo", "Baixo", "Cima", "Cima", "Baixo", "Baixo", "Cima"]
  let prc = Math.floor(Math.random() * 2000) + 500;
  let caiu = binomo[Math.floor(Math.random() * binomo.length)]
  let db = await database.ref(`Economia/${message.author.id}`).once('value')
