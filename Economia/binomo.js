@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args, database, prefix) => {
    const row = new MessageActionRow().addComponents([button], [button1])
    let embed = new Discord.MessageEmbed()
    .setTitle(`Trade de investimentos`)
-   .setDescription(`Verifique se o gráfico vai subir ou descer, se caso sua previsão for correta você terá um lucro de **R$${parseInt(aposta)+parseInt(1700)}** em sua carteira, caso ao contrário terá um prejuízo de **R$${parseInt(prc)}**, então avalie bem antes de investir!`)
+   .setDescription(`Verifique se o gráfico vai subir ou descer, se caso sua previsão for correta você terá um lucro de **R$${parseInt(aposta)+parseInt(1700)}** em sua carteira, caso ao contrário terá um prejuízo de **R$${parseInt(prc)+1700}**, então avalie bem antes de investir!`)
    .setImage(`https://i.imgur.com/snRSskI.png`)
    .setColor(`#0D02FA`)
    const m = await message.reply({
