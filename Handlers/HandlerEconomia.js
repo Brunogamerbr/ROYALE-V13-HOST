@@ -19,7 +19,7 @@ module.exports = async (client, message, database, config) => {
   .setColor(`#0D02FA`)
   .setTimestamp()
   .setAuthor(message.author.tag,message.author.displayAvatarURL({dynamic: true}))
-  let channel = client.channels.cache.get("916823908613771264")
+  let channel = client.channels.cache.get("965139423811469343")
 
   if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
   let block = await client.db.get(`Servidores_${message.guild.id}`)
