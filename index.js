@@ -52,4 +52,4 @@ require("./LoadCommands/LoadDevelopers.js")(client);
 require("./LoadCommands/LoadUtilidades.js")(client);
 setInterval(() => { require('./RifaOn.js')(client) }, 3000)
 });
-client.login("ODQ0MjI3ODk1ODE5ODk0Nzk0.YKPWfw.fFiPSooxWFVkZTQw7_yYgF6U0EE");
+client.login("OTY1MTM1MTc0NzY3NjI4MzE4.YluyLQ.k2jUYECZLzff64-1-ct62A3KrKk");
