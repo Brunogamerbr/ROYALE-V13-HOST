@@ -15,12 +15,13 @@ module.exports.run = async (client, message, args, database, prefix) => {
   let tbref = database.ref(`Transacoes/${message.author.id}`)
 
   if(dbs.val() == null) {
-return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
+  return message.reply(`**Antes de começar a usar minha Economia você deve usar \`${prefix}start\` Para liberar meus comandos de Economia**`)}
 
   if(db1.val().versão !== db2.val().build) {
-return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
+  return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`${prefix}update\` Para aproveitar a nova Versão. Para mais informações entre em meu Servidor de Suporte \`${prefix}invite\`**`)}
 
   let timeout = 86400000;
+  
   if(db.val().daily !== null && timeout - (Date.now() - db.val().daily) > 0){
   let time = ms(timeout - (Date.now() - db.val().daily));
   return message.reply(`**<:erro:858615784771551252>|** Você já recebeu sua recompensa diária! Colete novamente daqui a\n**${time.hours} horas ${time.minutes} minutos ${time.seconds} segundos**`)
@@ -33,6 +34,7 @@ return message.reply(`**Tem uma nova Versão Disponível para sua Conta. Use \`$
     .setTimestamp()
     .setFooter("Você pode pegar seu bônus diário todos os dias!")
     .setThumbnail(`https://i.imgur.com/NmcmpMk.png`);
+  
   message.reply({embeds: [embed]});
 }
 }
